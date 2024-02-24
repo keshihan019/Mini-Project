@@ -46,7 +46,7 @@ export default function LoginScreen({navigation}) {
                    
                 <Image
                     style={styles.logo}
-                    source={require('')}
+                    source={require('../../assets/images/login.png')}
                 />
                 <TextInput
                     style={styles.input}

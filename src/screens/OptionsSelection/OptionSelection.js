@@ -115,7 +115,7 @@ export default function OptionsSelection({ navigation }) {
           
           <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('LogIn')}>
             <Text style={{color:'#fff', fontSize:20}}>Next</Text>
-            <Image source={require('')} style={{width:20, height:20, marginLeft:30, marginTop:6 }} />
+            <Image source={require('../../assets/images/login.png')} style={{width:20, height:20, marginLeft:30, marginTop:6 }} />
           </TouchableOpacity>
         </View>
         
