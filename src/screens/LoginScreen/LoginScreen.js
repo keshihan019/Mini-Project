@@ -3,8 +3,7 @@ import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-nat
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
-import { StackScreenProps } from "@react-navigation/stack";
-import HomeScreen from '../HomeScreen/HomeScreen.js';
+
 
 
 export default function LoginScreen({navigation}) {
