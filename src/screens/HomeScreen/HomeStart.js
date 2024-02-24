@@ -53,7 +53,7 @@ export class HomeStart extends Component {
         
 
         <ImageBackground
-          source={require('../../assets/images/UniJobs_logo.png')}
+          source={require('')}
           style={[styles.fixed, styles.container, { zIndex: -1 }, { opacity: 0.1 }]}
         />
       </View>
