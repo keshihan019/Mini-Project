@@ -6,9 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from '../src/firebase/config.js';
 
-import LoginScreen from './../src/screens/LoginScreen/LoginScreen.js';
-import RegistrationScreen from './../src/screens/RegistrationScreen/RegistrationScreen.js';
-import HomeScreen from './../src/screens/HomeScreen/HomeScreen.js';
+import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
+import RegistrationScreen from '../src/screens/RegistrationScreen/RegistrationScreen.js';
+import HomeScreen from '../src/screens/HomeScreen/HomeScreen.js';
 import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection.js';
 
 
@@ -29,30 +29,7 @@ export default function navigation() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const usersRef = firebase.firestore().collection('users');
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        usersRef
-          .doc(user.uid)
-          .get()
-          .then((firestoreDocument) => {
-            const userData = firestoreDocument.data();
-            setLoading(false);
-            setUser(userData);
-          })
-          .catch((error) => {
-            setLoading(false);
-          });
-      } else {
-        setLoading(false);
-      }
-    });
-  }, []);
-
-  if (loading) {
-    return null;
-  }
+  
 
   return (
     <NavigationContainer>
