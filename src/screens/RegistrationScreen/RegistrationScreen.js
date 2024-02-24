@@ -81,7 +81,7 @@ export default function RegistrationScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../assests/images/UnijobsLogo.png')}
+                    source={require('')}
                 />
                 <TextInput
                     style={styles.input}
