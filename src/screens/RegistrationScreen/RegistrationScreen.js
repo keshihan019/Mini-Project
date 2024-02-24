@@ -3,7 +3,7 @@ import { Image, Text, TextInput, TouchableOpacity, View,Alert } from 'react-nati
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import auth from '@react-native-firebase/auth'
-i
+
 
 
  import {firebase} from '../../firebase/config.js';
