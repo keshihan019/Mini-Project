@@ -5,65 +5,50 @@ import { firebase } from '../../firebase/config';
 
 export default function OptionsSelection({ navigation }) {
   const [selectedRole, setSelectedRole] = useState('');
-  
   const [selectedJob, setSelectedJob] = useState('');
-  
 
   const userID = firebase.auth().currentUser.uid;
 
   const handleRolePress = (role) => {
-    setSelectedRole((prevRole) => {
-      // Unselect the other role if it was selected
-      const newSelectedRole = prevRole === role ? null : role;
-
-      if (newSelectedRole === 'Undergraduate') {
-     
-             const data = {
-              id: userID,
-             }
-            const usersRef = firebase.firestore().collection('Undergratuate')
-            usersRef
-                .doc(userID)
-                .set({data})
-                .then(() => {
-                   
-                })
-                .catch((error) => {
-                  alert(error)
-              });
-    
-
-      
-      }  
-      
-      
-      
-      if (newSelectedRole === 'Employer') {
-        const data = {
-          id: userID,
-         }
-        const usersRef = firebase.firestore().collection('Employer')
-        usersRef
-            .doc(userID)
-            .set({data})
-            .then(() => {
-               
-            })
-            .catch((error) => {
-              alert(error)
-          });
-        }
-
-      return {
-        selectedRole: newSelectedRole,
-        // If the selected role is Employer, unselect Undergraduate (and vice versa)
-        selectedJob: newSelectedRole === 'Employer' ? null : selectedJob,
+    // If Undergraduate is selected, prevent selecting Employer
+    if (role === 'Undergraduate') {
+      setSelectedRole('Undergraduate');
+      setSelectedJob(''); // Reset selected job
+      const data = {
+        id: userID,
       };
-    });
+      const usersRef = firebase.firestore().collection('Undergraduate');
+      usersRef
+        .doc(userID)
+        .set(data)
+        .then(() => {
+          // Success handling
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    } else if (role === 'Employer') {
+      // If Employer is selected, prevent selecting Undergraduate
+      setSelectedRole('Employer');
+      setSelectedJob(''); // Reset selected job
+      const data = {
+        id: userID,
+      };
+      const usersRef = firebase.firestore().collection('Employer');
+      usersRef
+        .doc(userID)
+        .set(data)
+        .then(() => {
+          // Success handling
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
   };
 
   const handleJobPress = (job) => {
-    setSelectedJob((prevJob) => (job === prevJob ? null : job));
+    setSelectedJob(job);
   };
 
   return (
@@ -79,7 +64,8 @@ export default function OptionsSelection({ navigation }) {
                 selectedRole === 'Undergraduate' ? '#019F99' : '#fff',
             },
           ]}
-          onPress={() => handleRolePress('Undergraduate')}>
+          onPress={() => handleRolePress('Undergraduate')}
+          disabled={selectedRole === 'Undergraduate'}>
           <Text
             style={[
               styles.optionText,
@@ -100,7 +86,8 @@ export default function OptionsSelection({ navigation }) {
                 selectedRole === 'Employer' ? '#019F99' : '#fff',
             },
           ]}
-          onPress={() => handleRolePress('Employer')}>
+          onPress={() => handleRolePress('Employer')}
+          disabled={selectedRole === 'Employer'}>
           <Text
             style={[
               styles.optionText,
@@ -113,57 +100,23 @@ export default function OptionsSelection({ navigation }) {
         </TouchableOpacity>
       </View>
 
-        <Text style={styles.heading}>I'm looking for/hiring in</Text>
+      <Image
+            source={require('../../assets/images/login.png')}
+            style={styles.logo}
+          />
 
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Developer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Translator</Text>
-          </TouchableOpacity>
+       
+
+      <View style={styles.nextbtn}>
+        <TouchableOpacity
+          style={{ flexDirection: 'row' }}
+          onPress={() => navigation.navigate('LogIn')}>
+          <Text style={{ color: '#fff', fontSize: 20 }}>Next</Text>
           
-          
-          
-        </View>
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Data Entry Operator</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Typist</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Graphic Designer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Video Editor</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Private Tutoring</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Other</Text>
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.footer}>Job Roles</Text>
+        </TouchableOpacity>
         
-        <View style={styles.nextbtn}>
-          
-          <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('LogIn')}>
-            <Text style={{color:'#fff', fontSize:20}}>Next</Text>
-            <Image source={require('../../assets/images/login.png')} style={{width:20, height:20, marginLeft:30, marginTop:6 }} />
-          </TouchableOpacity>
-        </View>
-        
-
       </View>
-    );
-  }
+     
+    </View>
+  );
+}
