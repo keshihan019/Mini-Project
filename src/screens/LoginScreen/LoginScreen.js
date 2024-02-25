@@ -3,7 +3,7 @@ import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-nat
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import auth from '@react-native-firebase/auth';
-
+import {firebase} from '../../firebase/config';
 
 
 export default function LoginScreen({navigation}) {
@@ -21,19 +21,30 @@ export default function LoginScreen({navigation}) {
             return;
           }
       
-          auth()
+          firebase
+            .auth()
             .signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-              const user = userCredential.user;
-              Alert.alert('Login Successful', `Welcome back, ${user.email}`);
-              navigation.navigate('OptionsSelection')
+            .then((response) => {
+                const uid = response.user.uid
+                const usersRef = firebase.firestore().collection('users')
+                usersRef
+                    .doc(uid)
+                    .get()
+                    .then(firestoreDocument => {
+                        if (!firestoreDocument.exists) {
+                            alert("User does not exist anymore.")
+                            return;
+                        }
+                        const user = firestoreDocument.data()
+                        navigation.navigate('OptionsSelection', {user})
+                    })
+                    .catch(error => {
+                        alert(error)
+                    });
             })
-            
-
-            .catch((error) => {
-              Alert.alert('Error', error.message);
-              Alert.alert('Loging failed. Please try again.');
-            });
+            .catch(error => {
+                alert(error)
+            })
     }
 
     return (
