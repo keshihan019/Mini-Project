@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import styles from './OptionStyles';
+import { firebase } from '../../firebase/config';
 
 export default function OptionsSelection({ navigation }) {
-  const [selectedRole, setSelectedRole] = useState(null);
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedRole, setSelectedRole] = useState('');
+  const [selectedJob, setSelectedJob] = useState([]);
 
   const handleRolePress = (role) => {
     setSelectedRole((prevRole) => {
