@@ -5,12 +5,55 @@ import { firebase } from '../../firebase/config';
 
 export default function OptionsSelection({ navigation }) {
   const [selectedRole, setSelectedRole] = useState('');
-  const [selectedJob, setSelectedJob] = useState([]);
+  
+  const [selectedJob, setSelectedJob] = useState('');
+  
+
+  const userID = firebase.auth().currentUser.uid;
 
   const handleRolePress = (role) => {
     setSelectedRole((prevRole) => {
       // Unselect the other role if it was selected
       const newSelectedRole = prevRole === role ? null : role;
+
+      if (newSelectedRole === 'Undergraduate') {
+     
+             const data = {
+              id: userID,
+             }
+            const usersRef = firebase.firestore().collection('Undergratuate')
+            usersRef
+                .doc(userID)
+                .set({data})
+                .then(() => {
+                   
+                })
+                .catch((error) => {
+                  alert(error)
+              });
+    
+
+      
+      }  
+      
+      
+      
+      if (newSelectedRole === 'Employer') {
+        const data = {
+          id: userID,
+         }
+        const usersRef = firebase.firestore().collection('Employer')
+        usersRef
+            .doc(userID)
+            .set({data})
+            .then(() => {
+               
+            })
+            .catch((error) => {
+              alert(error)
+          });
+        }
+
       return {
         selectedRole: newSelectedRole,
         // If the selected role is Employer, unselect Undergraduate (and vice versa)
