@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View,Alert } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
-import auth from '@react-native-firebase/auth'
 
 
-
- import {firebase} from '../../firebase/config.js';
+ import {firebase} from '../../firebase/config';
  import OptionsSelection from '../OptionsSelection/OptionSelection.js';
 
 
@@ -38,14 +36,27 @@ export default function RegistrationScreen({navigation}) {
             return;
         }
 
-        auth()
+        firebase
+        .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-            
-            Alert.alert('User Created', `E-mail: ${email}\nPassword: ${password}\nUsername: ${fullName}`);
-            navigation.navigate('OptionsSelection')
+        .then((response) => {
+            const uid = response.user.uid
+            const data = {
+                id: uid,
+                email,
+                fullName,
+            };
+            const usersRef = firebase.firestore().collection('users')
+            usersRef
+                .doc(uid)
+                .set(data)
+                .then(() => {
+                    navigation.navigate('OptionsSelection', {user: data})
+                })
+                .catch((error) => {
+                    alert(error)
+                });
         })
-       
            
             .catch(err => {
                 console.log(err);
@@ -70,7 +81,7 @@ export default function RegistrationScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../assets/images/login.png')}
+                    source={require('../../assets/images/UniJobs_logo.png')}
                 />
                 <TextInput
                     style={styles.input}
