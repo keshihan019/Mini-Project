@@ -1,28 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import styles from './OptionStyles';
 import { firebase } from '../../firebase/config';
 
 export default function OptionsSelection({ navigation }) {
   const [selectedRole, setSelectedRole] = useState('');
-  const [selectedJob, setSelectedJob] = useState([]);
+  const [userRole, setUserRole] = useState(null);
+  const [userName, setUserName] = useState('');
+  const userID = firebase.auth().currentUser.uid;
 
-  const handleRolePress = (role) => {
-    setSelectedRole((prevRole) => {
-      // Unselect the other role if it was selected
-      const newSelectedRole = prevRole === role ? null : role;
-      return {
-        selectedRole: newSelectedRole,
-        // If the selected role is Employer, unselect Undergraduate (and vice versa)
-        selectedJob: newSelectedRole === 'Employer' ? null : selectedJob,
-      };
-    });
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userDoc = await firebase.firestore().collection('users').doc(userID).get();
+        const userData = userDoc.data();
+        if (userData) {
+          setUserName(userData.fullName);
+          setUserRole(userData.role);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [userID]);
+
+  const handleRolePress = async (role) => {
+    if (userRole) {
+      return;
+    }
+
+    setSelectedRole(role);
+
+    try {
+      // Update user's document with option selection details
+      const userDocRef = firebase.firestore().collection('users').doc(userID);
+      await userDocRef.update({ role });
+      setUserRole(role);
+    } catch (error) {
+      console.error('Error updating user role:', error);
+    }
   };
-
-  const handleJobPress = (job) => {
-    setSelectedJob((prevJob) => (job === prevJob ? null : job));
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>I'm an</Text>
@@ -36,7 +55,8 @@ export default function OptionsSelection({ navigation }) {
                 selectedRole === 'Undergraduate' ? '#019F99' : '#fff',
             },
           ]}
-          onPress={() => handleRolePress('Undergraduate')}>
+          onPress={() => handleRolePress('Undergraduate')}
+          disabled={selectedRole === 'Undergraduate'}>
           <Text
             style={[
               styles.optionText,
@@ -57,7 +77,8 @@ export default function OptionsSelection({ navigation }) {
                 selectedRole === 'Employer' ? '#019F99' : '#fff',
             },
           ]}
-          onPress={() => handleRolePress('Employer')}>
+          onPress={() => handleRolePress('Employer')}
+          disabled={selectedRole === 'Employer'}>
           <Text
             style={[
               styles.optionText,
@@ -70,57 +91,19 @@ export default function OptionsSelection({ navigation }) {
         </TouchableOpacity>
       </View>
 
-        <Text style={styles.heading}>I'm looking for/hiring in</Text>
+      <Image
+        source={require('../../assets/images/login.png')}
+        style={styles.logo}
+      />
 
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Developer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Translator</Text>
-          </TouchableOpacity>
-          
-          
-          
-        </View>
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Data Entry Operator</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Typist</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Graphic Designer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Video Editor</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Private Tutoring</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Other</Text>
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.footer}>Job Roles</Text>
-        
-        <View style={styles.nextbtn}>
-          
-          <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('LogIn')}>
-            <Text style={{color:'#fff', fontSize:20}}>Next</Text>
-            <Image source={require('../../assets/images/login.png')} style={{width:20, height:20, marginLeft:30, marginTop:6 }} />
-          </TouchableOpacity>
-        </View>
-        
-
+      <View style={styles.nextbtn}>
+        <TouchableOpacity
+          style={{ flexDirection: 'row' }}
+          onPress={() => navigation.navigate('LogIn')}>
+          <Text style={{ color: '#fff', fontSize: 20 }}>Next</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
+
+    </View>
+  );
+}
