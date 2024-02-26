@@ -1,54 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import styles from './OptionStyles';
 import { firebase } from '../../firebase/config';
 
-export default function OptionsSelection({ navigation }) {
+
+export default function OptionsSelection({ navigation, route }) {
   const [selectedRole, setSelectedRole] = useState('');
-  const [selectedJob, setSelectedJob] = useState('');
+  const [userRole, setUserRole] = useState(null);
+  const [userName, setUserName] = useState('');
 
   const userID = firebase.auth().currentUser.uid;
 
-  const handleRolePress = (role) => {
-    // If Undergraduate is selected, prevent selecting Employer
-    if (role === 'Undergraduate') {
-      setSelectedRole('Undergraduate');
-      setSelectedJob(''); // Reset selected job
-      const data = {
-        id: userID,
-      };
-      const usersRef = firebase.firestore().collection('Undergraduate');
-      usersRef
-        .doc(userID)
-        .set(data)
-        .then(() => {
-          // Success handling
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    } else if (role === 'Employer') {
-      // If Employer is selected, prevent selecting Undergraduate
-      setSelectedRole('Employer');
-      setSelectedJob(''); // Reset selected job
-      const data = {
-        id: userID,
-      };
-      const usersRef = firebase.firestore().collection('Employer');
-      usersRef
-        .doc(userID)
-        .set(data)
-        .then(() => {
-          // Success handling
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
-  };
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userDoc = await firebase.firestore().collection('users').doc(userID).get();
+        const userData = userDoc.data();
+        if (userData) {
+          setUserName(userData.fullName);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
 
-  const handleJobPress = (job) => {
-    setSelectedJob(job);
+    fetchUserData();
+  }, [userID]);
+
+  useEffect(() => {
+    if (route.params && route.params.user) {
+      setUserName(route.params.user.fullName);
+    }
+  }, [route.params]);
+
+  const handleRolePress = async (role) => {
+    if (userRole) {
+      return;
+    }
+
+    setSelectedRole(role);
+
+    try {
+      const userDocRef = firebase.firestore().collection('UsersRole').doc(userID);
+      await userDocRef.set({ userId: userID, role, fullName: userName });
+      setUserRole(role);
+    } catch (error) {
+      console.error('Error updating user role:', error);
+    }
   };
 
   return (
@@ -101,22 +99,18 @@ export default function OptionsSelection({ navigation }) {
       </View>
 
       <Image
-            source={require('../../assets/images/login.png')}
-            style={styles.logo}
-          />
-
-       
+        source={require('../../assets/images/login.png')}
+        style={styles.logo}
+      />
 
       <View style={styles.nextbtn}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
           onPress={() => navigation.navigate('LogIn')}>
           <Text style={{ color: '#fff', fontSize: 20 }}>Next</Text>
-          
         </TouchableOpacity>
-        
       </View>
-     
+
     </View>
   );
 }
