@@ -3,12 +3,10 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import styles from './OptionStyles';
 import { firebase } from '../../firebase/config';
 
-
-export default function OptionsSelection({ navigation, route }) {
+export default function OptionsSelection({ navigation }) {
   const [selectedRole, setSelectedRole] = useState('');
   const [userRole, setUserRole] = useState(null);
   const [userName, setUserName] = useState('');
-
   const userID = firebase.auth().currentUser.uid;
 
   useEffect(() => {
@@ -18,6 +16,7 @@ export default function OptionsSelection({ navigation, route }) {
         const userData = userDoc.data();
         if (userData) {
           setUserName(userData.fullName);
+          setUserRole(userData.role);
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -27,12 +26,6 @@ export default function OptionsSelection({ navigation, route }) {
     fetchUserData();
   }, [userID]);
 
-  useEffect(() => {
-    if (route.params && route.params.user) {
-      setUserName(route.params.user.fullName);
-    }
-  }, [route.params]);
-
   const handleRolePress = async (role) => {
     if (userRole) {
       return;
@@ -41,14 +34,14 @@ export default function OptionsSelection({ navigation, route }) {
     setSelectedRole(role);
 
     try {
-      const userDocRef = firebase.firestore().collection('UsersRole').doc(userID);
-      await userDocRef.set({ userId: userID, role, fullName: userName });
+      // Update user's document with option selection details
+      const userDocRef = firebase.firestore().collection('users').doc(userID);
+      await userDocRef.update({ role });
       setUserRole(role);
     } catch (error) {
       console.error('Error updating user role:', error);
     }
   };
-
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>I'm an</Text>
