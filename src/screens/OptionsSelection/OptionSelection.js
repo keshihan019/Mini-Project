@@ -34,7 +34,7 @@ export default function OptionsSelection({ navigation }) {
     setSelectedRole(role);
 
     try {
-  
+      // Update user's document with option selection details
       const userDocRef = firebase.firestore().collection('users').doc(userID);
       await userDocRef.update({ role });
       setUserRole(role);
@@ -42,6 +42,7 @@ export default function OptionsSelection({ navigation }) {
       console.error('Error updating user role:', error);
     }
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>I'm an</Text>
@@ -107,4 +108,3 @@ export default function OptionsSelection({ navigation }) {
     </View>
   );
 }
-

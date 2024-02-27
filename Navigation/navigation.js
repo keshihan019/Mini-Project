@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
 import RegistrationScreen from '../src/screens/RegistrationScreen/RegistrationScreen.js';
 import HomeScreen from '../src/screens/HomeScreen/HomeScreen.js';
-import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection.js';
+import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Job selection/JobSelection.js'
 
 
