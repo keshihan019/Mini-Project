@@ -3,8 +3,9 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
 
     container: {
-      flex: 1,
-      alignItems: 'center'
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        paddingHorizontal: 20,
       },
       heading: {
         fontSize: 36,
@@ -64,14 +65,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius:15,
         flexDirection:'row'
-      },
-
-      logo: {
-        flex: 1,
-        height: 250,
-        width: 250,
-        alignSelf: "center",
-        margin: 30
       },
 
 })
