@@ -43,7 +43,7 @@ export default function LoginScreen({navigation}) {
                     });
             })
             .catch(error => {
-                alert(error)
+                Alert.alert('Error', 'Invalid email or password. Please try again.')
             })
     }
 
