@@ -36,7 +36,7 @@ export default function LoginScreen({navigation}) {
                             return;
                         }
                         const user = firestoreDocument.data()
-                        navigation.navigate('OptionsSelection', {user})
+                        navigation.navigate('JobSelection', {user})
                     })
                     .catch(error => {
                         alert(error)

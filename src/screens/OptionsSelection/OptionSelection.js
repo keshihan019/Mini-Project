@@ -99,7 +99,7 @@ export default function OptionsSelection({ navigation }) {
       <View style={styles.nextbtn}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
-          onPress={() => navigation.navigate('LogIn')}>
+          onPress={() => navigation.navigate('JobSelection')}>
           <Text style={{ color: '#fff', fontSize: 20 }}>Next</Text>
         </TouchableOpacity>
       </View>
