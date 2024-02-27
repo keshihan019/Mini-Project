@@ -72,34 +72,7 @@ export default function OptionsSelection({ navigation }) {
 
         <Text style={styles.heading}>I'm looking for/hiring in</Text>
 
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Developer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Translator</Text>
-          </TouchableOpacity>
-          
-          
-          
-        </View>
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Data Entry Operator</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Typist</Text>
-          </TouchableOpacity>
-        </View>
 
-        <View style={styles.OptionContainer}>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Graphic Designer</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.optionBtn}>
-            <Text style={styles.optionText}>Video Editor</Text>
-          </TouchableOpacity>
-        </View>
 
         <View style={styles.OptionContainer}>
           <TouchableOpacity style={styles.optionBtn}>
