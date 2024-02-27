@@ -23,7 +23,7 @@ export default function Navigation() {
 const MainStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="lk" component={Tabs} options={{headerShown: false}}/>
+      <Stack.Screen name="HomeTab" component={Tabs} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
