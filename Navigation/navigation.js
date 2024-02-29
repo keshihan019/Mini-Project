@@ -30,6 +30,113 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="JobSelection" component={JobSelection} />
+
+      
+{/* --------------StackSettings Screens--------------------------- */}   
+<Stack.Screen name="AllSettings" component={AllSettings} />
+        <Stack.Screen name="AccSettings" component={AccSettings} 
+                      options={{
+                        headerShown: true,
+                        title: 'Account Settings', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }}/>
+        <Stack.Screen name="NotifSettings" component={NotifSettings}
+                      options={{
+                        headerShown: true,
+                        title: 'Notification Settings', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+
+  <Stack.Screen name="PrivSettings" component={PrivSettings}
+                      options={{
+                        headerShown: true,
+                        title: 'Privacy Settings', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+
+<Stack.Screen name="FrequentlyAskedQuestions" component={FrequentlyAskedQuestions}
+                      options={{
+                        headerShown: true,
+                        title: 'FAQ', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+
+<Stack.Screen name="TermsConditions" component={TermsConditions}
+                      options={{
+                        headerShown: true,
+                        title: 'Privacy Settings', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+
+<Stack.Screen name="DeveloperInfo" component={DeveloperInfo}
+                      options={{
+                        headerShown: true,
+                        title: 'Developer Information', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+
+<Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy}
+                      options={{
+                        headerShown: true,
+                        title: 'Privacy Policy', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+
+<Stack.Screen name="SoftwareVersion" component={SoftwareVersion}
+                      options={{
+                        headerShown: true,
+                        title: 'SoftwareVersion', 
+                        headerStyle: {
+                          backgroundColor: '#000', 
+                        },
+                        headerTintColor: '#fff', 
+                        headerTitleStyle: {
+                          fontWeight: 'bold',
+                        },
+        }} />
+{/* --------------End  StackSettings Screens--------------------------- */}  
     </Stack.Navigator>
   );
 }

@@ -12,7 +12,7 @@ const JobsApplied = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/All_set_to_go.png')} style={styles.illustration} />
+      {/* <Image source={require('../../assets/images/All_set_to_go.png')} style={styles.illustration} /> */}
 
       <Text style={styles.title}>You've Applied to Some Amazing Jobs!</Text>
       <Text style={styles.subtitle}>Keep up the good work!</Text>

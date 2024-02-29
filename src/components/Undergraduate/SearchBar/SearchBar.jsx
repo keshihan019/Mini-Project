@@ -18,7 +18,7 @@ const SearchBar = ({ onSearch }) => {
         onChangeText={(text) => setSearchText(text)}
       />
       <TouchableOpacity style={styles.button} onPress={handleSearch}>
-        <Ionicons name="search" size={24} color="white" />
+        {/* <Ionicons name="search" size={24} color="white" /> */}
       </TouchableOpacity>
     </View>
   );
