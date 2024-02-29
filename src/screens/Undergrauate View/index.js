@@ -11,6 +11,8 @@ import PrivacyPolicy from "./Settings Screen/PrivacyPolicy";
 import PrivSettings from "./Settings Screen/PrivSettings";
 import SoftwareVersion from "./Settings Screen/SoftwareVersion";
 import TermsConditions from "./Settings Screen/TermsConditions";
+import Profile from "./User Profile Screens/Profile";
+import EditUGProfile from "./User Profile Screens/EditUGProfile";
 
 export{
     Home,
@@ -25,5 +27,7 @@ export{
     PrivacyPolicy,
     PrivSettings,
     SoftwareVersion,
-    TermsConditions
+    TermsConditions,
+    Profile,
+    EditUGProfile
 }

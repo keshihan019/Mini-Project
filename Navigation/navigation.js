@@ -7,7 +7,7 @@ import RegistrationScreen from '../src/screens/RegistrationScreen/RegistrationSc
 import HomeScreen from '../src/screens/HomeScreen/HomeScreen.js';
 import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Job selection/JobSelection.js'
-import {Home,JobsApplied,StatusofJobsApplied,Notifications,AccSettings,AllSettings,DeveloperInfo,FrequentlyAskedQuestions,NotifSettings,PrivacyPolicy,PrivSettings,SoftwareVersion,TermsConditions} from '../src/screens/Undergrauate View/index.js';
+import {Home,JobsApplied,StatusofJobsApplied,Notifications,AccSettings,AllSettings,DeveloperInfo,FrequentlyAskedQuestions,NotifSettings,PrivacyPolicy,PrivSettings,SoftwareVersion,TermsConditions,Profile,EditUGProfile} from '../src/screens/Undergrauate View/index.js';
 
 
 const Stack = createStackNavigator();
@@ -30,6 +30,7 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="JobSelection" component={JobSelection} />
+      <Stack.Screen name="UGHome" component={Home} />
 
       
 {/* --------------StackSettings Screens--------------------------- */}   
@@ -132,17 +133,31 @@ const MainStack = () => {
         }} />
 {/* --------------End  StackSettings Screens--------------------------- */}  
 
-{/* --------------JobsApplied Screens--------------------------- */}
+
+
+
+{/* --------------JobsApplied Tab  //\\ Screens--------------------------- */}
 
 <Stack.Screen name="StatusofJobsApplied" component={StatusofJobsApplied} />
 <Stack.Screen name="JobsApplied" component={JobsApplied} />
-{/* <Stack.Screen name="StackJob" component={StackJob} /> */}
-
-        
-{/* --------------End  JobsApplieds Screens--------------------------- */}  
+       
+{/* -nEnd  JobsApplied Tab Screens  \\//--------------------------- */}  
 
 
-
+<Stack.Screen name="Profile" component={Profile} />
+<Stack.Screen name="EditUGProfile" 
+                    component={EditUGProfile} 
+                    options={{
+                      headerShown: true,
+                      title: 'Edit User Profile', // Set your header title here
+                      headerStyle: {
+                        backgroundColor: '#000', // Customize the header background color
+                      },
+                      headerTintColor: '#fff', // Customize the header text color
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                      },
+                    }}/>
 
     </Stack.Navigator>
   );
