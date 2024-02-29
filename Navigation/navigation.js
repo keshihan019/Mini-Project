@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Tabs from './tabs';
+import Tabs from './UndergraduateView/tabs.js';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
 import RegistrationScreen from '../src/screens/RegistrationScreen/RegistrationScreen.js';
 import HomeScreen from '../src/screens/HomeScreen/HomeScreen.js';

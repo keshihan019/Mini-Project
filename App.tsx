@@ -5,7 +5,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'react-native-gesture-handler';
 import Navigation from './Navigation/navigation';
-import Tabs from './Navigation/tabs';
+import Tabs from './Navigation/UndergraduateView/tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
 if (!global.btoa) { global.btoa = encode; }
