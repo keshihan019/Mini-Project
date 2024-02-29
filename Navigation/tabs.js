@@ -6,6 +6,7 @@ import HomeScreen from '../src/screens/HomeScreen/HomeScreen';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen';
 import Notifications from '../src/screens/Undergrauate View/Notifications Screens/Notifications';
 import AllSettings from '../src/screens/Undergrauate View/Settings Screen/AllSettings';
+import { StatusofJobsApplied } from '../src/screens/Undergrauate View';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,10 +18,12 @@ const Tabs = () => {
                 tabBarStyle: {
                     position: 'absolute',
                     bottom: 0,
+                    paddingBottom:25,
+                    paddingTop:10,
                     elevation: 0,
                     backgroundColor: '#fff',
                     borderRadius: 5,
-                    height: 60,
+                    height: 70,
                     ...styles.shadow
                 },
             }}
@@ -44,11 +47,11 @@ const Tabs = () => {
                     </View>
                 )
             }}/>
-            <Tab.Screen name="Login" component={LoginScreen} options = {{
+<Tab.Screen name="StatusofJobsApplied" component={StatusofJobsApplied} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
-                            source={require('../src/assets/icons/search.png')}
+                            source={require('../src/assets/icons/jobsApplied.png')}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -57,13 +60,12 @@ const Tabs = () => {
                             }}
                         />
                         <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12}}>
-                            Login
+                            Jobs Applied
                         </Text>
                     </View>
                 )
             }}/>
-
-                        <Tab.Screen name="Home" component={HomeScreen} options = {{
+<Tab.Screen name="Home" component={HomeScreen} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
@@ -81,7 +83,7 @@ const Tabs = () => {
                     </View>
                 )
             }} />
-            <Tab.Screen name="Notifications" component={Notifications} options = {{
+<Tab.Screen name="Notifications" component={Notifications} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
@@ -99,7 +101,7 @@ const Tabs = () => {
                     </View>
                 )
             }}/>
-            <Tab.Screen name="Profile" component={Profile} options = {{
+<Tab.Screen name="Profile" component={Profile} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 

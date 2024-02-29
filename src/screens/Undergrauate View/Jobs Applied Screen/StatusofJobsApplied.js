@@ -7,12 +7,12 @@ const Tab = createMaterialTopTabNavigator();
 
 const StatusofJobsApplied = () => {
   return (
-    // <Tab.Navigator>
-    //   <Tab.Screen name="Jobs Applied" component={JobsAppliedTab} />
-    //   <Tab.Screen name="Jobs Accepted" component={JobsAcceptedTab} />
-    //   <Tab.Screen name="Jobs Pending" component={JobsPendingTab} />
-    // </Tab.Navigator>
-    <Text>hii</Text>
+    <Tab.Navigator>
+      <Tab.Screen name="Jobs Applied" component={JobsAppliedTab} />
+      <Tab.Screen name="Jobs Accepted" component={JobsAcceptedTab} />
+      <Tab.Screen name="Jobs Pending" component={JobsPendingTab} />
+    </Tab.Navigator>
+    
   );
 };
 
