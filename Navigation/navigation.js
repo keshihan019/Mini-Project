@@ -7,6 +7,8 @@ import RegistrationScreen from '../src/screens/RegistrationScreen/RegistrationSc
 import HomeScreen from '../src/screens/HomeScreen/HomeScreen.js';
 import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Job selection/JobSelection.js'
+import {Home,JobsApplied,StatusofJobsApplied,Notifications,AccSettings,AllSettings,DeveloperInfo,FrequentlyAskedQuestions,NotifSettings,PrivacyPolicy,PrivSettings,SoftwareVersion,TermsConditions} from '../src/screens/Undergrauate View/index.js';
+
 
 const Stack = createStackNavigator();
 

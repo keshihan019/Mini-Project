@@ -3,9 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,Text,View,Image, TouchableOpacity } from 'react-native';
 import HomeScreen from '../src/screens/HomeScreen/HomeScreen';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen';
-import RegisterScreen from '../src/screens/RegistrationScreen/RegistrationScreen';
-import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection';
-import JobSelection from '../src/screens/Job selection/JobSelection';
+import Notifications from '../src/screens/Undergrauate View/Notifications Screens/Notifications';
+import AllSettings from '../src/screens/Undergrauate View/Settings Screen/AllSettings';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,11 +61,45 @@ const Tabs = () => {
                         </Text>
                     </View>
                 )
-            }}
-                />
-            <Tab.Screen name="Register" component={RegisterScreen} />
-            <Tab.Screen name="Options" component={OptionsSelection} />
-            <Tab.Screen name="Job" component={JobSelection} />
+            }}/>
+            <Tab.Screen name="Notifications" component={Notifications} options = {{
+                tabBarIcon: ({focused}) => (
+                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+                        <Image 
+                            source={require('../src/assets/icons/search.png')}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? '#019F99' : '#748c94'
+                            }}
+                        />
+                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12}}>
+                            Notifications
+                        </Text>
+                    </View>
+                )
+            }}/>
+            <Tab.Screen name="AllSettings" component={AllSettings} options = {{
+                tabBarIcon: ({focused}) => (
+                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+                        <Image 
+                            source={require('../src/assets/icons/search.png')}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? '#019F99' : '#748c94'
+                            }}
+                        />
+                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12}}>
+                            Settings
+                        </Text>
+                    </View>
+                )
+            }}/>
+
+            
         </Tab.Navigator>
     );
 }
