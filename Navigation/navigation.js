@@ -58,7 +58,6 @@ const MainStack = () => {
                           fontWeight: 'bold',
                         },
         }} />
-
   <Stack.Screen name="PrivSettings" component={PrivSettings}
                       options={{
                         headerShown: true,
@@ -71,7 +70,6 @@ const MainStack = () => {
                           fontWeight: 'bold',
                         },
         }} />
-
 <Stack.Screen name="FrequentlyAskedQuestions" component={FrequentlyAskedQuestions}
                       options={{
                         headerShown: true,
@@ -84,7 +82,6 @@ const MainStack = () => {
                           fontWeight: 'bold',
                         },
         }} />
-
 <Stack.Screen name="TermsConditions" component={TermsConditions}
                       options={{
                         headerShown: true,
@@ -97,7 +94,6 @@ const MainStack = () => {
                           fontWeight: 'bold',
                         },
         }} />
-
 <Stack.Screen name="DeveloperInfo" component={DeveloperInfo}
                       options={{
                         headerShown: true,
@@ -110,7 +106,6 @@ const MainStack = () => {
                           fontWeight: 'bold',
                         },
         }} />
-
 <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy}
                       options={{
                         headerShown: true,
@@ -123,7 +118,6 @@ const MainStack = () => {
                           fontWeight: 'bold',
                         },
         }} />
-
 <Stack.Screen name="SoftwareVersion" component={SoftwareVersion}
                       options={{
                         headerShown: true,
@@ -137,6 +131,19 @@ const MainStack = () => {
                         },
         }} />
 {/* --------------End  StackSettings Screens--------------------------- */}  
+
+{/* --------------JobsApplied Screens--------------------------- */}
+
+<Stack.Screen name="StatusofJobsApplied" component={StatusofJobsApplied} />
+<Stack.Screen name="JobsApplied" component={JobsApplied} />
+{/* <Stack.Screen name="StackJob" component={StackJob} /> */}
+
+        
+{/* --------------End  JobsApplieds Screens--------------------------- */}  
+
+
+
+
     </Stack.Navigator>
   );
 }

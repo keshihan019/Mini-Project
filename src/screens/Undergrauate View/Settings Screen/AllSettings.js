@@ -9,7 +9,8 @@ import TermsConditions from ".//TermsConditions";
 import SoftwareVersion from "./SoftwareVersion";
 import DeveloperInfo from "./DeveloperInfo";
 import FrequentlyAskedquestions from "./FrequentlyAskedQuestions";
-// import { FontAwesome } from '@expo/vector-icons'; // Assuming you're using FontAwesome
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const AllSettings = () => {
   const navigation = useNavigation();
@@ -56,14 +57,14 @@ const AllSettings = () => {
       id: "1",
       title: "Account Settings",
       function:handleAccountSettings,
-      icon: "cogs",
+      icon: "blind",
       description: "Manage your account details",
     },
     {
       id: "2",
       title: "Notifications",
       function:handleNotificationSettings,
-      icon: "bell",
+      icon: "gitlab",
       description: "Configure your notification preferences",
     },
     {
@@ -77,7 +78,7 @@ const AllSettings = () => {
       id: "4",
       title: "FAQ",
       function:handleFrequentlyAskedQuestions,
-      icon: "question",
+      icon: 'deafness',
       description: "View the most frequently asked questions",
     },
     {
@@ -91,7 +92,7 @@ const AllSettings = () => {
       id: "6",
       title: "Privacy Policy",
       function:handlePrivacyPolicy,
-      icon: "shield",
+      icon: "info-circle",
       description: "Review our privacy policy",
     },
     {
@@ -115,7 +116,7 @@ const AllSettings = () => {
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={item.function}>
       <View style={styles.settingItem}>
-        {/* <FontAwesome name={item.icon} size={24} color="#019f99" style={styles.settingIcon} /> */}
+      <Icon name={item.icon} size={24} color="#019f99" style={styles.settingIcon} />
         <View>
           <Text style={styles.settingTitle}>{item.title}</Text>
           <Text style={styles.settingDescription}>{item.description}</Text>
@@ -147,6 +148,7 @@ const styles = StyleSheet.create({
   },
   settingIcon: {
     marginRight: 16,
+    marginLeft:10
   },
   settingTitle: {
     fontSize: 18,
