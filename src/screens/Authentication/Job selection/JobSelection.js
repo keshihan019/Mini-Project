@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import styles from './Style';
-import firebase from '../../firebase/config';
+import firebase from '../../../firebase/config';
 
 export default function JobSelection({ navigation }) {
 
