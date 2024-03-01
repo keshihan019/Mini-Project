@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import styles from './OptionStyles';
 import { firebase } from '../../../firebase/config';
 
@@ -34,7 +34,7 @@ export default function OptionsSelection({ navigation }) {
     setSelectedRole(role);
 
     try {
-      // Update user's document with option selection details
+      
       const userDocRef = firebase.firestore().collection('users').doc(userID);
       await userDocRef.update({ role });
       setUserRole(role);
@@ -44,6 +44,13 @@ export default function OptionsSelection({ navigation }) {
   };
 
   const onNextPress = () => {
+   
+    if (!selectedRole) {
+      console.log("Error: You must select a role.");
+      Alert.alert("Error: You must select a role.")
+      return; 
+    }
+  
     navigation.navigate('JobSelection');
   };
 
