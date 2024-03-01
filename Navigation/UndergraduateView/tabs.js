@@ -6,7 +6,13 @@ import LoginScreen from '../../src/screens/LoginScreen/LoginScreen';
 import RegisterScreen from '../../src/screens/Authentication/RegistrationScreen/RegistrationScreen';
 import OptionsSelection from '../../src/screens/Authentication/OptionsSelection/OptionSelection';
 import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
+
+///Icons imported for the bottom Navbar
 import SearchIcon from '../../src/assets/icons/search.png';
+import HomeIcon from '../../src/assets/icons/Home.png';
+import SettingsIcon from '../../src/assets/icons/search.png';
+import JobsAppliedIcon from '../../src/assets/icons/jobsApplied.png';
+import ProfileIcon from '../../src/assets/icons/search.png';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +38,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
-                            source={SearchIcon}
+                            source={HomeIcon}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -50,7 +56,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
-                            source={SearchIcon}
+                            source={JobsAppliedIcon}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -58,8 +64,8 @@ const Tabs = () => {
                                 tintColor: focused ? '#019F99' : '#748c94'
                             }}
                         />
-                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12}}>
-                            Login
+                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12,textAlign:'center'}}>
+                            Jobs Applied
                         </Text>
                     </View>
                 )
