@@ -35,43 +35,6 @@ const Tabs = () => {
                 },
             }}
         >
-            <Tab.Screen name="Home" component={Home} options = {{
-                tabBarIcon: ({focused}) => (
-                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
-                        <Image 
-                            source={HomeIcon}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? '#019F99' : '#748c94'
-                            }}
-                        />
-                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12}}>
-                            Home
-                        </Text>
-                    </View>
-                )
-            }} />
-            <Tab.Screen name="Login" component={LoginScreen} options = {{
-                tabBarIcon: ({focused}) => (
-                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
-                        <Image 
-                            source={JobsAppliedIcon}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? '#019F99' : '#748c94'
-                            }}
-                        />
-                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12,textAlign:'center'}}>
-                            Jobs Applied
-                        </Text>
-                    </View>
-                )
-            }}
-                />
             <Tab.Screen name="Register" component={RegisterScreen} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
@@ -90,7 +53,45 @@ const Tabs = () => {
                     </View>
                 )
             }}
-                 />
+            />
+            <Tab.Screen name="Login" component={LoginScreen} options = {{
+                tabBarIcon: ({focused}) => (
+                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+                        <Image 
+                            source={JobsAppliedIcon}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? '#019F99' : '#748c94'
+                            }}
+                        />
+                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12,textAlign:'center'}}>
+                            Jobs Applied
+                        </Text>
+                    </View>
+                )
+            }}
+            />           
+            <Tab.Screen name="Home" component={Home} options = {{
+                tabBarIcon: ({focused}) => (
+                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+                        <Image 
+                            source={HomeIcon}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: focused ? '#019F99' : '#748c94'
+                            }}
+                        />
+                        <Text style={{color: focused ? '#019F99' : '#748c94', fontSize: 12}}>
+                            Home
+                        </Text>
+                    </View>
+                )
+            }}
+            />
             <Tab.Screen name="Options" component={OptionsSelection} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
@@ -109,7 +110,7 @@ const Tabs = () => {
                     </View>
                 )
             }}
-                />
+            />
             <Tab.Screen name="Job" component={JobSelection} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
@@ -128,7 +129,7 @@ const Tabs = () => {
                     </View>
                 )
             }}
-                />
+            />
         </Tab.Navigator>
     );
 }
