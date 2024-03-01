@@ -1,11 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,Text,View,Image, TouchableOpacity } from 'react-native';
-import HomeScreen from '../src/screens/HomeScreen/HomeScreen';
-import LoginScreen from '../src/screens/LoginScreen/LoginScreen';
-import RegisterScreen from '../src/screens/RegistrationScreen/RegistrationScreen';
-import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection';
-import JobSelection from '../src/screens/Job selection/JobSelection';
+import HomeScreen from '../../src/screens/HomeScreen/HomeScreen';
+import LoginScreen from '../../src/screens/LoginScreen/LoginScreen';
+import RegisterScreen from '../../src/screens/RegistrationScreen/RegistrationScreen';
+import OptionsSelection from '../../src/screens/OptionsSelection/OptionSelection';
+import JobSelection from '../../src/screens/Job selection/JobSelection';
+import SearchIcon from '../../src/assets/icons/search.png';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
-                            source={require('../src/assets/icons/Home.png')}
+                            source={SearchIcon}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -49,7 +50,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
-                            source={require('../src/assets/icons/search.png')}
+                            source={SearchIcon}
                             resizeMode="contain"
                             style={{
                                 width: 25,
