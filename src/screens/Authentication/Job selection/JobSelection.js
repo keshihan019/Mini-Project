@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image,Alert } from 'react-native';
 import RightArrowicon from '../../../assets/icons/right.png';
 import styles from './Style';
 import { firebase } from '../../../firebase/config';
@@ -63,6 +63,13 @@ const JobSelection = ({ navigation }) => {
   };
 
   const onNextPress = () => {
+    if(!selectedJobs.length){
+    
+      console.log("Error: You must select at least one job.");
+      Alert.alert ('Error', 'You must select at least one job.');
+      return;
+    }
+    
     console.log("Selected jobs:", selectedJobs);
 
     const userId = firebase.auth().currentUser.uid;
