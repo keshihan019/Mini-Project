@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,Text,View,Image, TouchableOpacity } from 'react-native';
+import Home from '../../src/screens/UndergraduateView/Home/Home';
 import HomeScreen from '../../src/screens/Authentication/HomeScreen/HomeScreen';
 import LoginScreen from '../../src/screens/LoginScreen/LoginScreen';
 import RegisterScreen from '../../src/screens/Authentication/RegistrationScreen/RegistrationScreen';
@@ -24,8 +25,8 @@ const Tabs = () => {
                 tabBarStyle: {
                     position: 'absolute',
                     bottom: 0,
-                    left: 30,
-                    right: 30,
+                    paddingVertical:5,
+                    paddingBottom:15,
                     elevation: 0,
                     backgroundColor: '#fff',
                     borderRadius: 5,
@@ -34,7 +35,7 @@ const Tabs = () => {
                 },
             }}
         >
-            <Tab.Screen name="Home" component={HomeScreen} options = {{
+            <Tab.Screen name="Home" component={Home} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
