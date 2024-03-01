@@ -43,6 +43,10 @@ export default function OptionsSelection({ navigation }) {
     }
   };
 
+  const onNextPress = () => {
+    navigation.navigate('JobSelection');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>I'm an</Text>
@@ -100,7 +104,7 @@ export default function OptionsSelection({ navigation }) {
       <View style={styles.nextbtn}>
         <TouchableOpacity
           style={{ flexDirection: 'row' }}
-          onPress={() => navigation.navigate('JobSelection')}>
+          onPress={onNextPress}>
           <Text style={{ color: '#fff', fontSize: 20 }}>Next</Text>
         </TouchableOpacity>
       </View>

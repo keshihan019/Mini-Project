@@ -36,7 +36,7 @@ export default StyleSheet.create({
   },
   nextBtn: {
     flexDirection: 'row', // Added flexDirection
-    marginTop: 100,
+    marginTop: 60,
     paddingHorizontal: 20, // Adjusted paddingHorizontal
     paddingVertical: 20,
     backgroundColor: '#000000',
@@ -51,6 +51,15 @@ export default StyleSheet.create({
   arrowIcon: {
     width: 20,
     height: 20,
+  },
+  clearBtn: {
+    flexDirection: 'row', // Added flexDirection
+    marginTop: 80,
+    paddingHorizontal: 20, // Adjusted paddingHorizontal
+    paddingVertical: 20,
+    backgroundColor: '#019F99',
+    borderRadius: 5,
+    alignItems: 'center', // Added alignItems
   },
   
 
