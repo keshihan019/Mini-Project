@@ -3,10 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './UndergraduateView/tabs.js';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
-import RegistrationScreen from '../src/screens/RegistrationScreen/RegistrationScreen.js';
-import HomeScreen from '../src/screens/HomeScreen/HomeScreen.js';
-import OptionsSelection from '../src/screens/OptionsSelection/OptionSelection.js'
-import JobSelection from '../src/screens/Job selection/JobSelection.js'
+import RegistrationScreen from '../src/screens/Authentication/RegistrationScreen/RegistrationScreen.js';
+import HomeScreen from '../src/screens/Authentication/HomeScreen/HomeScreen.js';
+import OptionsSelection from '../src/screens/Authentication/OptionsSelection/OptionSelection.js'
+import JobSelection from '../src/screens/Authentication/Job selection/JobSelection.js'
 
 const Stack = createStackNavigator();
 

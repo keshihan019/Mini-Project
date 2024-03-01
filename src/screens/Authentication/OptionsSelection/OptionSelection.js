@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import styles from './OptionStyles';
-import { firebase } from '../../firebase/config';
+import { firebase } from '../../../firebase/config';
 
 export default function OptionsSelection({ navigation }) {
   const [selectedRole, setSelectedRole] = useState('');
@@ -93,7 +93,7 @@ export default function OptionsSelection({ navigation }) {
       </View>
 
       <Image
-        source={require('../../assets/images/login.png')}
+        source={require('../../../assets/images/login.png')}
         style={styles.logo}
       />
 

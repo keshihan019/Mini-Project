@@ -1,11 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,Text,View,Image, TouchableOpacity } from 'react-native';
-import HomeScreen from '../../src/screens/HomeScreen/HomeScreen';
+import HomeScreen from '../../src/screens/Authentication/HomeScreen/HomeScreen';
 import LoginScreen from '../../src/screens/LoginScreen/LoginScreen';
-import RegisterScreen from '../../src/screens/RegistrationScreen/RegistrationScreen';
-import OptionsSelection from '../../src/screens/OptionsSelection/OptionSelection';
-import JobSelection from '../../src/screens/Job selection/JobSelection';
+import RegisterScreen from '../../src/screens/Authentication/RegistrationScreen/RegistrationScreen';
+import OptionsSelection from '../../src/screens/Authentication/OptionsSelection/OptionSelection';
+import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
 import SearchIcon from '../../src/assets/icons/search.png';
 
 const Tab = createBottomTabNavigator();
