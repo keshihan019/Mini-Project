@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View,Alert } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import styles from './styles';
+import styles from './styles.js';
 
 
- import {firebase} from '../../firebase/config';
+ import {firebase} from '../../../firebase/config.js';
  import OptionsSelection from '../OptionsSelection/OptionSelection.js';
 
 
@@ -81,7 +81,7 @@ export default function RegistrationScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../assets/images/UniJobs_logo.png')}
+                    source={require('../../../assets/images/UniJobs_logo.png')}
                 />
                 <TextInput
                     style={styles.input}
