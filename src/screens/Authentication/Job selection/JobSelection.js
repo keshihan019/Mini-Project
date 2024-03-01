@@ -1,10 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import RightArrowicon from '../../../assets/icons/right.png'
+import RightArrowicon from '../../../assets/icons/right.png';
 import styles from './Style';
+import { firebase } from '../../../firebase/config';
+
+const jobs = [
+  'Developer',
+  'Data Entry Operator',
+  'Typist',
+  'Private Tutoring',
+  'Translator',
+  'Video Editing',
+  'Graphic Designing',
+  'Other',
+];
+
+const JobOption = ({ job, selectedJobs, handleJobPress }) => (
+  <TouchableOpacity
+    style={[
+      styles.optionBtn,
+      { backgroundColor: selectedJobs.includes(job) ? '#019F99' : '#fff' },
+    ]}
+    onPress={() => handleJobPress(job)}>
+    <Text
+      style={[
+        styles.optionText,
+        { color: selectedJobs.includes(job) ? '#fff' : '#019F99' },
+      ]}>
+      {job}
+    </Text>
+  </TouchableOpacity>
+);
 
 const JobSelection = ({ navigation }) => {
   const [selectedJobs, setSelectedJobs] = useState([]);
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = firebase.auth().currentUser.uid;
+        const userDoc = await firebase.firestore().collection('users').doc(userId).get();
+        const userData = userDoc.data();
+        if (userData) {
+          setUserRole(userData.role);
+          setSelectedJobs(userData[userRole === 'Undergraduate' ? 'role looking' : 'role hiring'] || []);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleJobPress = (job) => {
     if (selectedJobs.includes(job)) {
@@ -16,8 +64,39 @@ const JobSelection = ({ navigation }) => {
 
   const onNextPress = () => {
     console.log("Selected jobs:", selectedJobs);
-    
-    navigation.navigate('LogIn');
+
+    const userId = firebase.auth().currentUser.uid;
+    const userRef = firebase.firestore().collection('users').doc(userId);
+
+    const jobField = userRole === 'Undergraduate' ? 'role looking' : 'role hiring';
+
+    userRef.set({
+      [jobField]: selectedJobs,
+    }, { merge: true })
+    .then(() => {
+      console.log("Job selection saved successfully!");
+      navigation.navigate('Home');
+    })
+    .catch((error) => {
+      console.error("Error saving job selection:", error);
+    });
+  };
+
+  const onClearPress = () => {
+    setSelectedJobs([]); // Clear selected jobs
+    const userId = firebase.auth().currentUser.uid;
+    const userRef = firebase.firestore().collection('users').doc(userId);
+    const jobField = userRole === 'Undergraduate' ? 'role looking' : 'role hiring';
+
+    userRef.update({
+      [jobField]: firebase.firestore.FieldValue.delete(),
+    })
+    .then(() => {
+      console.log("Job selection cleared successfully!");
+    })
+    .catch((error) => {
+      console.error("Error clearing job selection:", error);
+    });
   };
 
   return (
@@ -25,6 +104,7 @@ const JobSelection = ({ navigation }) => {
       <Text style={styles.heading}>I'm looking for/hiring in</Text>
 
       {/* -------------------Job selection buttons----------------- */}
+      
       <View style={styles.optionsContainer}>
         {/* ----------------First row of job options--------------- */}
         <View style={styles.optionRow}>
@@ -168,12 +248,23 @@ const JobSelection = ({ navigation }) => {
 
       </View>
 
-      {/* Next button */}
-      <TouchableOpacity style={styles.nextBtn} onPress={onNextPress}>
-        <Text style={styles.nextBtnText}>Next</Text>
-        <Image source={RightArrowicon} style={styles.arrowIcon} />
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        
+              
+        <TouchableOpacity style={styles.clearBtn} onPress={onClearPress}>
+          <Text style={styles.nextBtnText}>Clear</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.nextBtn} onPress={onNextPress}>
+          <Text style={styles.nextBtnText}>Next</Text>
+          <Image source={RightArrowicon} style={styles.arrowIcon} />
+        </TouchableOpacity>
+
+       
+      </View>
+
     </View>
+
   );
 };
 
