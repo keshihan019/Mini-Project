@@ -54,15 +54,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 16,
+    color:'#000'
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginVertical: 8,
+    color:'#000'
   },
   paragraph: {
     fontSize: 16,
     marginBottom: 12,
+    color:'#000'
   },
 });
 
