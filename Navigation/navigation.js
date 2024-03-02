@@ -7,9 +7,10 @@ import RegistrationScreen from '../src/screens/Authentication/RegistrationScreen
 import Home from '../src/screens/UndergraduateView/Home/Home.js';
 import OptionsSelection from '../src/screens/Authentication/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Authentication/Job selection/JobSelection.js'
+import StatusofJobsApplied from '../src/screens/UndergraduateView/Jobs Applied Screen/StatusofJobsApplied.js';
 
 ///UG_VIEW -- Settings Screens Imported
-import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, TermsConditions } from '../src/screens/UndergraduateView/index.js'
+import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions } from '../src/screens/UndergraduateView/index.js'
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,8 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="JobSelection" component={JobSelection} />
+      <Stack.Screen name="Status" component={Status} />
+
 
 
       {/* UndergraduateView */}
@@ -47,6 +50,10 @@ const MainStack = () => {
       <Stack.Screen name="DeveloperInfo" component={DeveloperInfo} options={{ title: 'Developer Information' }} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} options={{ title: 'Privacy Policy' }} />
       <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} />
+
+
+      {/* JobsApplied Screens */}
+
     </Stack.Navigator>
   );
 }
