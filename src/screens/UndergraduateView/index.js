@@ -7,6 +7,8 @@ import PrivacyPolicy from "./Settings Screen/PrivacyPolicy";
 import PrivSettings from "./Settings Screen/PrivSettings";
 import SoftwareVersion from "./Settings Screen/SoftwareVersion";
 import TermsConditions from "./Settings Screen/TermsConditions";
+import JobsApplied from "./Jobs Applied Screen/JobsApplied";
+import Status from "./Jobs Applied Screen/Status";
 
 export {
     AccSettings,
@@ -17,5 +19,7 @@ export {
     PrivSettings,
     PrivacyPolicy,
     SoftwareVersion,
-    TermsConditions
+    TermsConditions,
+    JobsApplied,
+    Status
 }
