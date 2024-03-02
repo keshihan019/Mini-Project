@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './UndergraduateView/tabs.js';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
 import RegistrationScreen from '../src/screens/Authentication/RegistrationScreen/RegistrationScreen.js';
-import HomeScreen from '../src/screens/Authentication/HomeScreen/HomeScreen.js';
+import Home from '../src/screens/UndergraduateView/Home/Home.js';
 import OptionsSelection from '../src/screens/Authentication/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Authentication/Job selection/JobSelection.js'
 
@@ -34,6 +34,7 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="JobSelection" component={JobSelection} />
+      <Stack.Screen name="Home" component={Home}/>
 
 
       {/* UndergraduateView */}
