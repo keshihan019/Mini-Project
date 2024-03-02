@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   settingName: {
+    color:'#000',
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 4,

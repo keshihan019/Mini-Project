@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 4,
+    color:'#000'
   },
   settingDescription: {
     fontSize: 14,

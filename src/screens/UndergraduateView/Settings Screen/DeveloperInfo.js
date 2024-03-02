@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
+
 export class DeveloperInfo extends Component {
   render() {
     return (
@@ -23,10 +24,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 16,
+    color:'#000'
   },
   infoText: {
     fontSize: 16,
     marginBottom: 8,
+    color:'#000'
   },
 });
 
