@@ -8,6 +8,9 @@ import RegisterScreen from '../../src/screens/Authentication/RegistrationScreen/
 import OptionsSelection from '../../src/screens/Authentication/OptionsSelection/OptionSelection';
 import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
 
+import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
+
+
 ///Icons imported for the bottom Navbar
 import NotificationsIcon from '../../src/assets/icons/notification.png';
 import HomeIcon from '../../src/assets/icons/Home.png';
@@ -35,7 +38,7 @@ const Tabs = () => {
                 },
             }}
         >
-            <Tab.Screen name="Register" component={RegisterScreen} options = {{
+            <Tab.Screen name="AllSettings" component={AllSettings} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 

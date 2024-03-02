@@ -5,7 +5,7 @@ import AccSettings from "./AccSettings";
 import NotifSettings from "./NotifSettings";
 import PrivSettings from "./PrivSettings";
 import TermsConditions from ".//TermsConditions";
-// import PrivacyPolicy from "./PrivacyPolicy";
+import PrivacyPolicy from "./PrivacyPolicy";
 import SoftwareVersion from "./SoftwareVersion";
 import DeveloperInfo from "./DeveloperInfo";
 import FrequentlyAskedquestions from "./FrequentlyAskedQuestions";
