@@ -34,7 +34,7 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="JobSelection" component={JobSelection} />
-
+      
 
       {/* UndergraduateView */}
       {/* Settings Screens */}
