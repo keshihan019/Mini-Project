@@ -2,14 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,Text,View,Image, TouchableOpacity } from 'react-native';
 import Home from '../../src/screens/UndergraduateView/Home/Home';
-import HomeScreen from '../../src/screens/Authentication/HomeScreen/HomeScreen';
-import LoginScreen from '../../src/screens/LoginScreen/LoginScreen';
-import RegisterScreen from '../../src/screens/Authentication/RegistrationScreen/RegistrationScreen';
-import OptionsSelection from '../../src/screens/Authentication/OptionsSelection/OptionSelection';
 import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
 import { JobsApplied } from '../../src/screens/UndergraduateView/index';
 import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
-
+import Notifications from '../../src/screens/UndergraduateView/Notifications Screens/Notifications'
 
 ///Icons imported for the bottom Navbar
 import NotificationsIcon from '../../src/assets/icons/notification.png';
@@ -23,6 +19,7 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
     return (
         <Tab.Navigator
+            initialRouteName="Home" 
             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarStyle: {
@@ -95,7 +92,7 @@ const Tabs = () => {
                 )
             }}
             />
-            <Tab.Screen name="Options" component={OptionsSelection} options = {{
+            <Tab.Screen name="Notifications" component={Notifications} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 

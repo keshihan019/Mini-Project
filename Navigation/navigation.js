@@ -8,9 +8,10 @@ import Home from '../src/screens/UndergraduateView/Home/Home.js';
 import OptionsSelection from '../src/screens/Authentication/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Authentication/Job selection/JobSelection.js'
 import StatusofJobsApplied from '../src/screens/UndergraduateView/Jobs Applied Screen/StatusofJobsApplied.js';
+import Notifications from '../src/screens/UndergraduateView/Notifications Screens/Notifications.js';
 
 ///UG_VIEW -- Settings Screens Imported
-import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions } from '../src/screens/UndergraduateView/index.js'
+import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions} from '../src/screens/UndergraduateView/index.js'
 
 const Stack = createStackNavigator();
 
@@ -34,8 +35,7 @@ const MainStack = () => {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
-      <Stack.Screen name="JobSelection" component={JobSelection} />
-      <Stack.Screen name="Status" component={Status} />
+
 
 
 
@@ -53,6 +53,12 @@ const MainStack = () => {
 
 
       {/* JobsApplied Screens */}
+      <Stack.Screen name="JobSelection" component={JobSelection} />
+      <Stack.Screen name="Status" component={Status} />
+
+
+      {/* Notifications Screens */}
+      <Stack.Screen name="Notifications" component={Notifications} />
 
     </Stack.Navigator>
   );
