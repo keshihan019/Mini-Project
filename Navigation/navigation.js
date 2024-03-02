@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './UndergraduateView/tabs.js';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
 import RegistrationScreen from '../src/screens/Authentication/RegistrationScreen/RegistrationScreen.js';
-import HomeScreen from '../src/screens/Authentication/HomeScreen/HomeScreen.js';
+import Home from '../src/screens/UndergraduateView/Home/Home.js';
 import OptionsSelection from '../src/screens/Authentication/OptionsSelection/OptionSelection.js'
 import JobSelection from '../src/screens/Authentication/Job selection/JobSelection.js'
 
@@ -34,11 +34,11 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="JobSelection" component={JobSelection} />
-      
+
 
       {/* UndergraduateView */}
       {/* Settings Screens */}
-      {/* <Stack.Screen name="AllSettings" component={AllSettings} />
+      <Stack.Screen name="AllSettings" component={AllSettings} />
       <Stack.Screen name="AccSettings" component={AccSettings} options={{ title: 'Account Settings' }} />
       <Stack.Screen name="NotifSettings" component={NotifSettings} options={{ title: 'Notification Settings' }} />
       <Stack.Screen name="PrivSettings" component={PrivSettings} options={{ title: 'Privacy Settings' }} />
@@ -46,7 +46,7 @@ const MainStack = () => {
       <Stack.Screen name="TermsConditions" component={TermsConditions} options={{ title: 'Terms & Conditions' }} />
       <Stack.Screen name="DeveloperInfo" component={DeveloperInfo} options={{ title: 'Developer Information' }} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} options={{ title: 'Privacy Policy' }} />
-      <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} /> */}
+      <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} />
     </Stack.Navigator>
   );
 }
