@@ -7,7 +7,7 @@ import LoginScreen from '../../src/screens/LoginScreen/LoginScreen';
 import RegisterScreen from '../../src/screens/Authentication/RegistrationScreen/RegistrationScreen';
 import OptionsSelection from '../../src/screens/Authentication/OptionsSelection/OptionSelection';
 import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
-
+import { JobsApplied } from '../../src/screens/UndergraduateView/index';
 import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
 
 
@@ -57,7 +57,7 @@ const Tabs = () => {
                 )
             }}
             />
-            <Tab.Screen name="Login" component={LoginScreen} options = {{
+            <Tab.Screen name="JobsApplied" component={JobsApplied} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 

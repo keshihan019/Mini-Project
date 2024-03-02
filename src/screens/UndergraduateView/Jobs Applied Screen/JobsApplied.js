@@ -7,7 +7,7 @@ const JobsApplied = () => {
   const navigation = useNavigation();
 
   const handleSeeJobs = () => {
-    navigation.navigate('StatusofJobsApplied');
+    navigation.navigate('Status');
   };
 
   return (
