@@ -27,8 +27,9 @@ export default function Navigation() {
 const MainStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SettingsScreenStack" component={SettingsScreenStack} options={{headerShown: false}}/>
+      
       <Stack.Screen name="HomeTab" component={Tabs} options={{headerShown: false}}/>
+      <Stack.Screen name="SettingsScreenStack" component={SettingsScreenStack} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
@@ -37,7 +38,7 @@ const MainStack = () => {
 
       {/* UndergraduateView */}
       {/* Settings Screens */}
-      <Stack.Screen name="AllSettings" component={AllSettings} />
+      {/* <Stack.Screen name="AllSettings" component={AllSettings} />
       <Stack.Screen name="AccSettings" component={AccSettings} options={{ title: 'Account Settings' }} />
       <Stack.Screen name="NotifSettings" component={NotifSettings} options={{ title: 'Notification Settings' }} />
       <Stack.Screen name="PrivSettings" component={PrivSettings} options={{ title: 'Privacy Settings' }} />
@@ -45,7 +46,7 @@ const MainStack = () => {
       <Stack.Screen name="TermsConditions" component={TermsConditions} options={{ title: 'Terms & Conditions' }} />
       <Stack.Screen name="DeveloperInfo" component={DeveloperInfo} options={{ title: 'Developer Information' }} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} options={{ title: 'Privacy Policy' }} />
-      <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} />
+      <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} /> */}
     </Stack.Navigator>
   );
 }

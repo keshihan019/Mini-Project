@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
-import { Text, View, Switch, StyleSheet } from 'react-native';
+import { Text, View, Switch } from 'react-native';
+import styles from './styles';
 
 const AccSettingsData = [
   {
@@ -63,29 +64,5 @@ export class AccSettings extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  settingInfo: {
-    flex: 1,
-    marginRight: 16,
-  },
-  settingName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  settingDescription: {
-    fontSize: 14,
-    color: '#777',
-  },
-});
 
 export default AccSettings;

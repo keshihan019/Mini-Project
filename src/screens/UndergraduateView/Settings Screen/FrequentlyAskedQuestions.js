@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+    color:'#000'
   },
   answer: {
     fontSize: 16,

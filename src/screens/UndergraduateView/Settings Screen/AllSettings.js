@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AccSettings from "./AccSettings";
@@ -11,112 +11,110 @@ import DeveloperInfo from "./DeveloperInfo";
 import FrequentlyAskedquestions from "./FrequentlyAskedQuestions";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-
-const AllSettings = () => {
-  const navigation = useNavigation();
-
-  const handleAccountSettings = () =>{
-    navigation.navigate(AccSettings)
+class AllSettings extends Component {
+  constructor(props) {
+    super(props);
   }
 
-  const handleNotificationSettings = () =>{
-    navigation.navigate(NotifSettings)
+  handleAccountSettings = () => {
+    this.props.navigation.navigate(AccSettings);
   }
 
-  const handlePrivacySettings = () =>{
-    navigation.navigate(PrivSettings)
+  handleNotificationSettings = () => {
+    this.props.navigation.navigate(NotifSettings);
   }
 
-  const handleFrequentlyAskedQuestions = () =>{
-    navigation.navigate(FrequentlyAskedquestions)
+  handlePrivacySettings = () => {
+    this.props.navigation.navigate(PrivSettings);
   }
 
-  const handleTermsConditions = () =>{
-    navigation.navigate(TermsConditions)
+  handleFrequentlyAskedQuestions = () => {
+    this.props.navigation.navigate(FrequentlyAskedquestions);
   }
 
-  const handlePrivacyPolicy = () =>{
-    navigation.navigate(PrivacyPolicy)
+  handleTermsConditions = () => {
+    this.props.navigation.navigate(TermsConditions);
   }
 
-  const handleSoftwareVersion = () =>{
-    navigation.navigate(SoftwareVersion)
+  handlePrivacyPolicy = () => {
+    this.props.navigation.navigate(PrivacyPolicy);
   }
 
-  const handleDeveloperInfo = () =>{
-    navigation.navigate(DeveloperInfo)
+  handleSoftwareVersion = () => {
+    this.props.navigation.navigate(SoftwareVersion);
   }
 
+  handleDeveloperInfo = () => {
+    this.props.navigation.navigate(DeveloperInfo);
+  }
 
-  const handleNavigation = (screenName) => {
-    navigation.navigate(screenName);
+  handleNavigation = (screenName) => {
+    this.props.navigation.navigate(screenName);
   };
 
-  const settingsData = [
+  settingsData = [
     {
       id: "1",
       title: "Account Settings",
-      function:handleAccountSettings,
+      function: this.handleAccountSettings,
       icon: "blind",
       description: "Manage your account details",
     },
     {
       id: "2",
       title: "Notifications",
-      function:handleNotificationSettings,
+      function: this.handleNotificationSettings,
       icon: "gitlab",
       description: "Configure your notification preferences",
     },
     {
       id: "3",
       title: "Privacy",
-      function:handlePrivacySettings,
+      function: this.handlePrivacySettings,
       icon: "lock",
       description: "Adjust your privacy settings",
     },
     {
       id: "4",
       title: "FAQ",
-      function:handleFrequentlyAskedQuestions,
+      function: this.handleFrequentlyAskedQuestions,
       icon: 'deafness',
       description: "View the most frequently asked questions",
     },
     {
       id: "5",
       title: "Terms and Conditions",
-      function:handleTermsConditions,
+      function: this.handleTermsConditions,
       icon: "file-text",
       description: "Read our terms and conditions",
     },
     {
       id: "6",
       title: "Privacy Policy",
-      function:handlePrivacyPolicy,
+      function: this.handlePrivacyPolicy,
       icon: "info-circle",
       description: "Review our privacy policy",
     },
     {
       id: "7",
       title: "Software Version",
-      function:handleSoftwareVersion,
+      function: this.handleSoftwareVersion,
       icon: "code",
       description: "Check the current software version",
     },
     {
       id: "8",
       title: "Developer Info",
-      function:handleDeveloperInfo,
+      function: this.handleDeveloperInfo,
       icon: "user",
       description: "Learn more about the developer",
     },
-    
-    
   ];
 
-  const renderItem = ({ item }) => (
+  renderItem = ({ item }) => (
     <TouchableOpacity onPress={item.function}>
       <View style={styles.settingItem}>
-      <Icon name={item.icon} size={24} color="#019f99" style={styles.settingIcon} />
+        <Icon name={item.icon} size={24} color="#019f99" style={styles.settingIcon} />
         <View>
           <Text style={styles.settingTitle}>{item.title}</Text>
           <Text style={styles.settingDescription}>{item.description}</Text>
@@ -125,17 +123,19 @@ const AllSettings = () => {
     </TouchableOpacity>
   );
 
-  return (
-    <View style={styles.allSetToGo}>
-      <FlatList
-        data={settingsData}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        style={styles.settingsList}
-      />
-    </View>
-  );
-};
+  render() {
+    return (
+      <View style={styles.allSetToGo}>
+        <FlatList
+          data={this.settingsData}
+          keyExtractor={(item) => item.id}
+          renderItem={this.renderItem}
+          style={styles.settingsList}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   settingItem: {
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   settingIcon: {
     marginRight: 16,
-    marginLeft:10
+    marginLeft: 10
   },
   settingTitle: {
     fontSize: 18,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     color: '#777',
   },
   settingsList: {
-    marginTop: 10, 
+    marginTop: 10,
   },
   allSetToGo: {
     backgroundColor: "#fff",
