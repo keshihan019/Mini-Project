@@ -1,59 +1,72 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native'
+import React, { useState } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
-import auth from '@react-native-firebase/auth';
-import {firebase} from '../../firebase/config';
+import { firebase } from '../../firebase/config';
 
-
-export default function LoginScreen({navigation}) {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+export default function LoginScreen({ navigation }) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Registration')
+        navigation.navigate('Registration');
     }
 
     const onLoginPress = () => {
-
         if (!email || !password) {
             Alert.alert('Error', 'Email and password cannot be empty.');
             return;
-          }
-      
-          firebase
+        }
+
+        firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((response) => {
-                const uid = response.user.uid
-                const usersRef = firebase.firestore().collection('users')
+                const uid = response.user.uid;
+                const usersRef = firebase.firestore().collection('users');
                 usersRef
                     .doc(uid)
                     .get()
-                    .then(firestoreDocument => {
+                    .then((firestoreDocument) => {
                         if (!firestoreDocument.exists) {
-                            alert("User does not exist anymore.")
+                            Alert.alert("Error", "User does not exist anymore.");
                             return;
                         }
-                        const user = firestoreDocument.data()
-                        navigation.navigate('JobSelection', {user})
+                        const user = firestoreDocument.data();
+                        const role = user.role;
+
+                     // check role
+                     
+                        let userType;
+                        if (role === 'Undergraduate') {
+                            userType = 'Undergraduate';
+                        } else if (role === 'Employer') {
+                            userType = 'Employer';
+                        } else {
+                            Alert.alert('Error', 'Invalid user type');
+                            return;
+                        }
+
+                       
+                        if (userType === 'Undergraduate') {
+                            navigation.navigate('Home');
+                        } else if (userType === 'Employer') {
+                            navigation.navigate('HomeScreen');
+                        }
                     })
-                    .catch(error => {
-                        alert(error)
+                    .catch((error) => {
+                        Alert.alert('Error', error.message);
                     });
             })
-            .catch(error => {
-                Alert.alert('Error', 'Invalid email or password. Please try again.')
-            })
-    }
+            .catch((error) => {
+                Alert.alert('Error', 'Invalid email or password. Please try again.');
+            });
+    };
 
     return (
         <View style={styles.container}>
             <Text style={styles.heading}>Welcome back!</Text>
-            <KeyboardAwareScrollView
-                style={{ flex: 1, width: '100%' }}
-                keyboardShouldPersistTaps="always">
-                   
+            <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }} keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
                     source={require('../../assets/images/login.png')}
@@ -79,7 +92,7 @@ export default function LoginScreen({navigation}) {
                 />
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => onLoginPress()}>
+                    onPress={onLoginPress}>
                     <Text style={styles.buttonTitle}>Log in</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
@@ -87,5 +100,5 @@ export default function LoginScreen({navigation}) {
                 </View>
             </KeyboardAwareScrollView>
         </View>
-    )
+    );
 }
