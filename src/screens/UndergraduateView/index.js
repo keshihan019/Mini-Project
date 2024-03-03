@@ -9,6 +9,7 @@ import SoftwareVersion from "./Settings Screen/SoftwareVersion";
 import TermsConditions from "./Settings Screen/TermsConditions";
 import JobsApplied from "./Jobs Applied Screen/JobsApplied";
 import Status from "./Jobs Applied Screen/Status";
+import Notifications from "./Notifications Screens/Notifications";
 
 export {
     AccSettings,
@@ -21,5 +22,6 @@ export {
     SoftwareVersion,
     TermsConditions,
     JobsApplied,
-    Status
+    Status,
+    Notifications
 }
