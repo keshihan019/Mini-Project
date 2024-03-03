@@ -9,6 +9,7 @@ import OptionsSelection from '../src/screens/Authentication/OptionsSelection/Opt
 import JobSelection from '../src/screens/Authentication/Job selection/JobSelection.js'
 import StatusofJobsApplied from '../src/screens/UndergraduateView/Jobs Applied Screen/StatusofJobsApplied.js';
 import Notifications from '../src/screens/UndergraduateView/Notifications Screens/Notifications.js';
+import Splash_Screen from '../src/screens/Authentication/SplashScreen/Splash_Screen.js';
 
 ///UG_VIEW -- Settings Screens Imported
 import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions} from '../src/screens/UndergraduateView/index.js'
@@ -29,8 +30,8 @@ export default function Navigation() {
 const MainStack = () => {
   return (
     <Stack.Navigator>
-      
-      <Stack.Screen name="HomeTab" component={Tabs} options={{headerShown: false}}/>
+      <Stack.Screen name="Splash_Screen" component={Splash_Screen} options={{headerShown: false}}/>
+      <Stack.Screen name="Home" component={Tabs} options={{headerShown: false}}/>
       <Stack.Screen name="SettingsScreenStack" component={SettingsScreenStack} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
@@ -39,7 +40,9 @@ const MainStack = () => {
 
 
 
+
       {/* UndergraduateView */}
+      {/* <Stack.Screen name="Home" component={Tabs} /> */}
       {/* Settings Screens */}
       <Stack.Screen name="AllSettings" component={AllSettings} />
       <Stack.Screen name="AccSettings" component={AccSettings} options={{ title: 'Account Settings' }} />
