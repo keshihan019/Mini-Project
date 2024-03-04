@@ -75,7 +75,7 @@ const EmployerTabs = () => {
                 }}
               />
               <Text style={{ color: focused ? '#019F99' : '#748c94', fontSize: 12, textAlign: 'center' }}>
-                Jobs Applied
+                Applications Received
               </Text>
             </View>
           ),
