@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import PlusIcon from '../../../assets/icons/add.png';
+import CompanyOverview from '../../../components/EmployerView/CompanyOverview';
 
 export class EmployerHome extends Component {
   render() {
@@ -9,11 +10,7 @@ export class EmployerHome extends Component {
         <View style={styles.header}>
           <Text style={styles.headerText}>Employer Dashboard</Text>
         </View>
-        <View style={styles.companyInfo}>
-          <Text style={styles.companyName}>Company Name</Text>
-          <Text style={styles.companyDescription}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta eros ac lorem ultrices, vel ultrices lorem hendrerit.</Text>
-          <Text style={styles.companyLocation}>Location: City, Country</Text>
-        </View>
+        <CompanyOverview/>
         {/* Floating Plus Button */}
         <TouchableOpacity style={styles.floatingButton}>
           <Image source={PlusIcon} style={styles.plusIcon} />
