@@ -49,9 +49,9 @@ export default function LoginScreen({ navigation }) {
 
                        
                         if (userType === 'Undergraduate') {
-                            navigation.navigate('Home');
-                        } else if (userType === 'Employer') {
                             navigation.navigate('HomeScreen');
+                        } else if (userType === 'Employer') {
+                            navigation.navigate('EmployerHomeScreen');
                         }
                     })
                     .catch((error) => {
