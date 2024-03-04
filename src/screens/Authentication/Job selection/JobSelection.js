@@ -85,7 +85,7 @@ const JobSelection = ({ navigation }) => {
       if (userRole === 'Undergraduate') {
         navigation.navigate('Home');
       } else if (userRole === 'Employer') {
-        navigation.navigate('Login');
+        navigation.navigate('EmployerHomeScreen');
       }
     })
     .catch((error) => {
