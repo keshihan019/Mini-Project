@@ -20,7 +20,7 @@ const Tab = createBottomTabNavigator();
 const EmployerTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="EmployerHome"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
