@@ -6,6 +6,8 @@ import JobSelection from '../../src/screens/Authentication/Job selection/JobSele
 import { JobsApplied } from '../../src/screens/UndergraduateView/index';
 import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
 import Notifications from '../../src/screens/UndergraduateView/Notifications Screens/Notifications'
+import Profile from '../../src/screens/UndergraduateView/User Profile Screens/Profile';
+
 
 ///Icons imported for the bottom Navbar
 import NotificationsIcon from '../../src/assets/icons/notification.png';
@@ -111,7 +113,7 @@ const Tabs = () => {
                 )
             }}
             />
-            <Tab.Screen name="Job" component={JobSelection} options = {{
+            <Tab.Screen name="Profile" component={Profile} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 

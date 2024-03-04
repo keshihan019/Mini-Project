@@ -12,7 +12,7 @@ import Notifications from '../src/screens/UndergraduateView/Notifications Screen
 import Splash_Screen from '../src/screens/Authentication/SplashScreen/Splash_Screen.js';
 
 ///UG_VIEW -- Settings Screens Imported
-import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions} from '../src/screens/UndergraduateView/index.js'
+import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile} from '../src/screens/UndergraduateView/index.js'
 
 const Stack = createStackNavigator();
 
@@ -31,7 +31,7 @@ const MainStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Splash_Screen" component={Splash_Screen} options={{headerShown: false}}/>
-      <Stack.Screen name="Home" component={Tabs} options={{headerShown: false}}/>
+      <Stack.Screen name="HomeScreen" component={Tabs} options={{headerShown: false}}/>
       <Stack.Screen name="SettingsScreenStack" component={SettingsScreenStack} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registration" component={RegistrationScreen} />
@@ -53,6 +53,8 @@ const MainStack = () => {
       <Stack.Screen name="DeveloperInfo" component={DeveloperInfo} options={{ title: 'Developer Information' }} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} options={{ title: 'Privacy Policy' }} />
       <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} />
+      <Stack.Screen name="Profile" component={Profile} options={{ title: 'Software Version' }} />
+      <Stack.Screen name="EditUGProfile" component={EditUGProfile} options={{ title: 'Software Version' }} />
 
 
       {/* JobsApplied Screens */}
