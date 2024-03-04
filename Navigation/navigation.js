@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './UndergraduateView/tabs.js';
-import EmployerTabs from './EmployerView/employertabs.js';
+import EmployerTabs from './EmployerView/EmployerTabs.js';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
 import RegistrationScreen from '../src/screens/Authentication/RegistrationScreen/RegistrationScreen.js';
 import Home from '../src/screens/UndergraduateView/Home/Home.js';
@@ -41,6 +41,7 @@ const MainStack = () => {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="OptionsSelection" component={OptionsSelection} />
       <Stack.Screen name="EmployerHome" component={EmployerHome} />
+      
 
 
 
