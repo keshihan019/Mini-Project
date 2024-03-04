@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,Text,View,Image, TouchableOpacity } from 'react-native';
-import Home from '../../src/screens/UndergraduateView/Home/Home';
+import EmployerHome from '../../src/screens/EmployerView/Home/EmployerHome';
 import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
 import { JobsApplied } from '../../src/screens/UndergraduateView/index';
 import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
@@ -18,7 +18,7 @@ import ProfileIcon from '../../src/assets/icons/user.png';
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const EmployerTabs = () => {
     return (
         <Tab.Navigator
             initialRouteName="Home" 
@@ -75,7 +75,7 @@ const Tabs = () => {
                 )
             }}
             />           
-            <Tab.Screen name="Home" component={Home} options = {{
+            <Tab.Screen name="EmployerHome" component={EmployerHome} options = {{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
                         <Image 
@@ -148,4 +148,4 @@ const Tabs = () => {
         }
 
   })
-export default Tabs;
+export default EmployerTabs;

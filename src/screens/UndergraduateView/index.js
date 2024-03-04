@@ -10,6 +10,8 @@ import TermsConditions from "./Settings Screen/TermsConditions";
 import JobsApplied from "./Jobs Applied Screen/JobsApplied";
 import Status from "./Jobs Applied Screen/Status";
 import Notifications from "./Notifications Screens/Notifications";
+import Profile from "./User Profile Screens/Profile";
+import EditUGProfile from "./User Profile Screens/EditUGProfile";
 
 export {
     AccSettings,
@@ -23,5 +25,7 @@ export {
     TermsConditions,
     JobsApplied,
     Status,
-    Notifications
+    Notifications,
+    Profile,
+    EditUGProfile
 }

@@ -12,6 +12,7 @@ export default StyleSheet.create({
         marginBottom: 20,
         marginTop: 50,
         textAlign: 'left',
+        color: '#000'
       },
       RoleContainer: {
         flexDirection: 'row',
