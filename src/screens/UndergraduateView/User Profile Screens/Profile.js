@@ -104,40 +104,22 @@ const Profile = () => {
           </View>
 
           <View style={styles.menuWrapper}>
-            <TouchableRipple onPress={() => {}}>
-              <View style={styles.menuItem}>
-                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
-                 <Text style={styles.menuItemText}>Favourites</Text>    
-              </View>
-            </TouchableRipple>
+            <View style={styles.skillBox}>
+              <Text style={styles.skillTitle}>Academic Qualifications</Text>
 
-            <TouchableRipple onPress={() => {}}>
-              <View style={styles.menuItem}>
-                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
-                 <Text style={styles.menuItemText}>Favourites</Text>    
+              <View style={styles.skillItem}>
+                  <Text style={{color:'black'}}> CIMA </Text>
               </View>
-            </TouchableRipple>
 
-            <TouchableRipple onPress={() => {}}>
-              <View style={styles.menuItem}>
-                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
-                 <Text style={styles.menuItemText}>Favourites</Text>    
+              <View style={styles.skillItem}>
+                  <Text style={{color:'black'}}> CIMA </Text>
               </View>
-            </TouchableRipple>
+            </View>
 
-            <TouchableRipple onPress={() => {}}>
-              <View style={styles.menuItem}>
-                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
-                 <Text style={styles.menuItemText}>Favourites</Text>    
-              </View>
-            </TouchableRipple>
 
-            <TouchableRipple onPress={() => {}}>
-              <View style={styles.menuItem}>
-                 <Icon name="heart-outline" color="#ff0000" size={25} marginVertical={17}/> 
-                 <Text style={styles.menuItemText}>Favourites</Text>    
-              </View>
-            </TouchableRipple>
+            <View style={styles.skillBox}>
+              <Text style={styles.skillTitle}>Work Experience</Text>
+            </View>
           </View>
         
       </SafeAreaView>
@@ -196,6 +178,26 @@ const styles = StyleSheet.create({
     fontWeight:'600',
     fontSize:16,
     lineHeight:26,
+  },
+  skillBox:{
+    backgroundColor:'white',
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
+    borderBottomLeftRadius:10,
+    borderBottomRightRadius:10,
+    
+  },
+  skillTitle:{
+    backgroundColor:'black',
+    color:'white',
+    textAlign:'center',
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
+    padding:10,
+    
+  },
+  skillItem:{
+
   }
 });
 

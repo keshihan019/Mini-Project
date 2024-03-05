@@ -9,6 +9,10 @@ const Notifications = () => {
 
   useEffect(() => {
     // Fetch notifications or set them from a source
+    //Types of Notifications
+
+    // 1. job posting
+    // 2. 
     const fetchedNotifications = [
       {
         id: 1,
