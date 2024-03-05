@@ -22,6 +22,7 @@ const EmployerTabs = () => {
     <Tab.Navigator
       initialRouteName="EmployerHome"
       screenOptions={{
+        headerShown:false,
         tabBarShowLabel: false,
         tabBarStyle: {
           position: 'absolute',
