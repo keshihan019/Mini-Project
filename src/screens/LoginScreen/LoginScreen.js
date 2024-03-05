@@ -1,8 +1,11 @@
+// LoginScreen.js
+
 import React, { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+import { storeCredentials } from '../../firebase/storage'; 
 
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('');
@@ -35,23 +38,16 @@ export default function LoginScreen({ navigation }) {
                         const user = firestoreDocument.data();
                         const role = user.role;
 
-                     // check role
-                     
-                        let userType;
+                        // Store credentials
+                        storeCredentials({ email, password, role });
+
+                        // Navigate based on role
                         if (role === 'Undergraduate') {
-                            userType = 'Undergraduate';
+                            navigation.navigate('HomeScreen');
                         } else if (role === 'Employer') {
-                            userType = 'Employer';
+                            navigation.navigate('EmployerHomeScreen');
                         } else {
                             Alert.alert('Error', 'Invalid user type');
-                            return;
-                        }
-
-                       
-                        if (userType === 'Undergraduate') {
-                            navigation.navigate('HomeScreen');
-                        } else if (userType === 'Employer') {
-                            navigation.navigate('EmployerHomeScreen');
                         }
                     })
                     .catch((error) => {

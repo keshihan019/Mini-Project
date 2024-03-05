@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './UndergraduateView/tabs.js';
@@ -21,6 +22,25 @@ NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsCondit
 const Stack = createStackNavigator();
 
 export default function Navigation() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const credentials = await retrieveCredentials();
+      setLoading(false);
+
+      if (credentials) {
+        navigation.navigate(credentials.role === 'Undergraduate' ? 'HomeScreen' : 'EmployerHomeScreen');
+      } else {
+        navigation.navigate('Login');
+      }
+    };
+
+    checkLogin();
+  }, []);
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
