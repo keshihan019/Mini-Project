@@ -38,7 +38,7 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Welcome Back</Text>
+      {/* <Text style={styles.headerText}>Welcome Back</Text> */}
       <SearchBar />
       <RecommendedCard />
       <View style={{ flex: 1 }}>

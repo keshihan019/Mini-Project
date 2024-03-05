@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
+import microsoftLogo from '../../../assets/companyLogos/microsoftLogo.png';
 
 const RecentJobs = () => {
+  const navigation = useNavigation();
   const [expanded, setExpanded] = useState(false);
 
   const jobData = [
@@ -24,7 +28,7 @@ const RecentJobs = () => {
       location: 'Chicago, IL',
     },
     {
-      title: 'Recent Job 3',
+      title: 'Recent Job 4',
       company: 'TechCo',
       wages: '$85,000',
       location: 'Chicago, IL',
@@ -32,11 +36,13 @@ const RecentJobs = () => {
     // Add more recent job objects as needed
   ];
 
-  
-
   const handleSeeMorePress = () => {
-    // Add your logic for handling the "See More" button press here
+    navigation.navigate('SeeAllRecentJobs');
     console.log('See More pressed!');
+  };
+
+  const handleCardPress = () => {
+    navigation.navigate('JobOpportunity');
   };
 
   return (
@@ -46,75 +52,29 @@ const RecentJobs = () => {
         <TouchableOpacity style={styles.seeMoreButton} onPress={handleSeeMorePress}>
           <Text style={styles.seeMoreButtonText}>See More</Text>
         </TouchableOpacity>
-        </View>
+      </View>
       <FlatList
-        data={jobData} // Show all or only the first item
+        data={jobData} 
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <View style={styles.jobCard}>
-            <Text style={styles.jobTitle}>{item.title}</Text>
-            <Text>{item.company}</Text>
-            <Text>Wages: {item.wages}</Text>
-            <Text>Location: {item.location}</Text>
-          </View>
+          <TouchableOpacity onPress={handleCardPress}>
+            <View style={styles.jobCard}>
+              <View style={styles.jobDetailsColumn}>
+                <Text style={styles.jobTitle}>{item.title}</Text>
+                <Text style={styles.jobtext}>{item.company}</Text>
+                <Text style={styles.jobtext}>Wages: {item.wages}</Text>
+                <Text style={styles.jobtext}>Location: {item.location}</Text>
+              </View>
+              <View style={styles.logoColumn}>
+                <Image source={microsoftLogo} style={styles.logoImage} />
+              </View>
+            </View>
+          </TouchableOpacity>
         )}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'left',
-    marginVertical: 20,
-    marginLeft: 10,
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginHorizontal: 10,
-    marginVertical: 10,
-  },
-  seeMoreButton: {
-    backgroundColor: '#3498db', // Add your preferred background color
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginLeft: 10,
-    alignSelf: 'center',
-  },
-  seeMoreButtonText: {
-    color: 'white', // Add your preferred text color
-    fontWeight: 'bold',
-  },
-  jobCard: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 16,
-    marginBottom: 16,
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  jobTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  showAll: {
-    backgroundColor: '#000',
-    color:'#fff',
-    borderRadius: 10,
-    padding: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal:15
-  },
-});
 
 export default RecentJobs;

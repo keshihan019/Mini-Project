@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import JobOpportunity from '../JobDetails/JobOpportunity';
+import styles from './styles';
+import microsoftLogo from '../../../assets/companyLogos/microsoftLogo.png'; // Example import for the logo image
 
 const RecommendedCard = () => {
   const navigation = useNavigation();
@@ -12,28 +14,30 @@ const RecommendedCard = () => {
       company: 'TechCo',
       wages: '$100,000',
       location: 'San Francisco, CA',
+      image: microsoftLogo, // Example image source
     },
     {
       title: 'Software Engineer',
       company: 'TechCo',
       wages: '$100,000',
       location: 'San Francisco, CA',
+      image: microsoftLogo, // Example image source
     },
     {
       title: 'Software Engineer',
       company: 'TechCo',
       wages: '$100,000',
       location: 'San Francisco, CA',
+      image: microsoftLogo, // Example image source
     },
   ];
 
   const handleSeeMorePress = () => {
-    navigation.navigate('EmpHome');
+    navigation.navigate('AllReccomendedJobs');
     console.log('See More pressed!');
   };
 
   const handleCardPress = () => {
-    // Navigate to the Job Opportunity screen
     navigation.navigate('JobOpportunity');
   };
 
@@ -54,6 +58,7 @@ const RecommendedCard = () => {
           renderItem={({ item }) => (
             <TouchableOpacity onPress={handleCardPress}>
               <View style={styles.jobCard}>
+                <Image source={item.image} style={styles.logoImage} />
                 <Text style={styles.jobTitle}>{item.title}</Text>
                 <Text>{item.company}</Text>
                 <Text>Wages: {item.wages}</Text>
@@ -67,54 +72,6 @@ const RecommendedCard = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'left',
-    marginVertical: 20,
-    marginLeft: 10,
-  },
-  container: {
-    flexDirection: 'row', // to place the "See More" button next to the FlatList
-    padding: 10,
-    marginLeft: 1,
-  },
-  jobCard: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 16,
-    marginRight: 16,
-    minWidth: 300,
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginHorizontal: 10,
-    marginVertical: 10,
-  },
-  jobTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  seeMoreButton: {
-    backgroundColor: '#3498db', // Add your preferred background color
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginLeft: 10,
-    alignSelf: 'center',
-  },
-  seeMoreButtonText: {
-    color: 'white', // Add your preferred text color
-    fontWeight: 'bold',
-  },
-});
-
 export default RecommendedCard;
+
+
