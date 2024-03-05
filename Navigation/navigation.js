@@ -15,7 +15,8 @@ import EmployerHome from '../src/screens/EmployerView/Home/EmployerHome.js';
 ///UG_VIEW -- Settings Screens Imported
 
 
-import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile} from '../src/screens/UndergraduateView/index.js'
+import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, 
+NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs} from '../src/screens/UndergraduateView/index.js'
 
 const Stack = createStackNavigator();
 
@@ -66,10 +67,14 @@ const MainStack = () => {
       <Stack.Screen name="JobSelection" component={JobSelection} />
       <Stack.Screen name="Status" component={Status} />
 
-
+      {/* Home Screens */}
+      <Stack.Screen name="UG_Home" component={Home} options={{headerShown: false}}/>
+      <Stack.Screen name="AllReccomendedJobs" component={SeeAllRecJobs} options={{ title: 'Recommended Jobs' }}/>
+      <Stack.Screen name="JobOpportunity" component={JobOpportunity} options={{headerShown: false}}/>
+      <Stack.Screen name="SeeAllRecentJobs" component={SeeAllRecentJobs} options={{ title: 'Recent Jobs' }}/>
       {/* Notifications Screens */}
       <Stack.Screen name="Notifications" component={Notifications} />
-
+      <Stack.Screen name="EmptyNotifications" component={EmptyNotifications} />
     </Stack.Navigator>
   );
 }

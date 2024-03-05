@@ -83,7 +83,7 @@ const JobSelection = ({ navigation }) => {
       console.log("Job selection saved successfully!");
       // Navigate based on user role
       if (userRole === 'Undergraduate') {
-        navigation.navigate('Home');
+        navigation.navigate('HomeScreen');
       } else if (userRole === 'Employer') {
         navigation.navigate('EmployerHomeScreen');
       }
