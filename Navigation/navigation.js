@@ -16,7 +16,7 @@ import EmployerHome from '../src/screens/EmployerView/Home/EmployerHome.js';
 
 
 import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, 
-NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,SeeAllRecentJobs} from '../src/screens/UndergraduateView/index.js'
+NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs} from '../src/screens/UndergraduateView/index.js'
 
 const Stack = createStackNavigator();
 
@@ -74,7 +74,7 @@ const MainStack = () => {
       <Stack.Screen name="SeeAllRecentJobs" component={SeeAllRecentJobs} options={{ title: 'Recent Jobs' }}/>
       {/* Notifications Screens */}
       <Stack.Screen name="Notifications" component={Notifications} />
-
+      <Stack.Screen name="EmptyNotifications" component={EmptyNotifications} />
     </Stack.Navigator>
   );
 }

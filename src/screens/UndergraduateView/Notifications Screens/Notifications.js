@@ -1,88 +1,65 @@
-import React, { Component } from 'react';
-import { Text, View, Dimensions, StyleSheet, ScrollView, ImageBackground } from 'react-native';
-// import { FontAwesome } from '@expo/vector-icons'; // You can replace this with your preferred icon library
+import React, { useState, useEffect } from 'react';
+import { Text, View, Dimensions, StyleSheet, ScrollView, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import MicrosoftLogo from '../../../assets/companyLogos/microsoftLogo.png'
 
-export class Notifications extends Component {
-  render() {
-    const notifications = [
-    {
-      id: 1,
-      title: 'Job Title 1',
-      state: 'Application Received',
-      // icon: 'check-circle',
-    },
-    {
-      id: 2,
-      title: 'Job Title 2',
-      state: 'Pending',
-      // icon: 'clock-o',
-    },
-    {
-      id: 3,
-      title: 'Job Title 3',
-      state: 'Not Accepted',
-      //icon: 'times-circle',
-    },
-    {
-      id: 4,
-      title: 'Job Title 1',
-      state: 'Application Received',
-      //icon: 'check-circle',
-    },
-    {
-      id: 5,
-      title: 'Job Title 2',
-      state: 'Pending',
-      //icon: 'clock-o',
-    },
-    {
-      id: 6,
-      title: 'Job Title 3',
-      state: 'Not Accepted',
-      //icon: 'times-circle',
-    },
-    // Add more notifications as needed
-  ];
+const Notifications = () => {
+  const navigation = useNavigation();
+  const [notifications, setNotifications] = useState([]);
 
-    return (
-      <View>
-        <ScrollView style={[styles.scrollview]}>
-          {notifications.map((notification) => (
-            <View key={notification.id} style={[styles.notification]}>
-              <View style={styles.notificationContent}>
-                <View style={styles.iconContainer}>
-                  {/* <FontAwesome name={notification.icon} size={24} color="#000" /> */}
-                </View>
-                <View style={styles.notificationDetails}>
-                  <Text style={styles.notificationTitle}>{notification.title}</Text>
-                  <Text style={styles.notificationState}>{notification.state}</Text>
-                </View>
+  useEffect(() => {
+    // Fetch notifications or set them from a source
+    const fetchedNotifications = [
+      {
+        id: 1,
+        title: 'Microsoft',
+        state: 'Application Received',
+        // icon: 'check-circle',
+        image: MicrosoftLogo, // Add your image path
+      },
+      {
+        id: 2,
+        title: 'Microsoft',
+        state: 'Pending',
+        // icon: 'clock-o',
+        image: MicrosoftLogo, // Add your image path
+      },
+      {
+        id: 3,
+        title: 'Microsoft',
+        state: 'Not Accepted',
+        //icon: 'times-circle',
+        image: MicrosoftLogo, // Add your image path
+      },
+    ];
+    setNotifications(fetchedNotifications);
+
+    // Check if notifications array is empty
+    if (fetchedNotifications.length === 0) {
+      navigation.navigate('EmptyNotifications');
+    }
+  }, []);
+
+  return (
+    <View>
+      <ScrollView style={styles.scrollview}>
+        {notifications.map((notification) => (
+          <View key={notification.id} style={styles.notification}>
+            <View style={styles.notificationContent}>
+              <Image source={notification.image} style={styles.notificationImage} />
+              <View style={styles.notificationDetails}>
+                <Text style={styles.notificationTitle}>{notification.title}</Text>
+                <Text style={styles.notificationState}>{notification.state}</Text>
               </View>
             </View>
-          ))}
-        </ScrollView>
-        {/* <ImageBackground
-          style={[styles.fixed, styles.container, { zIndex: -1 }]}
-          source={require('../../assets/images/bg-1.png')}
-        /> */}
-      </View>
-    );
-  }
-}
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-    opacity: 0.2,
-  },
-  fixed: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
   scrollview: {
     backgroundColor: 'transparent',
     padding: 16,
@@ -102,8 +79,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 12,
   },
-  iconContainer: {
-    marginRight: 16,
+  notificationImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 12,
   },
   notificationDetails: {
     flex: 1,
@@ -111,6 +91,7 @@ const styles = StyleSheet.create({
   notificationTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    color:'black'
   },
   notificationState: {
     color: 'gray',

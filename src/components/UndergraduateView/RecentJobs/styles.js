@@ -74,7 +74,58 @@ const styles = StyleSheet.create({
         height:80,
         width:80,
         borderRadius:10
-    }
+    },
+    ///SeeAll Styles
+    SeeAllcontainer: {
+      flex: 1,
+      backgroundColor: 'white',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    SeeAlllistContainer: {
+      paddingHorizontal: 20,
+    },
+    SeeAllcard: {
+      backgroundColor: 'white',
+      borderRadius: 10,
+      padding: 20,
+      marginVertical: 10,
+      shadowColor: '#000',
+      width: 500,
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+      maxWidth: '100%',
+      position: 'relative',
+    },
+    SeeAllimage: {
+      width: 80,
+      height: 80,
+      position: 'absolute',
+      top: 20,
+      right: 10,
+      borderRadius: 20,
+    },
+    SeeAlltext: {
+      color: 'black',
+      marginBottom: 5,
+    },
+    SeeAllapplyButton: {
+      backgroundColor: '#019F99',
+      borderRadius: 10,
+      paddingVertical: 8,
+      paddingHorizontal: 15,
+      marginTop: 10,
+      alignSelf: 'flex-end',
+    },
+    SeeAllapplyButtonText: {
+      color: 'white',
+      fontWeight: 'bold',
+    },
   });
 
 export default styles;

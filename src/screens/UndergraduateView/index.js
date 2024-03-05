@@ -10,6 +10,7 @@ import TermsConditions from "./Settings Screen/TermsConditions";
 import JobsApplied from "./Jobs Applied Screen/JobsApplied";
 import Status from "./Jobs Applied Screen/Status";
 import Notifications from "./Notifications Screens/Notifications";
+import EmptyNotifications from "./Notifications Screens/EmptyNotifications";
 import Profile from "./User Profile Screens/Profile";
 import EditUGProfile from "./User Profile Screens/EditUGProfile";
 import SeeAllRecJobs from "../../components/UndergraduateView/RecommendedJobs/SeeAllRecJobs";
@@ -29,6 +30,7 @@ export {
     JobsApplied,
     Status,
     Notifications,
+    EmptyNotifications,
     Profile,
     EditUGProfile,
     SeeAllRecJobs,
