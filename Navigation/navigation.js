@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import Tabs from './UndergraduateView/tabs.js';
 import EmployerTabs from './EmployerView/EmployerTabs.js';
 import LoginScreen from '../src/screens/LoginScreen/LoginScreen.js';
@@ -13,6 +13,7 @@ import StatusofJobsApplied from '../src/screens/UndergraduateView/Jobs Applied S
 import Notifications from '../src/screens/UndergraduateView/Notifications Screens/Notifications.js';
 import Splash_Screen from '../src/screens/Authentication/SplashScreen/Splash_Screen.js';
 import EmployerHome from '../src/screens/EmployerView/Home/EmployerHome.js';
+import { retrieveCredentials } from '../src/firebase/storage.js';
 ///UG_VIEW -- Settings Screens Imported
 
 
@@ -21,8 +22,7 @@ NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsCondit
 
 const Stack = createStackNavigator();
 
-export default function Navigation() {
-
+export default function Navigation({ navigation }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,11 +36,10 @@ export default function Navigation() {
         navigation.navigate('Login');
       }
     };
-
     checkLogin();
-  }, []);
+  }, [navigation]);
 
-
+  
   return (
     <NavigationContainer>
       <Stack.Navigator>
