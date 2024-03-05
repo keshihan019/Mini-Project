@@ -16,7 +16,7 @@ import EmployerHome from '../src/screens/EmployerView/Home/EmployerHome.js';
 
 
 import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, 
-NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs} from '../src/screens/UndergraduateView/index.js'
+NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,UploadResume,Experience,SuccessfullyApplied} from '../src/screens/UndergraduateView/index.js'
 
 const Stack = createStackNavigator();
 
@@ -70,8 +70,12 @@ const MainStack = () => {
       {/* Home Screens */}
       <Stack.Screen name="UG_Home" component={Home} options={{headerShown: false}}/>
       <Stack.Screen name="AllReccomendedJobs" component={SeeAllRecJobs} options={{ title: 'Recommended Jobs' }}/>
-      <Stack.Screen name="JobOpportunity" component={JobOpportunity} options={{headerShown: false}}/>
+      <Stack.Screen name="JobOpportunity" component={JobOpportunity} />
       <Stack.Screen name="SeeAllRecentJobs" component={SeeAllRecentJobs} options={{ title: 'Recent Jobs' }}/>
+      <Stack.Screen name="ContactInfo" component={ContactInfo} />
+      <Stack.Screen name="UploadResume" component={UploadResume} />
+      <Stack.Screen name="Experience" component={Experience} />
+      <Stack.Screen name="Success Screen" component={SuccessfullyApplied} />
       {/* Notifications Screens */}
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="EmptyNotifications" component={EmptyNotifications} />
