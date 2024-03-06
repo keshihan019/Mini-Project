@@ -5,7 +5,7 @@ import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-nat
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
-import { storeCredentials } from '../../firebase/storage'; 
+
 
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('');

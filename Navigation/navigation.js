@@ -23,21 +23,7 @@ NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsCondit
 const Stack = createStackNavigator();
 
 export default function Navigation({ navigation }) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const checkLogin = async () => {
-      const credentials = await retrieveCredentials();
-      setLoading(false);
-
-      if (credentials) {
-        navigation.navigate(credentials.role === 'Undergraduate' ? 'HomeScreen' : 'EmployerHomeScreen');
-      } else {
-        navigation.navigate('Login');
-      }
-    };
-    checkLogin();
-  }, [navigation]);
+  
 
   
   return (
