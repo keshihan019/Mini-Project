@@ -1,14 +1,30 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import MicrosoftLogo from '../../../assets/companyLogos/microsoftLogo.png'
+import { useNavigation } from '@react-navigation/native';
 
 const JobOpportunity = () => {
+  const navigation = useNavigation();
+
+  const handleApplyNow =() => {
+    navigation.navigate('ContactInfo')
+  }
+
+  const handleCompanyInfo =() => {
+    navigation.navigate('CompanyProfile')
+  }
+
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.jobTitle}>Software Engineer</Text>
-      <Text style={styles.companyName}>TechCo</Text>
-      
-      {/* Display Company Logo */}
-      {/* <Image source={require('../assets/images/company_logo.png')} style={styles.companyLogo} /> */}
+      <View style={styles.header}>
+        {/* Display Company Logo */}
+        <Image source={MicrosoftLogo} style={styles.companyLogo} />
+
+        <View style={styles.titleContainer}>
+          <Text style={styles.jobTitle}>Software Engineer</Text>
+          <Text style={styles.companyName}>TechCo</Text>
+        </View>
+      </View>
 
       <Text style={styles.location}>Remote</Text>
       <Text style={styles.address}>123 Main Street, City, Country</Text>
@@ -33,10 +49,15 @@ const JobOpportunity = () => {
         {'\n'}- Strong problem-solving skills
       </Text>
 
-      {/* Apply Button */}
-      <TouchableOpacity style={styles.applyButton}>
+      <View style={styles.btnContainer} >
+      <TouchableOpacity style={styles.applyButton} onPress={handleApplyNow}>
         <Text style={styles.applyButtonText}>Apply Now</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.moreInfoButton} onPress={handleCompanyInfo}>
+        <Text style={styles.moreInfoButtonText} >View Company Info</Text>
+      </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -45,21 +66,30 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   jobTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 8,
+    color: 'black',
   },
   companyName: {
     fontSize: 18,
     color: '#555',
-    marginBottom: 12,
   },
   companyLogo: {
     width: 100,
     height: 100,
     resizeMode: 'contain',
-    marginBottom: 16,
+    marginRight: 20,
+    borderRadius:15
+  },
+  titleContainer: {
+    flex: 1,
+    
   },
   location: {
     fontSize: 16,
@@ -82,6 +112,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 16,
     marginBottom: 8,
+    color: 'black',
   },
   companyAbout: {
     fontSize: 16,
@@ -99,17 +130,34 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   applyButton: {
-    backgroundColor: '#27ae60',
+    backgroundColor: '#019F99',
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',
     marginTop: 20,
+  },
+
+  moreInfoButton: {
+    backgroundColor: 'white',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 20,
+    
+  },
+  moreInfoButtonText:{
+    color:'#019F99',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
   applyButtonText: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 18,
   },
+  btnContainer:{
+    marginBottom:80
+  }
 });
 
 export default JobOpportunity;

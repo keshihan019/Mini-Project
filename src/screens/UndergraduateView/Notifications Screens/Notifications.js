@@ -9,7 +9,7 @@ const Notifications = () => {
 
   useEffect(() => {
     // Fetch notifications or set them from a source
-    //Types of Notifications
+    // Types of Notifications
 
     // 1. job posting
     // 2. 

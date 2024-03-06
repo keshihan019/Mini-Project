@@ -85,7 +85,7 @@ const EmployerTabs = () => {
       />
       <Tab.Screen
         name="EmployerHome"
-        component={EmployerHome}
+        component={EmployerHome} 
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
