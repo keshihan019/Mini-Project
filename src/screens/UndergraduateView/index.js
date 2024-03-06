@@ -16,6 +16,10 @@ import EditUGProfile from "./User Profile Screens/EditUGProfile";
 import SeeAllRecJobs from "../../components/UndergraduateView/RecommendedJobs/SeeAllRecJobs";
 import JobOpportunity from "../../components/UndergraduateView/JobDetails/JobOpportunity";
 import SeeAllRecentJobs from "../../components/UndergraduateView/RecentJobs/SeeAllRecentJobs";
+import ContactInfo from "../../components/UndergraduateView/ApplyNow/ContactInfo";
+import Experience from "../../components/UndergraduateView/ApplyNow/Experience";
+import UploadResume from "../../components/UndergraduateView/ApplyNow/UploadResume";
+import SuccessfullyApplied from "../../components/UndergraduateView/ApplyNow/SuccessfullyApplied";
 
 export {
     AccSettings,
@@ -35,5 +39,9 @@ export {
     EditUGProfile,
     SeeAllRecJobs,
     JobOpportunity,
-    SeeAllRecentJobs
+    SeeAllRecentJobs,
+    ContactInfo,
+    UploadResume,
+    Experience,
+    SuccessfullyApplied
 }
