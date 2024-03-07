@@ -38,8 +38,6 @@ export default function LoginScreen({ navigation }) {
                         const user = firestoreDocument.data();
                         const role = user.role;
 
-                        // Store credentials
-                        storeCredentials({ email, password, role });
 
                         // Navigate based on role
                         if (role === 'Undergraduate') {
