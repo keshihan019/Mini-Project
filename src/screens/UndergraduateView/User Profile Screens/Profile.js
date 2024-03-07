@@ -11,10 +11,14 @@ import { Avatar,
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import EditProfileIcon from '../../../assets/icons/Editprofile.png';
+import AddressIcon from '../../../assets/icons/UGprofile/Address.png'
+import EmailIcon from '../../../assets/icons/UGprofile/email.png'
+import MobileIcon from '../../../assets/icons/UGprofile/MobileNumber.png'
+import UniversityIcon from '../../../assets/icons/UGprofile/university.png'
+
 const Profile = () => {
   const [name, setName] = useState('John Doe');
-  const [nic, setNIC] = useState('12345-6789012-3');
-  const [age, setAge] = useState('25');
   const [address, setAddress] = useState('123 Main Street, City');
   const [qualifications, setQualifications] = useState([]);
   const [experience, setExperience] = useState([]);
@@ -55,71 +59,150 @@ const Profile = () => {
    
       <SafeAreaView style={styles.container}>
         <View style={styles.userInfoSection}>
-          <View style={{flexDirection:'row',}}>
-          <Avatar.Image 
-              size={80} 
-              source={{ uri: profilePicture ? profilePicture : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"}}/>
-        
-            
-            <View style={{marginLeft:20}}>
-              <Title style={styles.title}>John Doe</Title>
-              <Caption style={styles.caption}>@John_Doe</Caption>
-            </View>
-          <TouchableOpacity onPress={handleEditProfile}>
-            <Icon name="account-edit" size={30} marginLeft={80} color="#888888"/>
-          </TouchableOpacity>
-          
-          </View>
-        </View>
+  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+    <Avatar.Image 
+      size={80} 
+      source={{ uri: profilePicture ? profilePicture : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"}}
+    />
+    <View style={{ marginLeft: 20 }}>
+      <Title style={styles.title}>John Doe</Title>
+      <Caption style={styles.caption}>@John_Doe</Caption>
+    </View>
+  </View>
+
+  <TouchableOpacity 
+  onPress={handleEditProfile} 
+  style={{
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    marginTop: 30, 
+    backgroundColor: '#019F99', 
+    width: 160, 
+    paddingVertical: 10, 
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5 // for Android
+  }}
+>
+  <Image 
+    source={EditProfileIcon}
+    resizeMode="contain"
+    style={{
+      width: 25,
+      height: 25,
+      tintColor: 'white', 
+      marginLeft: 20,
+    }}
+  />
+  <Text style={{ marginLeft: 10, color: 'white' }}>Edit Profile</Text>
+</TouchableOpacity>
+</View>
+
+
+
+
 
 
 
           <View style={styles.userInfoSection}>
             <View style={styles.row}>
-              <Icon name="map-marker-radius" size={20} color="#888888"/>
+              <Image 
+                  source={AddressIcon}
+                  resizeMode="contain"
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: '#019F99', 
+                    marginLeft: 20,
+                  }}
+                />
               <Text style={{color:"#888888", marginLeft: 20, }}>Colombo, Sri Lanka</Text>
             </View>
 
             <View style={styles.row}>
-              <Icon name="phone" size={20} color="#888888"/>
-              <Text style={{color:"#888888", marginLeft: 20 }}>+94 715 482 488</Text>
+              <Image 
+                  source={MobileIcon}
+                  resizeMode="contain"
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: '#019F99', 
+                    marginLeft: 20,
+                  }}
+                />
+              <Text style={{color:"#888888", marginLeft: 20, }}>0714 588 964</Text>
             </View>
 
             <View style={styles.row}>
-              <Icon name="email" size={20} color="#888888"/>
-              <Text style={{color:"#888888", marginLeft: 20 }}>jonhdoe@gmail.com</Text>
+              <Image 
+                  source={EmailIcon}
+                  resizeMode="contain"
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: '#019F99', 
+                    marginLeft: 20,
+                  }}
+                />
+              <Text style={{color:"#888888", marginLeft: 20, }}>Johndoe@gmail.com</Text>
             </View>
 
             <View style={styles.row}>
-              <Icon name="human" size={20} color="#888888"/>
-              <Text style={{color:"#888888", marginLeft: 20 }}>199926015426</Text>
+              <Image 
+                  source={UniversityIcon}
+                  resizeMode="contain"
+                  style={{
+                    width: 25,
+                    height: 25,
+                    tintColor: '#019F99', 
+                    marginLeft: 20,
+                  }}
+                />
+              <Text style={{color:"#888888", marginLeft: 20, }}>Sabaragamuwa University of Sri Lanka</Text>
             </View>
 
-            <View style={styles.row}>
-              <Icon name="school" size={20} color="#888888"/>
-              <Text style={{color:"#888888", marginLeft: 20 }}>Sabaragamuwa University of Sri Lanka</Text>
-            </View>
+
 
             
           </View>
 
           <View style={styles.menuWrapper}>
-            <View style={styles.skillBox}>
-              <Text style={styles.skillTitle}>Academic Qualifications</Text>
+          <View style={styles.skillBox}>
+    <Text style={styles.skillTitle}>Academic Qualifications</Text>
 
-              <View style={styles.skillItem}>
-                  <Text style={{color:'black'}}> CIMA </Text>
-              </View>
+    <View style={styles.skillItem}>
+        <Text style={{color:'black'}}>CIMA</Text>
+        <Text style={{color:'black'}}>2020-2022</Text>
+        <Text style={{color:'black'}}>Name of Institution</Text>
+    </View>
 
-              <View style={styles.skillItem}>
-                  <Text style={{color:'black'}}> CIMA </Text>
-              </View>
-            </View>
+    <View style={styles.skillItem}>
+        <Text style={{color:'black'}}>CIMA</Text>
+        <Text style={{color:'black'}}>2020-2022</Text>
+        <Text style={{color:'black'}}>Name of Institution</Text>
+    </View>
+          </View>
 
 
-            <View style={styles.skillBox}>
-              <Text style={styles.skillTitle}>Work Experience</Text>
-            </View>
+
+          <View style={styles.skillBox}>
+    <Text style={styles.skillTitle}>Work Experience</Text>
+
+    <View style={styles.skillItem}>
+        <Text style={{color:'black'}}>CIMA</Text>
+        <Text style={{color:'black'}}>2020-2022</Text>
+        <Text style={{color:'black'}}>Name of Institution</Text>
+    </View>
+
+    <View style={styles.skillItem}>
+        <Text style={{color:'black'}}>CIMA</Text>
+        <Text style={{color:'black'}}>2020-2022</Text>
+        <Text style={{color:'black'}}>Name of Institution</Text>
+    </View>
+          </View>
           </View>
         
       </SafeAreaView>
@@ -197,7 +280,8 @@ const styles = StyleSheet.create({
     
   },
   skillItem:{
-
+    marginVertical:10,
+    paddingHorizontal:15
   }
 });
 
