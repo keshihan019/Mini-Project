@@ -1,216 +1,296 @@
-import React, { Component } from 'react'
-import  useState  from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 
-// import Animated from 'react-native-reanimated';
-// import BottomSheet from 'reanimated-bottom-sheet';
+const EditUGProfile = ({ route }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [university, setUniversity] = useState('');
+  const [qualifications, setQualifications] = useState([]);
+  const [experience, setExperience] = useState([]);
 
-import { SafeAreaView,ImageBackground, View, Text, Button,TextInput, ScrollView, TouchableOpacity, StyleSheet, Image, Platform } from 'react-native';
-import { Avatar,  
-          Card, 
-          Title,
-          Caption,
-          TouchableRipple, 
-          Paragraph } from 'react-native-paper';
+  const navigation = useNavigation();
 
-
-         
-
-export class EditUGProfile extends Component {
-  render() {
-
-   
+  const handleSubmit = () => {
+    if (!firstName || !lastName || !email || !phone || !address) {
+      alert('Please fill in all required fields');
+      return;
+    }
     
-    return (
-      <ScrollView>
+    route.params.onSave({
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      university,
+      qualifications,
+      experience
+    });
+    
+    navigation.goBack();
+  };
+
+  const addQualification = () => {
+    setQualifications([...qualifications, { name: '', duration: '', institution: '' }]);
+  };
+
+  const deleteQualification = (index) => {
+    const newQualifications = [...qualifications];
+    newQualifications.splice(index, 1);
+    setQualifications(newQualifications);
+  };
+
+  const updateQualification = (index, data) => {
+    const newQualifications = [...qualifications];
+    newQualifications[index] = data;
+    setQualifications(newQualifications);
+  };
+
+  const addExperience = () => {
+    setExperience([...experience, { name: '', duration: '', organization: '' }]);
+  };
+
+  const deleteExperience = (index) => {
+    const newExperience = [...experience];
+    newExperience.splice(index, 1);
+    setExperience(newExperience);
+  };
+
+  const updateExperience = (index, data) => {
+    const newExperience = [...experience];
+    newExperience[index] = data;
+    setExperience(newExperience);
+  };
+
+  const renderQualificationItem = ({ item, index }) => (
+    <SafeAreaView style={styles.scrollContainer}>
+    <View style={styles.qualificationItem}>
+      <TextInput
+        placeholder="Qualification Name"
+        style={styles.input}
+        value={item.name}
+        onChangeText={(text) => updateQualification(index, { ...item, name: text })}
+      />
+      <TextInput
+        placeholder="Duration"
+        style={styles.input}
+        value={item.duration}
+        onChangeText={(text) => updateQualification(index, { ...item, duration: text })}
+      />
+      <TextInput
+        placeholder="Institution"
+        style={styles.input}
+        value={item.institution}
+        onChangeText={(text) => updateQualification(index, { ...item, institution: text })}
+      />
+      <TouchableOpacity onPress={() => deleteQualification(index)}>
+        <Text style={styles.deleteButton}>Delete</Text>
+      </TouchableOpacity>
+    </View>
+    </SafeAreaView>
+  );
+
+  const renderExperienceItem = ({ item, index }) => (
+    <View style={styles.qualificationItem}>
+      <TextInput
+        placeholder="Experience Name"
+        style={styles.input}
+        value={item.name}
+        onChangeText={(text) => updateExperience(index, { ...item, name: text })}
+      />
+      <TextInput
+        placeholder="Duration"
+        style={styles.input}
+        value={item.duration}
+        onChangeText={(text) => updateExperience(index, { ...item, duration: text })}
+      />
+      <TextInput
+        placeholder="Organization"
+        style={styles.input}
+        value={item.organization}
+        onChangeText={(text) => updateExperience(index, { ...item, organization: text })}
+      />
+      <TouchableOpacity onPress={() => deleteExperience(index)}>
+        <Text style={styles.deleteButton}>Delete</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
+  return (
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-        <View>
-          
+        <View style={styles.action}>
+          <FontAwesome name='user-o' size={20} />
+          <TextInput
+            placeholder='First Name'
+            placeholderTextColor='#666666'
+            autoCorrect={false}
+            style={styles.textInput}
+            value={firstName}
+            onChangeText={text => setFirstName(text)}
+          />
         </View>
-        <View style={{margin:20}}>
-          <View style={{alignItems:'center'}}>
-            <TouchableOpacity onPress={{}}>
-              <View style={{
-                height:100,
-                width:100,
-                borderRadius:15,
-                justifyContent:'center',
-                alignItems:'center'
-              }}>
-                <ImageBackground
-                source={{uri:'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png'
-                }}
-                style={{height:100,width:100,}}
-                imageStyle={{borderRadius:15}}>
-                  <View style={{
-                    flex:1,
-                    justifyContent:'center',
-                    alignItems:'center',
-                  }}>
-                    <Icon name="camera" size={35} color="#aaa" style={{
-                      opacity:0.7,
-                      alignItems:'center',
-                      justifyContent:'center',
-                      borderWidth:1,
-                      borderColor:'#fff',
-                      borderRadius:10
-                    }}/>
-                  </View>
-                </ImageBackground>
 
-              </View>
-            </TouchableOpacity>
-            <Text style={{marginTop:10, fontSize:18, fontWeight:'bold'}}>
-              John Doe
-            </Text>
-          </View>
-        
-          <View style={styles.action}>
-              <FontAwesome name='user-o' size={20}/>
-              <TextInput
-                placeholder='First Name'
-                placeholderTextColor="#666666"
-                autoCorrect={false}
-                style={styles.textInput}
-                />     
-          </View>
+        <View style={styles.action}>
+          <FontAwesome name='user-o' size={20} />
+          <TextInput
+            placeholder='Last Name'
+            placeholderTextColor='#666666'
+            autoCorrect={false}
+            style={styles.textInput}
+            value={lastName}
+            onChangeText={text => setLastName(text)}
+          />
+        </View>
 
-          <View style={styles.action}>
-              <FontAwesome name='user-o' size={20}/>
-              <TextInput
-                placeholder='Last Name'
-                placeholderTextColor="#666666"
-                autoCorrect={false}
-                style={styles.textInput}
-                />     
-          </View>
+        <View style={styles.action}>
+          <FontAwesome name='envelope' size={20} />
+          <TextInput
+            placeholder='Email'
+            keyboardType='email-address'
+            placeholderTextColor='#666666'
+            autoCorrect={false}
+            style={styles.textInput}
+            value={email}
+            onChangeText={text => setEmail(text)}
+          />
+        </View>
 
-          <View style={styles.action}>
-              <FontAwesome name='envelope' size={20}/>
-              <TextInput
-                placeholder='Email'
-                keyboardType='email-address'
-                placeholderTextColor="#666666"
-                autoCorrect={false}
-                style={styles.textInput}
-                />     
-          </View>
+        <View style={styles.action}>
+          <FontAwesome name='phone' size={20} />
+          <TextInput
+            placeholder='Phone No.'
+            keyboardType='number-pad'
+            placeholderTextColor='#666666'
+            autoCorrect={false}
+            style={styles.textInput}
+            value={phone}
+            onChangeText={text => setPhone(text)}
+          />
+        </View>
 
-          <View style={styles.action}>
-              <FontAwesome name='phone' size={20}/>
-              <TextInput
-                placeholder='Phone No.'
-                keyboardType='number-pad'
-                placeholderTextColor="#666666"
-                autoCorrect={false}
-                style={styles.textInput}
-                />     
-          </View>
+        <View style={styles.action}>
+          <FontAwesome name='globe' size={20} />
+          <TextInput
+            placeholder='Address'
+            placeholderTextColor='#666666'
+            autoCorrect={false}
+            style={styles.textInput}
+            value={address}
+            onChangeText={text => setAddress(text)}
+          />
+        </View>
 
-          <View style={styles.action}>
-              <FontAwesome name='globe' size={20}/>
-              <TextInput
-                placeholder='Address'
-                
-                placeholderTextColor="#666666"
-                autoCorrect={false}
-                style={styles.textInput}
-                />     
-          </View>
-          <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-                  <Text>Submit</Text>
+        <View style={styles.action}>
+          <FontAwesome name='globe' size={20} />
+          <TextInput
+            placeholder='University'
+            placeholderTextColor='#666666'
+            autoCorrect={false}
+            style={styles.textInput}
+            value={university}
+            onChangeText={text => setUniversity(text)}
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Academic Qualifications</Text>
+          <FlatList
+            data={qualifications}
+            renderItem={renderQualificationItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          <TouchableOpacity style={styles.addButton} onPress={addQualification}>
+            <Text>Add Qualification</Text>
           </TouchableOpacity>
-          
         </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Work Experience</Text>
+          <FlatList
+            data={experience}
+            renderItem={renderExperienceItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          <TouchableOpacity style={styles.addButton} onPress={addExperience}>
+            <Text>Add Experience</Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity style={styles.commandButton} onPress={handleSubmit}>
+          <Text>Submit</Text>
+        </TouchableOpacity>
       </View>
-      </ScrollView>
-    )
-  }
-}
+    </ScrollView>
+    
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-      marginTop:50,
-      flex:1,
-    },
-    commandButton:{
-      padding:15,
-      borderRadius:10,
-      backgroundColor:'#FF6347',
-      alignItems:'center',
-      marginTop:10
-    },
-    panel:{
-      padding:20,
-      backgroundColor:'#fff',
-      paddingTop:20
-    },
-    header:{
-      backgroundColor:'#FFFFFF',
-      shadowColor:'#333333',
-      shadowOffset:{width:-1, height:-3},
-      shadowRadius:2,
-      shadowOpacity:0.4,
-      paddingTop:20,
-      paddingTopLeftRadius:20,
-      paddingTopRightRadius:20
-    },
-    panelHeader:{
-      alignItems:'center',
-    },
-    panelHandle:{
-      width:40,
-      height:8,
-      borderRadius:4,
-      backgroundColor:'#00000040',
-      marginTop:10
-    },
-    panelTitle:{
-      fontSize:27,
-      height:35
-    },
-    panelSubtitle:{
-      fontSize:14,
-      color:'gray',
-      height:30
-    },
-    panelButton:{
-      padding:13,
-      borderRadius:10,
-      backgroundColor:'#FF6347',
-      alignItems:'center',
-      marginVertical:7
-    },
-    panelButtonTitle:{
-      fontSize:17,
-      fontWeight:'bold',
-      color:'white',
+  scrollContainer: {
+    flexGrow: 1,
+  },
+  container: {
+    flexGrow: 1,
+    margin: 20,
+  },
+  commandButton: {
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#FF6347',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  action: {
+    flexDirection: 'row',
+    marginVertical: 20,
+    marginHorizontal: 40,
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+    paddingBottom: 5,
+  },
+  textInput: {
+    flex: 1,
+    marginTop: -5,
+    paddingLeft: 10,
+    color: '#05375a',
+  },
+  section: {
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  qualificationItem: {
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    marginRight: 10,
+    paddingVertical: 5,
+  },
+  deleteButton: {
+    color: 'red',
+    marginLeft: 10,
+    alignSelf: 'center',
+  },
+  addButton: {
+    marginTop: 10,
+    backgroundColor: '#ccc',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+});
 
-    },
-    action:{
-      flexDirection:'row',
-      marginVertical:20,
-      marginHorizontal:40,
-      borderBottomWidth:1,
-      borderBottomColor:'#000',
-      paddingBottom:5
-    },
-    actionError:{
-      flexDirection:'row',
-      marginTop:10,
-      borderBottomColor:1,
-      borderBottomColor:'#FF0000',
-      paddingBottom:5
-    },
-    textInput:{
-      flex:1,
-      marginTop: -5,
-      paddingLeft:10,
-      color:'#05375a'
-    }
-  });
-
-export default EditUGProfile
+export default EditUGProfile;
