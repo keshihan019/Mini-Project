@@ -64,8 +64,8 @@ const MainStack = () => {
       <Stack.Screen name="DeveloperInfo" component={DeveloperInfo} options={{ title: 'Developer Information' }} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} options={{ title: 'Privacy Policy' }} />
       <Stack.Screen name="SoftwareVersion" component={SoftwareVersion} options={{ title: 'Software Version' }} />
-      <Stack.Screen name="Profile" component={Profile} options={{ title: 'Software Version' }} />
-      <Stack.Screen name="EditUGProfile" component={EditUGProfile} options={{ title: 'Software Version' }} />
+      <Stack.Screen name="Profile" component={Profile} options={{ title: 'My Profile' }} />
+      <Stack.Screen name="EditUGProfile" component={EditUGProfile} options={{ title: 'Edit Profile' }} />
 
 
       {/* JobsApplied Screens */}
