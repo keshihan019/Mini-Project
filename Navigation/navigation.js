@@ -107,10 +107,10 @@ const MainStack = () => {
       <Stack.Screen name="AllReccomendedJobs" component={SeeAllRecJobs} options={{ title: 'Recommended Jobs' }}/>
       <Stack.Screen name="JobOpportunity" component={JobOpportunity} />
       <Stack.Screen name="SeeAllRecentJobs" component={SeeAllRecentJobs} options={{ title: 'Recent Jobs' }}/>
-      <Stack.Screen name="ContactInfo" component={ContactInfo} />
-      <Stack.Screen name="UploadResume" component={UploadResume} />
-      <Stack.Screen name="Experience" component={Experience} />
-      <Stack.Screen name="Success Screen" component={SuccessfullyApplied} />
+      <Stack.Screen name="ContactInfo" component={ContactInfo} options={{headerShown: false}}/>
+      <Stack.Screen name="UploadResume" component={UploadResume} options={{headerShown: false}}/>
+      <Stack.Screen name="Experience" component={Experience} options={{headerShown: false}}/>
+      <Stack.Screen name="Success Screen" component={SuccessfullyApplied} options={{headerShown: false}}/>
       {/* Notifications Screens */}
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="EmptyNotifications" component={EmptyNotifications} />
