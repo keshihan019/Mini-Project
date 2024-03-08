@@ -68,7 +68,7 @@ const EditUGProfile = ({ route }) => {
   };
 
   const renderQualificationItem = ({ item, index }) => (
-    <SafeAreaView style={styles.scrollContainer}>
+    
     <View style={styles.qualificationItem}>
       <TextInput
         placeholder="Qualification Name"
@@ -92,7 +92,7 @@ const EditUGProfile = ({ route }) => {
         <Text style={styles.deleteButton}>Delete</Text>
       </TouchableOpacity>
     </View>
-    </SafeAreaView>
+    
   );
 
   const renderExperienceItem = ({ item, index }) => (
@@ -122,7 +122,8 @@ const EditUGProfile = ({ route }) => {
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <SafeAreaView style={styles.scrollContainer}>
+    
       <View style={styles.container}>
         <View style={styles.action}>
           <FontAwesome name='user-o' size={20} />
@@ -226,7 +227,8 @@ const EditUGProfile = ({ route }) => {
           <Text>Submit</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    
+    </SafeAreaView>
     
   );
 };
@@ -248,8 +250,8 @@ const styles = StyleSheet.create({
   },
   action: {
     flexDirection: 'row',
-    marginVertical: 20,
-    marginHorizontal: 40,
+    marginVertical: 5,
+    marginHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#000',
     paddingBottom: 5,
@@ -264,30 +266,41 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   sectionTitle: {
+    marginTop:20,
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    color:'black'
   },
   qualificationItem: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginBottom: 10,
+    backgroundColor:'#222',
+    borderRadius:15
   },
   input: {
     flex: 1,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
-    marginRight: 10,
-    paddingVertical: 5,
+    marginHorizontal: 20,
+    paddingVertical: 10,
+    color:'black',
+    paddingLeft:15
   },
   deleteButton: {
-    color: 'red',
+    color: 'white',
     marginLeft: 10,
     alignSelf: 'center',
+    backgroundColor:'#f00',
+    padding: 10,
+    borderRadius:15,
+    margin:5
   },
   addButton: {
     marginTop: 10,
-    backgroundColor: '#ccc',
+    backgroundColor: '#019F99',
     padding: 10,
+    color:'#ff9',
     borderRadius: 5,
     alignItems: 'center',
   },
