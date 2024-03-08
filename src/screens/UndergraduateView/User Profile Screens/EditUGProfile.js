@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
 
 const EditUGProfile = ({ route }) => {
   const [firstName, setFirstName] = useState('');
@@ -233,77 +234,5 @@ const EditUGProfile = ({ route }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-  },
-  container: {
-    flexGrow: 1,
-    margin: 20,
-  },
-  commandButton: {
-    padding: 15,
-    borderRadius: 10,
-    backgroundColor: '#FF6347',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  action: {
-    flexDirection: 'row',
-    marginVertical: 5,
-    marginHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#000',
-    paddingBottom: 5,
-  },
-  textInput: {
-    flex: 1,
-    marginTop: -5,
-    paddingLeft: 10,
-    color: '#05375a',
-  },
-  section: {
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    marginTop:20,
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color:'black'
-  },
-  qualificationItem: {
-    flexDirection: 'column',
-    marginBottom: 10,
-    backgroundColor:'#222',
-    borderRadius:15
-  },
-  input: {
-    flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    marginHorizontal: 20,
-    paddingVertical: 10,
-    color:'black',
-    paddingLeft:15
-  },
-  deleteButton: {
-    color: 'white',
-    marginLeft: 10,
-    alignSelf: 'center',
-    backgroundColor:'#f00',
-    padding: 10,
-    borderRadius:15,
-    margin:5
-  },
-  addButton: {
-    marginTop: 10,
-    backgroundColor: '#019F99',
-    padding: 10,
-    color:'#ff9',
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-});
 
 export default EditUGProfile;
