@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
 
 const EditUGProfile = ({ route }) => {
   const [firstName, setFirstName] = useState('');
@@ -68,7 +69,7 @@ const EditUGProfile = ({ route }) => {
   };
 
   const renderQualificationItem = ({ item, index }) => (
-    <SafeAreaView style={styles.scrollContainer}>
+    
     <View style={styles.qualificationItem}>
       <TextInput
         placeholder="Qualification Name"
@@ -92,7 +93,7 @@ const EditUGProfile = ({ route }) => {
         <Text style={styles.deleteButton}>Delete</Text>
       </TouchableOpacity>
     </View>
-    </SafeAreaView>
+    
   );
 
   const renderExperienceItem = ({ item, index }) => (
@@ -122,7 +123,8 @@ const EditUGProfile = ({ route }) => {
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <SafeAreaView style={styles.scrollContainer}>
+    
       <View style={styles.container}>
         <View style={styles.action}>
           <FontAwesome name='user-o' size={20} />
@@ -226,71 +228,11 @@ const EditUGProfile = ({ route }) => {
           <Text>Submit</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    
+    </SafeAreaView>
     
   );
 };
 
-const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-  },
-  container: {
-    flexGrow: 1,
-    margin: 20,
-  },
-  commandButton: {
-    padding: 15,
-    borderRadius: 10,
-    backgroundColor: '#FF6347',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  action: {
-    flexDirection: 'row',
-    marginVertical: 20,
-    marginHorizontal: 40,
-    borderBottomWidth: 1,
-    borderBottomColor: '#000',
-    paddingBottom: 5,
-  },
-  textInput: {
-    flex: 1,
-    marginTop: -5,
-    paddingLeft: 10,
-    color: '#05375a',
-  },
-  section: {
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  qualificationItem: {
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  input: {
-    flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    marginRight: 10,
-    paddingVertical: 5,
-  },
-  deleteButton: {
-    color: 'red',
-    marginLeft: 10,
-    alignSelf: 'center',
-  },
-  addButton: {
-    marginTop: 10,
-    backgroundColor: '#ccc',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-});
 
 export default EditUGProfile;
