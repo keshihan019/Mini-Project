@@ -5,6 +5,8 @@ import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-nat
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+import { storeAuthToken } from '../../authStorage/authStorage';
+
 
 
 export default function LoginScreen({ navigation }) {
@@ -38,24 +40,32 @@ export default function LoginScreen({ navigation }) {
                         const user = firestoreDocument.data();
                         const role = user.role;
 
-                        // Navigate based on role
-                        if (role === 'Undergraduate') {
-                            navigation.navigate('HomeScreen');
-                        } else if (role === 'Employer') {
-                            navigation.navigate('EmployerHomeScreen');
-                        } else {
-                            Alert.alert('Error', 'Invalid user type');
-                        }
-                    })
-                    .catch((error) => {
-                        Alert.alert('Error', error.message);
-                    });
-            })
-            .catch((error) => {
-                Alert.alert('Error', 'Invalid email or password. Please try again.');
-            });
-    };
+                        const userAuthToken = response.user.getIdToken()
+                        .then((token) => {
+                            // Store the authentication token
+                            storeAuthToken(token);
 
+                            // Navigate based on role
+                            if (role === 'Undergraduate') {
+                                navigation.navigate('HomeScreen');
+                            } else if (role === 'Employer') {
+                                navigation.navigate('EmployerHomeScreen');
+                            } else {
+                                Alert.alert('Error', 'Invalid user type');
+                            }
+                        })
+                        .catch((error) => {
+                            Alert.alert('Error', 'Failed to get authentication token: ' + error.message);
+                        });
+                })
+                .catch((error) => {
+                    Alert.alert('Error', error.message);
+                });
+        })
+        .catch((error) => {
+            Alert.alert('Error', 'Invalid email or password. Please try again.');
+        });
+};
     return (
         <View style={styles.container}>
             <Text style={styles.heading}>Welcome back!</Text>

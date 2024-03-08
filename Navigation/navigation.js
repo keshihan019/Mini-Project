@@ -13,7 +13,8 @@ import StatusofJobsApplied from '../src/screens/UndergraduateView/Jobs Applied S
 import Notifications from '../src/screens/UndergraduateView/Notifications Screens/Notifications.js';
 import Splash_Screen from '../src/screens/Authentication/SplashScreen/Splash_Screen.js';
 import EmployerHome from '../src/screens/EmployerView/Home/EmployerHome.js';
-import { retrieveCredentials } from '../src/firebase/storage.js';
+import { getAuthToken } from '../src/authStorage/authStorage.js';
+
 ///UG_VIEW -- Settings Screens Imported
 
 
@@ -24,7 +25,36 @@ const Stack = createStackNavigator();
 
 export default function Navigation({ navigation }) {
   
+  useEffect(() => {
+    async function checkUserToken() {
+      const userToken = await getAuthToken();
+      if (userToken) {
 
+        const role = determineUserRole(userToken); 
+        if (role === 'Employer') {
+          navigation.navigate('EmployerHomeScreen');
+        } else if (role === 'Undergraduate') {
+          navigation.navigate('HomeScreen');
+        } else {
+          console.error('Invalid user role:', role);
+        }
+      } else {
+      
+        navigation.navigate('Login');
+      }
+    }
+
+    checkUserToken();
+  }, []);
+
+  function determineUserRole(token) {
+    const decodedToken = decode(token);
+    if (decodedToken) {
+      return decodedToken.role;
+    } else {
+      return null;
+    }
+  }
   
   return (
     <NavigationContainer>
@@ -103,3 +133,5 @@ const SettingsScreenStack = () => {
     </Stack.Navigator>
   );
 }
+
+
