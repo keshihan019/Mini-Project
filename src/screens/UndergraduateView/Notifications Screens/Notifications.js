@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   scrollview: {
     backgroundColor: 'transparent',
     padding: 16,
+    marginTop:20
   },
   notification: {
     backgroundColor: '#fff',
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
     marginBottom: 16,
+    marginHorizontal:10
   },
   notificationContent: {
     flexDirection: 'row',
