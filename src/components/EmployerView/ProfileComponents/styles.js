@@ -72,6 +72,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  emptyText:{
+    color:'#222',
+    textAlign:'center',
+    paddingHorizontal:20
+  }
 });
 
 export default styles;
