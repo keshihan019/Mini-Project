@@ -1,7 +1,9 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, ImageBackground, Dimensions } from 'react-native';
 import React from 'react';
 import StatusofJobsApplied from './StatusofJobsApplied';
 import { useNavigation } from '@react-navigation/native';
+
+const { width } = Dimensions.get('window');
 
 const JobsApplied = () => {
   const navigation = useNavigation();
@@ -11,16 +13,25 @@ const JobsApplied = () => {
   };
 
   return (
-    <View style={styles.container}>
-      {/* <Image source={require('../../assets/images/All_set_to_go.png')} style={styles.illustration} /> */}
+    <ImageBackground
+      source={require('../../../assets/images/bg-1.png')}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.overlay}>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          <Image source={require('../../../assets/images/JobsAppliedBG.png')} style={styles.illustration} />
 
-      <Text style={styles.title}>You've Applied to Some Amazing Jobs!</Text>
-      <Text style={styles.subtitle}>Keep up the good work!</Text>
+          <Text style={styles.title}>You've Applied to Some Amazing Jobs!</Text>
+          <Text style={styles.subtitle}>Keep up the good work!</Text>
 
-      <TouchableOpacity onPress={handleSeeJobs}>
-        <Text style={styles.linkText}>See the jobs you have applied for</Text>
-      </TouchableOpacity>
-    </View>
+          <TouchableOpacity onPress={handleSeeJobs}>
+            <Text style={styles.linkText}>See the jobs you have applied for</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -29,12 +40,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+  },
+  content: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    padding: 250,
+    borderRadius: 10,
+    alignItems: 'center',
+    height:'100%'
+  },
+  backgroundImage: {
+    
+    flex: 1,
+    width: width,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: -1,
   },
   illustration: {
-    width: 200,
-    height: 200,
-    marginBottom: 80,
+    width: 300,
+    height: 300,
+    marginBottom: 20,
     marginTop: -160,
   },
   title: {
@@ -55,6 +80,10 @@ const styles = StyleSheet.create({
     color: '#019f99',
     textDecorationLine: 'underline',
   },
+  overlay:{
+    
+    
+  }
 });
 
 export default JobsApplied;

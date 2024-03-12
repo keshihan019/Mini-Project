@@ -11,7 +11,7 @@ const JobOpportunity = () => {
   }
 
   const handleCompanyInfo =() => {
-    navigation.navigate('CompanyProfile')
+    navigation.navigate('CompanyProfileView_UG')
   }
 
   return (

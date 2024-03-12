@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import AboutCompany  from '../../../components/EmployerView/ProfileComponents/AboutCompany';
-import ContactCompany from '../../../components/EmployerView/ProfileComponents/ContactCompany';
-import JobsCompany from '../../../components/EmployerView/ProfileComponents/JobsCompany';
+import AboutCompany_UGView from './ProfileComponents/AboutCompany_UGView';
+import ContactCompany_UGView from './ProfileComponents/ContactCompany_UGView';
+import JobsCompany_UGView from './ProfileComponents/JobsCompany_UGView';
 
 const Tab = createMaterialTopTabNavigator();
 
-const CompanyProfile = () => {
+const CompanyProfileView_UG = () => {
   return (
     <View style={styles.container}>
       {/* Cover Image */}
@@ -24,9 +24,9 @@ const CompanyProfile = () => {
           labelStyle: styles.tab,
           indicatorStyle: { backgroundColor: 'blue' }, // Customize indicator color
         }}>
-        <Tab.Screen name="About Us" component={AboutCompany} />
-        <Tab.Screen name="Jobs" component={JobsCompany} />
-        <Tab.Screen name="Contact Us" component={ContactCompany} />
+        <Tab.Screen name="About Us" component={AboutCompany_UGView} />
+        <Tab.Screen name="Jobs" component={JobsCompany_UGView} />
+        <Tab.Screen name="Contact Us" component={ContactCompany_UGView} />
       </Tab.Navigator>
     </View>
   );
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CompanyProfile;
+export default CompanyProfileView_UG;

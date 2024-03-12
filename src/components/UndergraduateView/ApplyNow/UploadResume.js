@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
 
 const UploadResume = () => {
   const [fileUri, setFileUri] = useState(null);
@@ -29,11 +30,17 @@ const UploadResume = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Upload Resume</Text>
+    <View style={styles.Resume_container}>
+      <Text style={styles.Resume_headingText}>Upload your resume</Text>
+      <Image
+        source={require('../../../assets/images/login.png')}
+        style={styles.Resume_image}
+        resizeMode="contain"
+      />
+      <Text style={styles.pageIndicator}>Step 1 out of 4</Text>
 
       {/* Button to pick document */}
-      <Button title="Pick Document" onPress={handlePickDocument} />
+      <Button title="Select my resume" onPress={handlePickDocument} />
 
       {/* Display selected document */}
       {fileUri && <Text style={styles.selectedFile}>Selected File: {fileUri}</Text>}
@@ -46,32 +53,6 @@ const UploadResume = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  selectedFile: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  submitButton: {
-    backgroundColor: '#0275d8',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-  },
-  submitButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-});
+
 
 export default UploadResume;
