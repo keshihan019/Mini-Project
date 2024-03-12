@@ -3,7 +3,7 @@ import { View, Text, Linking, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 
-const ContactCompany = () => {
+const ContactCompany_UGView = () => {
   // Company contact information
   const companyEmail = 'info@microsoft.com';
   const companyAddress = 'One Microsoft Way, Redmond, WA 98052-6399, USA';
@@ -61,4 +61,4 @@ const ContactCompany = () => {
 
 
 
-export default ContactCompany;
+export default ContactCompany_UGView;

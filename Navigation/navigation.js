@@ -20,6 +20,7 @@ import { getAuthToken } from '../src/authStorage/authStorage.js';
 
 import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, 
 NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,UploadResume,Experience,SuccessfullyApplied} from '../src/screens/UndergraduateView/index.js'
+import CompanyProfileView_UG from '../src/screens/UndergraduateView/CompanyView/CompanyProfileView_UG.js';
 
 const Stack = createStackNavigator();
 
@@ -111,6 +112,7 @@ const MainStack = () => {
       <Stack.Screen name="UploadResume" component={UploadResume} options={{headerShown: false}}/>
       <Stack.Screen name="Experience" component={Experience} options={{headerShown: false}}/>
       <Stack.Screen name="Success Screen" component={SuccessfullyApplied} options={{headerShown: false}}/>
+      <Stack.Screen name="CompanyProfileView_UG" component={CompanyProfileView_UG} options={{headerShown: false}}/>
       {/* Notifications Screens */}
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="EmptyNotifications" component={EmptyNotifications} />
