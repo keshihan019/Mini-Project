@@ -1,6 +1,6 @@
-// Create a component for each tab's content
 import React from 'react';
-import { View, Text, FlatList, Button } from 'react-native';
+import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
+import styles from './styles'; // Import the provided styles
 
 const JobsList = ({ data }) => {
   return (
@@ -8,13 +8,16 @@ const JobsList = ({ data }) => {
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
-          <View>
-            <Text>{item.title}</Text>
-            <Text>{item.company}</Text>
-            <Text>{item.appliedDate}</Text>
+        <View style={styles.container}>
+          <View style={styles.jobCard}>
+            <View style={styles.titleContainer}>
+              <Text style={styles.jobTitle}>{item.title}</Text>
+              <Text>{item.company}</Text>
+              <Text>{item.appliedDate}</Text>
+            </View>
+            {/* Move the Button outside the titleContainer */}
+            <Button title="See More" onPress={() => { /* handle See More button click */ }} />
           </View>
-          <Button title="See More" onPress={() => { /* handle See More button click */ }} />
         </View>
       )}
     />
