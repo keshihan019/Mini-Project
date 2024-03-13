@@ -7,6 +7,7 @@ import { JobsApplied } from '../../src/screens/UndergraduateView/index';
 import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
 import Notifications from '../../src/screens/UndergraduateView/Notifications Screens/Notifications'
 import CompanyProfile from '../../src/screens/EmployerView/Profile/CompanyProfile';
+import Dashboard from '../../src/screens/EmployerView/ApplicationsReceived/ApplicationsReceived';
 
 ///Icons imported for the bottom Navbar
 import NotificationsIcon from '../../src/assets/icons/notification.png';
@@ -61,8 +62,8 @@ const EmployerTabs = () => {
         }}
       />
       <Tab.Screen
-        name="JobsApplied"
-        component={JobsApplied}
+        name="Dashboard"
+        component={Dashboard}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>
