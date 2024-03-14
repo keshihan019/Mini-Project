@@ -22,6 +22,13 @@ import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions,
 NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,UploadResume,Experience,SuccessfullyApplied} from '../src/screens/UndergraduateView/index.js'
 import CompanyProfileView_UG from '../src/screens/UndergraduateView/CompanyView/CompanyProfileView_UG.js';
 
+
+
+///EMP_VIEW -- Screens 
+
+import CreateJob from '../src/components/EmployerView/CreateJob/CreateJob.js';
+import JobPreview from '../src/components/EmployerView/CreateJob/JobPreview.js';
+
 const Stack = createStackNavigator();
 
 export default function Navigation({ navigation }) {
@@ -116,6 +123,13 @@ const MainStack = () => {
       {/* Notifications Screens */}
       <Stack.Screen name="Notifications" component={Notifications} />
       <Stack.Screen name="EmptyNotifications" component={EmptyNotifications} />
+
+
+      {/* EmployerView Screens */}
+      <Stack.Screen name="CreateJob" component={CreateJob} options={{headerShown: false}}/>
+      <Stack.Screen name="JobPreview" component={JobPreview} options={{headerShown: false}}/>
+
+
     </Stack.Navigator>
   );
 }

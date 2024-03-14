@@ -1,60 +1,106 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import PlusIcon from '../../../assets/icons/add.png';
-import CompanyOverview from '../../../components/EmployerView/CompanyOverview';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { useNavigation } from '@react-navigation/native';
 
-export class EmployerHome extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Employer Dashboard</Text>
-        </View>
-        <CompanyOverview/>
-        {/* Floating Plus Button */}
-        <TouchableOpacity style={styles.floatingButton}>
-          <Image source={PlusIcon} style={styles.plusIcon} />
-        </TouchableOpacity>
+
+const EmployerHome = () => {
+  const [totalApplicants, setTotalApplicants] = useState(200);
+  const [acceptedApplicants, setAcceptedApplicants] = useState(90);
+  const [rejectedApplicants, setRejectedApplicants] = useState(50);
+  const [totalJobsCreated, setTotalJobsCreated] = useState(89);
+
+  const navigation = useNavigation();
+
+  const handleCreateJob = () => {
+    navigation.navigate('CreateJob');
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.gridContainer}>
+        <Card
+          style={styles.totalCard} // Custom style for Total Applicants card
+          title="Total Applicants"
+          value={totalApplicants}
+          setValue={setTotalApplicants}
+        />
+        <Card
+          style={styles.acceptedCard} // Custom style for Accepted Applicants card
+          title="Accepted"
+          value={acceptedApplicants}
+          setValue={setAcceptedApplicants}
+        />
+        <Card
+          style={styles.rejectedCard} // Custom style for Rejected Applicants card
+          title="Rejected"
+          value={rejectedApplicants}
+          setValue={setRejectedApplicants}
+        />
+        <Card
+          style={styles.createdCard} // Custom style for Total Jobs Created card
+          title="Jobs Created"
+          value={totalJobsCreated}
+          setValue={setTotalJobsCreated}
+        />
       </View>
-    );
-  }
-}
+      
+      <TouchableOpacity style={styles.floatingButton} onPress={handleCreateJob}>
+        <Image source={PlusIcon} style={styles.plusIcon} />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const Card = ({ title, value, setValue, style }) => {
+  return (
+    <View style={[styles.card, style]}>
+      <Text style={styles.cardTitle}>{title}</Text>
+      <AnimatedCircularProgress
+        size={50}
+        width={3}
+        fill={value}
+        tintColor="#00e0ff"
+        backgroundColor="#ffe">
+        {fill => (
+          <Text style={styles.innerText}>{fill.toFixed(0)}</Text> 
+        )}
+      </AnimatedCircularProgress>
+    </View>
+  );
+};
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    position: 'relative', // Required for absolute positioning inside
+    position: 'relative',
+    padding: 10,
   },
-  header: {
-    backgroundColor: '#3498db',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
-    alignItems: 'center',
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
-  headerText: {
-    fontSize: 24,
-    color: '#fff',
-  },
-  companyInfo: {
-    flex: 1,
+  card: {
+    width: '48%', // Adjust according to your preference
+    height: 200, // Adjust according to your preference
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    elevation: 3,
+    marginBottom: 20,
   },
-  companyName: {
-    fontSize: 28,
+  cardTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  companyDescription: {
-    fontSize: 16,
+    marginBottom: 5,
+    color: '#000',
     textAlign: 'center',
-    marginBottom: 10,
-  },
-  companyLocation: {
-    fontSize: 16,
-    color: '#666',
   },
   floatingButton: {
     width: 60,
@@ -66,12 +112,32 @@ const styles = StyleSheet.create({
     right: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 3, // Add some shadow for Android
+    elevation: 3,
   },
   plusIcon: {
-    width: 30, // Adjust width to decrease size
-    height: 30, // Adjust height to decrease size
-    tintColor: '#fff', // Optional: Change color of the icon
+    width: 30,
+    height: 30,
+    tintColor: '#fff',
+  },
+  innerText: {
+    color: 'black',
+  },
+  // Custom styles for each card
+  totalCard: {
+    borderColor: '#000', 
+    borderWidth:2// Border color becomes background color
+  },
+  acceptedCard: {
+    borderColor: 'green',
+    borderWidth:2 // Border color becomes background color
+  },
+  rejectedCard: {
+    borderColor: 'red',
+    borderWidth:2 // Border color becomes background color
+  },
+  createdCard: {
+    borderColor: 'blue',
+    borderWidth:2 // Border color becomes background color
   },
 });
 
