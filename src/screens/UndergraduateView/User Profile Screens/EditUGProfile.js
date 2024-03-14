@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
+import React, { useState,useEffect } from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView, FlatList,Alert } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import 'firebase/firestore';
+import {firebase} from '../../../firebase/config'
+
+
 
 const EditUGProfile = ({ route }) => {
   const [firstName, setFirstName] = useState('');
@@ -13,14 +17,116 @@ const EditUGProfile = ({ route }) => {
   const [university, setUniversity] = useState('');
   const [qualifications, setQualifications] = useState([]);
   const [experience, setExperience] = useState([]);
+  const [validationErrors, setValidationErrors] = useState({});
+
 
   const navigation = useNavigation();
 
-  const handleSubmit = () => {
-    if (!firstName || !lastName || !email || !phone || !address) {
-      alert('Please fill in all required fields');
-      return;
+  const validateForm = () => {
+    const errors = {};
+
+    if (!firstName) {
+      errors.firstName = 'First Name is required';
     }
+    if (!lastName) {
+      errors.lastName = 'Last Name is required';
+    }
+    if (!email) {
+      errors.email = 'Email is required';
+    }
+    if (!phone) {
+      errors.phone = 'Phone No. is required';
+    }
+    if (!address) {
+      errors.address = 'Address is required';
+    }
+    if (!university) {
+      errors.university = 'University is required';
+    }
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  useEffect(() => {
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      const usersRef = firebase.firestore().collection('users');
+      const userProfileRef = firebase.firestore().collection('UsersProfile').doc(currentUser.uid);
+
+      Promise.all([
+        usersRef.doc(currentUser.uid).get(),
+        userProfileRef.get()
+       
+      ])
+      .then(([userDoc, profileDoc]) => {
+        if (userDoc.exists) {
+          const userData = userDoc.data();
+          setEmail(userData.email);
+          setFirstName(userData.firstName);
+          setLastName(userData.lastName);
+         
+        }
+        if (profileDoc.exists) {
+          const profileData = profileDoc.data();
+          setFirstName(profileData.firstName);
+          setLastName(profileData.lastName);
+          setPhone(profileData.phone);
+          setAddress(profileData.address);
+          setUniversity(profileData.university);
+          setQualifications(profileData.qualifications || []);
+          setExperience(profileData.experience || []);
+        }
+       
+      })
+      .catch((error) => {
+        console.log('Error fetching data:', error);
+      });
+    }
+  }, []);
+
+  const handleSubmit = async () => {
+    const formIsValid = validateForm();
+
+    if (formIsValid) {
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(phone)) {
+        Alert.alert('Invalid Phone No.', 'Please enter a valid phone number', [{ text: 'OK' }]);
+        return;
+      }
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      const userProfileRef = firebase.firestore().collection('UsersProfile').doc(currentUser.uid);
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+        university,
+        qualifications,
+        experience,
+      };
+      
+      await userProfileRef.set(userData, { merge: true });
+      Alert.alert('Success', 'Profile updated successfully');
+
+      try {
+        const userDoc = await firebase.firestore().collection('users').doc(currentUser.uid).get();
+        const userData = userDoc.data();
+        
+        if (userData && userData.role) {
+          await userProfileRef.set({ role: userData.role }, { merge: true });
+        }
+      } catch (error) {
+        console.error('Error fetching and storing user role:', error);
+      }
+      
+      navigation.navigate('Profile');
+    } else {
+      Alert.alert('Error', 'User not logged in');
+    }
+    
     
     route.params.onSave({
       firstName,
@@ -33,17 +139,46 @@ const EditUGProfile = ({ route }) => {
       experience
     });
     
-    navigation.goBack();
+    navigation.navigate('Profile');
+  }
+  else {
+    Alert.alert('Error', 'Please fill all the required fields');
+  }
+  };
+  
+  const addQualification = async() => {
+    const newQualifications = [...qualifications];
+    const qualification = newQualifications[index];
+    if (qualification.name && qualification.duration && qualification.institution) {
+      // Update qualifications in state
+      setQualifications(newQualifications);
+  
+      // Save qualifications to Firestore
+      const currentUser = firebase.auth().currentUser;
+      if (currentUser) {
+        const userProfileRef = firebase.firestore().collection('UsersProfile').doc(currentUser.uid);
+        await userProfileRef.set({
+          qualifications: newQualifications,
+        }, { merge: true });
+      }
+      setShowAddQualification(false);
+    } else {
+      Alert.alert('Error', 'Please fill all fields before saving.');
+    }
   };
 
-  const addQualification = () => {
-    setQualifications([...qualifications, { name: '', duration: '', institution: '' }]);
-  };
-
-  const deleteQualification = (index) => {
+  const deleteQualification = async (index) => {
     const newQualifications = [...qualifications];
     newQualifications.splice(index, 1);
     setQualifications(newQualifications);
+  
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      const userProfileRef = firebase.firestore().collection('UsersProfile').doc(currentUser.uid);
+      await userProfileRef.set({
+        qualifications: newQualifications,
+      }, { merge: true });
+    }
   };
 
   const updateQualification = (index, data) => {
@@ -52,14 +187,38 @@ const EditUGProfile = ({ route }) => {
     setQualifications(newQualifications);
   };
 
-  const addExperience = () => {
-    setExperience([...experience, { name: '', duration: '', organization: '' }]);
+  const addExperience = async () => {
+    const newExperience = [...experience];
+    const exp = newExperience[index];
+    if (exp.name && exp.duration && exp.organization) {
+      // Update experience in state
+      setExperience(newExperience);
+  
+      // Save experience to Firestore
+      const currentUser = firebase.auth().currentUser;
+      if (currentUser) {
+        const userProfileRef = firebase.firestore().collection('UsersProfile').doc(currentUser.uid);
+        await userProfileRef.set({
+          experience: newExperience,
+        }, { merge: true });
+      }
+    } else {
+      Alert.alert('Error', 'Please fill all fields before saving.');
+    }
   };
 
-  const deleteExperience = (index) => {
+  const deleteExperience = async (index) => {
     const newExperience = [...experience];
     newExperience.splice(index, 1);
     setExperience(newExperience);
+  
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      const userProfileRef = firebase.firestore().collection('UsersProfile').doc(currentUser.uid);
+      await userProfileRef.set({
+        experience: newExperience,
+      }, { merge: true });
+    }
   };
 
   const updateExperience = (index, data) => {
@@ -69,7 +228,6 @@ const EditUGProfile = ({ route }) => {
   };
 
   const renderQualificationItem = ({ item, index }) => (
-    
     <View style={styles.qualificationItem}>
       <TextInput
         placeholder="Qualification Name"
@@ -89,13 +247,15 @@ const EditUGProfile = ({ route }) => {
         value={item.institution}
         onChangeText={(text) => updateQualification(index, { ...item, institution: text })}
       />
+      <TouchableOpacity onPress={() => saveQualification(index)}>
+        <Text style={styles.okButton}>Ok</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => deleteQualification(index)}>
         <Text style={styles.deleteButton}>Delete</Text>
       </TouchableOpacity>
     </View>
-    
   );
-
+  
   const renderExperienceItem = ({ item, index }) => (
     <View style={styles.qualificationItem}>
       <TextInput
@@ -116,11 +276,15 @@ const EditUGProfile = ({ route }) => {
         value={item.organization}
         onChangeText={(text) => updateExperience(index, { ...item, organization: text })}
       />
+      <TouchableOpacity onPress={() => saveExperience(index)}>
+        <Text style={styles.okButton}>Ok</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => deleteExperience(index)}>
         <Text style={styles.deleteButton}>Delete</Text>
       </TouchableOpacity>
     </View>
   );
+
 
   return (
     <SafeAreaView style={styles.scrollContainer}>
@@ -137,6 +301,7 @@ const EditUGProfile = ({ route }) => {
             onChangeText={text => setFirstName(text)}
           />
         </View>
+        
 
         <View style={styles.action}>
           <FontAwesome name='user-o' size={20} />
@@ -149,7 +314,8 @@ const EditUGProfile = ({ route }) => {
             onChangeText={text => setLastName(text)}
           />
         </View>
-
+        
+        
         <View style={styles.action}>
           <FontAwesome name='envelope' size={20} />
           <TextInput
@@ -160,9 +326,11 @@ const EditUGProfile = ({ route }) => {
             style={styles.textInput}
             value={email}
             onChangeText={text => setEmail(text)}
+            editable={false}
           />
         </View>
-
+        
+        
         <View style={styles.action}>
           <FontAwesome name='phone' size={20} />
           <TextInput
@@ -175,7 +343,8 @@ const EditUGProfile = ({ route }) => {
             onChangeText={text => setPhone(text)}
           />
         </View>
-
+        
+        
         <View style={styles.action}>
           <FontAwesome name='globe' size={20} />
           <TextInput
@@ -187,6 +356,7 @@ const EditUGProfile = ({ route }) => {
             onChangeText={text => setAddress(text)}
           />
         </View>
+        
 
         <View style={styles.action}>
           <FontAwesome name='globe' size={20} />
@@ -199,6 +369,7 @@ const EditUGProfile = ({ route }) => {
             onChangeText={text => setUniversity(text)}
           />
         </View>
+        
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Academic Qualifications</Text>
@@ -211,6 +382,7 @@ const EditUGProfile = ({ route }) => {
             <Text>Add Qualification</Text>
           </TouchableOpacity>
         </View>
+
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Work Experience</Text>

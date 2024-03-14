@@ -139,6 +139,14 @@ const styles = StyleSheet.create({
         color:'black',
         paddingLeft:15
       },
+      okButton: {
+        marginTop: 10,
+        backgroundColor: '#019F99',
+        padding: 10,
+        color:'#ff9',
+        borderRadius: 5,
+        alignSelf: 'center',
+      },
       deleteButton: {
         color: 'white',
         marginLeft: 10,
@@ -156,6 +164,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
       },
+      
   });
 
 
