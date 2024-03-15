@@ -33,6 +33,13 @@ const styles = StyleSheet.create({
       height: 25,
       tintColor: '#019F99',
       marginLeft: 20,
+      
+    },
+    profileImage:{
+      alignSelf:'center',
+      height:100,
+      width:100,
+      
     },
     editProfileButton: {
       flexDirection: 'row',
@@ -67,6 +74,12 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 15,
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,
+      marginVertical:10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      marginHorizontal:20
     },
     skillTitle: {
       backgroundColor: 'black',
@@ -90,15 +103,28 @@ const styles = StyleSheet.create({
       },     
     //    Edit Profile
       container: {
-        flexGrow: 1,
-        margin: 20,
+        flexGrow: 2,
+        
       },
       commandButton: {
         padding: 15,
         borderRadius: 10,
-        backgroundColor: '#FF6347',
+        backgroundColor: '#019F99',
         alignItems: 'center',
         marginTop: 10,
+        marginTop:50
+      },
+      background: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+      },
+      
+      overlay: {
+        width: '100%',
+        height: '100%',
+        flex: 1,
+        backgroundColor: 'rgba(255,255,255,0.9)',
       },
       action: {
         flexDirection: 'row',
@@ -118,6 +144,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
       },
       sectionTitle: {
+        marginLeft:20,
         marginTop:20,
         fontSize: 16,
         fontWeight: 'bold',
@@ -125,11 +152,36 @@ const styles = StyleSheet.create({
         color:'black'
       },
       qualificationItem: {
+        marginHorizontal:20,
         flexDirection: 'column',
         marginBottom: 10,
-        backgroundColor:'#222',
-        borderRadius:15
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
       },
+      experienceItem: {
+        marginHorizontal:20,
+        flexDirection: 'column',
+        marginBottom: 10,
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+      },
+      
       input: {
         flex: 1,
         borderBottomWidth: 1,
@@ -141,30 +193,71 @@ const styles = StyleSheet.create({
       },
       okButton: {
         marginTop: 10,
-        backgroundColor: '#019F99',
+        backgroundColor: '#fff',
         padding: 10,
-        color:'#ff9',
+        color:'#019F99',
         borderRadius: 5,
         alignSelf: 'center',
+        shadowColor: '#019F99',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        marginLeft: 10,
+        marginBottom:10
       },
       deleteButton: {
-        color: 'white',
-        marginLeft: 10,
-        alignSelf: 'center',
-        backgroundColor:'#f00',
+        marginTop: 10,
+        backgroundColor: '#fff',
         padding: 10,
-        borderRadius:15,
-        margin:5
+        color:'#f00',
+        borderRadius: 5,
+        alignSelf: 'center',
+        shadowColor: '#f00',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        marginLeft: 10,
+        marginBottom:10
+      },
+      buttonContainer: {
+        flexDirection: 'row', // Align buttons horizontally
+        alignItems: 'center', // Center items vertically
+        justifyContent: 'center', // Center align horizontally
       },
       addButton: {
         marginTop: 10,
         backgroundColor: '#019F99',
         padding: 10,
-        color:'#ff9',
+        color:'#fff',
         borderRadius: 5,
         alignItems: 'center',
+        marginHorizontal:20
       },
-      
+      editQualificationsButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30,
+        backgroundColor: '#019F99',
+        width: 100,
+        paddingVertical: 10,
+        paddingRight:10,
+        borderRadius: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        alignSelf: 'center',
+        marginBottom:20
+      },
   });
 
 

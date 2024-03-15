@@ -18,7 +18,7 @@ const Experience = () => {
         style={styles.Experience_image}
         resizeMode="contain"
       />
-      <Text style={styles.pageIndicator}>Step 2 out of 4</Text>
+      <Text style={styles.pageIndicator}>Step 2 out of 3</Text>
       
       {/* Email Address Input */}
       <TextInput
