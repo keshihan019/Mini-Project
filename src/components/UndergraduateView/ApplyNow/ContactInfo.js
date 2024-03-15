@@ -18,7 +18,7 @@ const ContactInfo = () => {
         style={styles.ContactInfo_image}
         resizeMode="contain"
       />
-      <Text style={styles.pageIndicator}>Step 1 out of 4</Text>
+      <Text style={styles.pageIndicator}>Step 1 out of 3</Text>
       
       {/* Email Address Input */}
       <TextInput

@@ -10,30 +10,41 @@ const EditWorkExp = () => {
     <View style={styles.experienceItem}>
       <TextInput
         placeholder="Experience Name"
+        placeholderTextColor="#000"
         style={styles.input}
         value={item.name}
         onChangeText={(text) => updateExperience(index, { ...item, name: text })}
       />
       <TextInput
         placeholder="Duration"
+        placeholderTextColor="#000"
         style={styles.input}
         value={item.duration}
         onChangeText={(text) => updateExperience(index, { ...item, duration: text })}
       />
       <TextInput
         placeholder="Organization"
+        placeholderTextColor="#000"
         style={styles.input}
         value={item.organization}
         onChangeText={(text) => updateExperience(index, { ...item, organization: text })}
       />
-      <TouchableOpacity onPress={() => saveExperience(index)}>
-        <Text style={styles.okButton}>Ok</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => deleteExperience(index)}>
-        <Text style={styles.deleteButton}>Delete</Text>
-      </TouchableOpacity>
+      
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => saveExperience(index)}>
+          <Text style={styles.okButton}>Add</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => deleteExperience(index)}>
+          <Text style={styles.deleteButton}>Delete</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
+  
+  const handleSaveWorkExperience = () => {
+  
+  }
 
   const addExperience = () => {
     const newExperience = [...experience, { name: '', duration: '', organization: '' }];
@@ -78,7 +89,10 @@ const EditWorkExp = () => {
         keyExtractor={(item, index) => index.toString()}
       />
       <TouchableOpacity style={styles.addButton} onPress={addExperience}>
-        <Text>Add Experience</Text>
+        <Text style={{color:'#fff'}}>Add Experience</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.addButton} onPress={handleSaveWorkExperience}>
+        <Text style={{color:'#fff'}}>Save</Text>
       </TouchableOpacity>
     </View>
   );

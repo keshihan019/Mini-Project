@@ -1,17 +1,18 @@
-// LoginScreen.js
-
-import React, { useState } from 'react';
-import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, Text, TextInput, TouchableOpacity, View, Alert, ActivityIndicator } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
 import { storeAuthToken } from '../../authStorage/authStorage';
 
-
-
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false); // State to track loading status
+
+    useEffect(() => {
+        setLoading(false); // Reset loading state when component re-renders
+    }, []);
 
     const onFooterLinkPress = () => {
         navigation.navigate('Registration');
@@ -22,6 +23,8 @@ export default function LoginScreen({ navigation }) {
             Alert.alert('Error', 'Email and password cannot be empty.');
             return;
         }
+
+        setLoading(true); // Start loading animation
 
         firebase
             .auth()
@@ -34,6 +37,7 @@ export default function LoginScreen({ navigation }) {
                     .get()
                     .then((firestoreDocument) => {
                         if (!firestoreDocument.exists) {
+                            setLoading(false); // Stop loading animation
                             Alert.alert("Error", "User does not exist anymore.");
                             return;
                         }
@@ -51,21 +55,26 @@ export default function LoginScreen({ navigation }) {
                             } else if (role === 'Employer') {
                                 navigation.navigate('EmployerHomeScreen');
                             } else {
+                                setLoading(false); // Stop loading animation
                                 Alert.alert('Error', 'Invalid user type');
                             }
                         })
                         .catch((error) => {
+                            setLoading(false); // Stop loading animation
                             Alert.alert('Error', 'Failed to get authentication token: ' + error.message);
                         });
                 })
                 .catch((error) => {
+                    setLoading(false); // Stop loading animation
                     Alert.alert('Error', error.message);
                 });
         })
         .catch((error) => {
+            setLoading(false); // Stop loading animation
             Alert.alert('Error', 'Invalid email or password. Please try again.');
         });
-};
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.heading}>Welcome back!</Text>
@@ -101,6 +110,12 @@ export default function LoginScreen({ navigation }) {
                 <View style={styles.footerView}>
                     <Text style={styles.footerText}>Don't have an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text></Text>
                 </View>
+                {/* Loader animation */}
+                {loading && (
+                    <View style={styles.loadingContainer}>
+                        <ActivityIndicator size="large" color="#019F99" />
+                    </View>
+                )}
             </KeyboardAwareScrollView>
         </View>
     );

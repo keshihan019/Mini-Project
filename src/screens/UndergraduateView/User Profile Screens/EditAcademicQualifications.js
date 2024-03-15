@@ -6,6 +6,10 @@ import { firebase } from '../../../firebase/config';
 const EditAcademicQualifications = () => {
   const [qualifications, setQualifications] = useState([{ name: '', duration: '', institution: '' }]);
 
+const handleSaveAcademicQualification = () => {
+  
+}
+
   const renderQualificationItem = ({ item, index }) => (
     <View style={styles.qualificationItem}>
       <TextInput
@@ -83,7 +87,11 @@ const EditAcademicQualifications = () => {
         keyExtractor={(item, index) => index.toString()}
       />
       <TouchableOpacity style={styles.addButton} onPress={addQualification}>
-        <Text>Add Qualification</Text>
+        <Text style={{color:'#fff'}}>Add Qualification</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.addButton} onPress={handleSaveAcademicQualification}>
+        <Text style={{color:'#fff'}}>Save</Text>
       </TouchableOpacity>
     </View>
   );

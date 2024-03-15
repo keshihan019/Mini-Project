@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import EditUGProfile from './EditUGProfile';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Dimensions,ImageBackground, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { Avatar, Caption, Title } from 'react-native-paper';
 import styles from './styles';
-
+import backgroundImage from '../../../assets/images/bg-1.png';
 import EditProfileIcon from '../../../assets/icons/Editprofile.png';
 import AddressIcon from '../../../assets/icons/UGprofile/Address.png'
 import EmailIcon from '../../../assets/icons/UGprofile/email.png'
@@ -22,6 +22,7 @@ const Profile = () => {
   const [experience, setExperience] = useState([]);
 
   const navigation = useNavigation();
+  const { width } = Dimensions.get('window');
 
   const handleEditProfile = () => {
     navigation.navigate('EditUGProfile', {
@@ -52,9 +53,12 @@ const Profile = () => {
   };
 
   return (
+    <ImageBackground source={backgroundImage} style={styles.background} resizeMode="cover">
     <SafeAreaView style={styles.container}>
+      
+      <View style={styles.overlay}>
       <View style={styles.userInfoSection}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop:20 }}>
           <Avatar.Image 
             size={80} 
             source={{ uri: profilePicture ? profilePicture : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"}}
@@ -157,7 +161,10 @@ const Profile = () => {
             </TouchableOpacity>
         </View>
       </View>
+      </View>
+ 
     </SafeAreaView>
+    </ImageBackground>
   );
 };
 
