@@ -57,14 +57,28 @@ export default StyleSheet.create({
         textAlign: 'right',
       },
       nextbtn: {
-        width: 160,
+        
+        paddingHorizontal: 15,
+        margin:2,
         height: 60,
-        backgroundColor: '#000',
-        alignSelf: 'flex-end', // or marginLeft: 'auto'
-        justifyContent: 'center',
+        borderRadius: 20,
+        backgroundColor: '#019F99',
+        borderWidth: 1.5,
+        borderColor: '#fff',
         alignItems: 'center',
-        borderRadius:15,
-        flexDirection:'row'
+        justifyContent: 'center',
+      },
+      clsbtn: {
+        
+        paddingHorizontal: 15,
+        margin:2,
+        height: 60,
+        borderRadius: 20,
+        backgroundColor: '#019F99',
+        borderWidth: 1.5,
+        borderColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
       },
 
       logo: {
