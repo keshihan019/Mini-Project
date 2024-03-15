@@ -7,6 +7,7 @@ export default function OptionsSelection({ navigation }) {
   const [selectedRole, setSelectedRole] = useState('');
   const [userRole, setUserRole] = useState(null);
   const [userName, setUserName] = useState('');
+  const [roleCleared, setRoleCleared] = useState(false);
   const userID = firebase.auth().currentUser.uid;
 
   useEffect(() => {
@@ -27,10 +28,10 @@ export default function OptionsSelection({ navigation }) {
   }, [userID]);
 
   const handleRolePress = async (role) => {
-    if (userRole) {
+
+    if (userRole && !roleCleared) {
       return;
     }
-
     setSelectedRole(role);
 
     try {
@@ -38,10 +39,16 @@ export default function OptionsSelection({ navigation }) {
       const userDocRef = firebase.firestore().collection('users').doc(userID);
       await userDocRef.update({ role });
       setUserRole(role);
+      setRoleCleared(false);
     } catch (error) {
       console.error('Error updating user role:', error);
     }
   };
+  const onClearPress = async () => {
+  
+    setSelectedRole('');
+    setRoleCleared(true);
+  }
 
   const onNextPress = () => {
    
@@ -115,6 +122,15 @@ export default function OptionsSelection({ navigation }) {
           <Text style={{ color: '#fff', fontSize: 20 }}>Next</Text>
         </TouchableOpacity>
       </View>
+
+      <View style={styles.clsbtn}>
+        <TouchableOpacity
+          style={{ flexDirection: 'row' }}
+          onPress={onClearPress}>
+          <Text style={{ color: '#fff', fontSize: 20 }}>Clear</Text>
+        </TouchableOpacity>
+
+    </View>
 
     </View>
   );

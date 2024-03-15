@@ -39,19 +39,22 @@ export default function LoginScreen({ navigation }) {
                         }
                         const user = firestoreDocument.data();
                         const role = user.role;
-
-                        const userAuthToken = response.user.getIdToken()
+                        const job = user.role_looking;
+                         response.user.getIdToken()
                         .then((token) => {
                             // Store the authentication token
                             storeAuthToken(token);
 
                             // Navigate based on role
-                            if (role === 'Undergraduate') {
-                                navigation.navigate('HomeScreen');
+                           if (role === 'Undergraduate') {
+                                
+                                    navigation.navigate('HomeScreen');
+                               
                             } else if (role === 'Employer') {
                                 navigation.navigate('EmployerHomeScreen');
-                            } else {
-                                Alert.alert('Error', 'Invalid user type');
+                                }
+                             else {
+                                navigation.navigate('OptionsSelection');
                             }
                         })
                         .catch((error) => {
