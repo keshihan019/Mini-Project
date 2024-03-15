@@ -31,6 +31,7 @@ import CompanyProfileView_UG from '../src/screens/UndergraduateView/CompanyView/
 
 import CreateJob from '../src/components/EmployerView/CreateJob/CreateJob.js';
 import JobPreview from '../src/components/EmployerView/CreateJob/JobPreview.js';
+import EmployerViewSettings from '../src/screens/EmployerView/Settings/EmployerViewSettings.js';
 
 const Stack = createStackNavigator();
 
@@ -135,7 +136,7 @@ const MainStack = () => {
       {/* EmployerView Screens */}
       <Stack.Screen name="CreateJob" component={CreateJob} options={{headerShown: false}}/>
       <Stack.Screen name="JobPreview" component={JobPreview} options={{headerShown: false}}/>
-
+      <Stack.Screen name="EmployerViewSettings" component={EmployerViewSettings} options={{headerShown: false}}/>
 
     </Stack.Navigator>
   );

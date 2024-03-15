@@ -23,7 +23,7 @@ import PrivacyPolicyIcon from '../../../assets/icons/SettingsIcons/privacy_polic
 import SoftwareVersionIcon from '../../../assets/icons/SettingsIcons/swVersionIcon.png'
 import DevInfoIcon from '../../../assets/icons/SettingsIcons/DeveloperInfoIcon.png'
 
-class EmployerViewSettings extends Component {
+class AllSettings extends Component {
   constructor(props) {
     super(props);
   }
@@ -192,4 +192,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EmployerViewSettings;
+export default AllSettings;

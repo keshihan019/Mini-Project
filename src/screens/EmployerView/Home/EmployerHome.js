@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image,Dimensions, ImageBackground } from 'react-native';
 import PlusIcon from '../../../assets/icons/add.png';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { useNavigation } from '@react-navigation/native';
+import backgroundImage from '../../../assets/images/bg-1.png';
+
+const { width } = Dimensions.get('window');
 
 
 const EmployerHome = () => {
@@ -18,6 +21,8 @@ const EmployerHome = () => {
   };
 
   return (
+    <ImageBackground source={backgroundImage} style={styles.background}>
+      <View style={styles.overlay}>
     <View style={styles.container}>
       <View style={styles.gridContainer}>
         <Card
@@ -50,6 +55,8 @@ const EmployerHome = () => {
         <Image source={PlusIcon} style={styles.plusIcon} />
       </TouchableOpacity>
     </View>
+    </View>
+    </ImageBackground>
   );
 };
 
@@ -61,7 +68,7 @@ const Card = ({ title, value, setValue, style }) => {
         size={50}
         width={3}
         fill={value}
-        tintColor="#00e0ff"
+        tintColor="#019F99"
         backgroundColor="#ffe">
         {fill => (
           <Text style={styles.innerText}>{fill.toFixed(0)}</Text> 
@@ -73,9 +80,16 @@ const Card = ({ title, value, setValue, style }) => {
 
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(255,255,255,0.9)',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     position: 'relative',
     padding: 10,
   },
@@ -106,7 +120,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#3498db',
+    backgroundColor: '#019F99',
     position: 'absolute',
     bottom: 80,
     right: 30,
