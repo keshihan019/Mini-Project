@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, TouchableOpacity, Image,Dimensions, ImageBackgr
 import PlusIcon from '../../../assets/icons/add.png';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
 import backgroundImage from '../../../assets/images/bg-1.png';
 
 const { width } = Dimensions.get('window');
-
 
 const EmployerHome = () => {
   const [totalApplicants, setTotalApplicants] = useState(200);
@@ -80,16 +80,9 @@ const Card = ({ title, value, setValue, style }) => {
 
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
-  overlay: {
-    flex: 1,
-    backgroundColor: 'rgba(255,255,255,0.9)',
-  },
   container: {
     flex: 1,
+    backgroundColor: '#fff',
     position: 'relative',
     padding: 10,
   },
@@ -120,7 +113,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#019F99',
+    backgroundColor: '#3498db',
     position: 'absolute',
     bottom: 80,
     right: 30,
