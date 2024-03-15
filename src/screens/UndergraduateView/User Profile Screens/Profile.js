@@ -35,6 +35,22 @@ const Profile = () => {
     });
   };
 
+  const handleEditQualifications = () => {
+    navigation.navigate('EditAcademicQualifications', {
+      onSave: (data) => {
+        // Update qualifications state with the edited data
+      },
+    });
+  };
+
+  const handleEditExperience = () => {
+    navigation.navigate('EditWorkExp', {
+      onSave: (data) => {
+        // Update experience state with the edited data
+      },
+    });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
@@ -102,6 +118,7 @@ const Profile = () => {
       <View style={styles.menuWrapper}>
         <View style={styles.skillBox}>
           <Text style={styles.skillTitle}>Academic Qualifications</Text>
+            
           {qualifications.length === 0 ? (
             <Text style={styles.emptyMessage}>Add your academic qualifications</Text>
           ) : (
@@ -110,9 +127,15 @@ const Profile = () => {
                 <Text>{qualification.name}</Text>
                 <Text>{qualification.duration}</Text>
                 <Text>{qualification.institution}</Text>
+                
               </View>
             ))
           )}
+
+          {/* Edit/Add Button */}
+            <TouchableOpacity style={styles.editQualificationsButton} onPress={handleEditQualifications}>
+              <Text style={styles.editProfileText}>Edit/Add</Text>
+            </TouchableOpacity>
         </View>
 
         <View style={styles.skillBox}>
@@ -128,6 +151,10 @@ const Profile = () => {
               </View>
             ))
           )}
+          {/* Edit/Add Button */}
+          <TouchableOpacity style={styles.editQualificationsButton} onPress={handleEditExperience}>
+              <Text style={styles.editProfileText}>Edit/Add</Text>
+            </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

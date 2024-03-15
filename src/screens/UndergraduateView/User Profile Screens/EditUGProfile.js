@@ -15,7 +15,7 @@ const EditUGProfile = ({ route }) => {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [university, setUniversity] = useState('');
-  const [qualifications, setQualifications] = useState([]);
+  
   const [experience, setExperience] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
 
@@ -371,17 +371,6 @@ const EditUGProfile = ({ route }) => {
         </View>
         
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Academic Qualifications</Text>
-          <FlatList
-            data={qualifications}
-            renderItem={renderQualificationItem}
-            keyExtractor={(item, index) => index.toString()}
-          />
-          <TouchableOpacity style={styles.addButton} onPress={addQualification}>
-            <Text>Add Qualification</Text>
-          </TouchableOpacity>
-        </View>
 
 
         <View style={styles.section}>

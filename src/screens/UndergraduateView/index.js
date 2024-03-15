@@ -20,6 +20,8 @@ import ContactInfo from "../../components/UndergraduateView/ApplyNow/ContactInfo
 import Experience from "../../components/UndergraduateView/ApplyNow/Experience";
 import UploadResume from "../../components/UndergraduateView/ApplyNow/UploadResume";
 import SuccessfullyApplied from "../../components/UndergraduateView/ApplyNow/SuccessfullyApplied";
+import EditAcademicQualifications from "./User Profile Screens/EditAcademicQualifications";
+import EditWorkExp from "./User Profile Screens/EditWorkExp";
 
 export {
     AccSettings,
@@ -43,5 +45,7 @@ export {
     ContactInfo,
     UploadResume,
     Experience,
-    SuccessfullyApplied
+    SuccessfullyApplied,
+    EditAcademicQualifications,
+    EditWorkExp
 }

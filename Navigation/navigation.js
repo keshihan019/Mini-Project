@@ -19,7 +19,10 @@ import { getAuthToken } from '../src/authStorage/authStorage.js';
 
 
 import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, 
-NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,UploadResume,Experience,SuccessfullyApplied} from '../src/screens/UndergraduateView/index.js'
+NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, 
+Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,
+JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,
+UploadResume,Experience,SuccessfullyApplied,EditWorkExp,EditAcademicQualifications} from '../src/screens/UndergraduateView/index.js'
 import CompanyProfileView_UG from '../src/screens/UndergraduateView/CompanyView/CompanyProfileView_UG.js';
 
 
@@ -106,9 +109,13 @@ const MainStack = () => {
       <Stack.Screen name="EditUGProfile" component={EditUGProfile} options={{ title: 'Edit Profile' }} />
 
 
-      {/* JobsApplied Screens */}
+      {/* Profile Screens */}
       <Stack.Screen name="JobSelection" component={JobSelection} />
       <Stack.Screen name="Status" component={Status} />
+
+      {/* JobsApplied Screens */}
+      <Stack.Screen name="EditAcademicQualifications" component={EditAcademicQualifications} />
+      <Stack.Screen name="EditWorkExp" component={EditWorkExp} />
 
       {/* Home Screens */}
       <Stack.Screen name="UG_Home" component={Home} options={{headerShown: false}}/>

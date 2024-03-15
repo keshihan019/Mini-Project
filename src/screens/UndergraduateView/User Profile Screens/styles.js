@@ -67,6 +67,11 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 15,
       borderBottomLeftRadius: 10,
       borderBottomRightRadius: 10,
+      marginVertical:10,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
     },
     skillTitle: {
       backgroundColor: 'black',
@@ -127,9 +132,18 @@ const styles = StyleSheet.create({
       qualificationItem: {
         flexDirection: 'column',
         marginBottom: 10,
-        backgroundColor:'#222',
-        borderRadius:15
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
       },
+      
       input: {
         flex: 1,
         borderBottomWidth: 1,
@@ -141,20 +155,43 @@ const styles = StyleSheet.create({
       },
       okButton: {
         marginTop: 10,
-        backgroundColor: '#019F99',
+        backgroundColor: '#fff',
         padding: 10,
-        color:'#ff9',
+        color:'#019F99',
         borderRadius: 5,
         alignSelf: 'center',
+        shadowColor: '#019F99',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        marginLeft: 10,
       },
       deleteButton: {
-        color: 'white',
+        color: '#f00',
         marginLeft: 10,
         alignSelf: 'center',
-        backgroundColor:'#f00',
+        backgroundColor:'#fff',
         padding: 10,
         borderRadius:15,
-        margin:5
+        margin:5,
+        shadowColor: '#f00',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        marginLeft: 10,
+      },
+      buttonContainer: {
+        flexDirection: 'row', // Align buttons horizontally
+        alignItems: 'center', // Center items vertically
+        justifyContent: 'center', // Center align horizontally
       },
       addButton: {
         marginTop: 10,
@@ -164,7 +201,23 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
       },
-      
+      editQualificationsButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30,
+        backgroundColor: '#019F99',
+        width: 100,
+        paddingVertical: 10,
+        paddingRight:10,
+        borderRadius: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        alignSelf: 'center',
+        marginBottom:20
+      },
   });
 
 
