@@ -1,33 +1,19 @@
 import React, { Component, useState } from 'react';
-import { Text, View, Switch } from 'react-native';
+import { Text, View, Switch, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 const AccSettingsData = [
   {
     id: '1',
-    name: 'Setting 1',
-    description: 'Description for Setting 1',
+    name: 'Show Profile Picture',
+    description: 'Enable visibility of profile picture',
   },
   {
     id: '2',
-    name: 'Setting 2',
-    description: 'Description for Setting 2',
+    name: 'Stay Logged In',
+    description: 'You will not sign out after exit',
   },
-  {
-    id: '3',
-    name: 'Setting 3',
-    description: 'Description for Setting 3',
-  },
-  {
-    id: '4',
-    name: 'Setting 4',
-    description: 'Description for Setting 4',
-  },
-  {
-    id: '5',
-    name: 'Setting 5',
-    description: 'Description for Setting 5',
-  },
+  
 ];
 
 export class AccSettings extends Component {
@@ -59,6 +45,11 @@ export class AccSettings extends Component {
     return (
       <View style={styles.container}>
         {AccSettingsData.map((setting) => this.renderSettingItem(setting))}
+        <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.SaveButton} onPress={this.handleSave}>
+          <Text style={styles.SaveButtonText}>Save</Text>
+        </TouchableOpacity>
+      </View>
       </View>
     );
   }

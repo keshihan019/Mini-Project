@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import styles from './styles';
 
 export class SoftwareVersion extends Component {
   render() {
@@ -7,28 +8,14 @@ export class SoftwareVersion extends Component {
     const appVersion = '1.1';
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Software Version</Text>
-        <Text style={styles.versionText}>{appVersion}</Text>
+      <View style={styles.SWversioncontainer}>
+        <Text style={styles.SWversiontitle}>Software Version</Text>
+        <Text style={styles.SWversionversionText}>{appVersion}</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 16,
-    color:'#000'
-  },
-  versionText: {
-    fontSize: 16,
-    color:'#000'
-  },
-});
+
 
 export default SoftwareVersion;

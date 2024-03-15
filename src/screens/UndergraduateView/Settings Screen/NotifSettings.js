@@ -1,32 +1,24 @@
 import React, { Component, useState } from 'react';
-import { Text, View, Switch, StyleSheet } from 'react-native';
+import { Text, View, Switch, TouchableOpacity } from 'react-native';
+import styles from './styles';
 
 const SampleNotificationSettingsData = [
   {
     id: '1',
-    name: 'Notification 1',
-    description: 'Description for Notification 1',
+    name: 'Recent Jobs',
+    description: 'Push notifications for recently added jobs',
   },
   {
     id: '2',
-    name: 'Notification 2',
-    description: 'Description for Notification 2',
+    name: 'Recommended Jobs',
+    description: 'Push notifications for recommended jobs',
   },
   {
     id: '3',
-    name: 'Notification 3',
-    description: 'Description for Notification 3',
+    name: 'Job Application Status',
+    description: 'Push notifications for application status',
   },
-  {
-    id: '4',
-    name: 'Notification 4',
-    description: 'Description for Notification 4',
-  },
-  {
-    id: '5',
-    name: 'Notification 5',
-    description: 'Description for Notification 5',
-  },
+
 ];
 
 export class NotifSettings extends Component {
@@ -41,52 +33,34 @@ export class NotifSettings extends Component {
 
   renderSettingItem(setting) {
     return (
-      <View key={setting.id} style={styles.settingItem}>
-        <View style={styles.settingInfo}>
-          <Text style={styles.settingName}>{setting.name}</Text>
-          <Text style={styles.settingDescription}>{setting.description}</Text>
+      <View key={setting.id} style={styles.NotifsettingItem}>
+        <View style={styles.NotifsettingInfo}>
+          <Text style={styles.NotifsettingName}>{setting.name}</Text>
+          <Text style={styles.NotifsettingDescription}>{setting.description}</Text>
         </View>
         <Switch
           value={this.state[setting.id]}
           onValueChange={(value) => this.setState({ [setting.id]: value })}
         />
+        
       </View>
     );
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.Notifcontainer}>
         {SampleNotificationSettingsData.map((setting) => this.renderSettingItem(setting))}
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.SaveButton} onPress={this.handleSave}>
+            <Text style={styles.SaveButtonText}>Save</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  settingInfo: {
-    flex: 1,
-    marginRight: 16,
-  },
-  settingName: {
-    color:'#000',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  settingDescription: {
-    fontSize: 14,
-    color: '#777',
-  },
-});
+
 
 export default NotifSettings;

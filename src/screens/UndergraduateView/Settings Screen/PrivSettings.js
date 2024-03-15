@@ -1,32 +1,24 @@
-import React, { Component, useState } from 'react';
-import { Text, View, Switch, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, Switch, StyleSheet, TouchableOpacity } from 'react-native';
+import styles from './styles';
 
 const SamplePrivacySettingsData = [
   {
     id: '1',
-    name: 'Privacy Setting 1',
-    description: 'Description for Privacy Setting 1',
+    name: 'Account Visibility',
+    description: 'Account is visible to all recruiters',
   },
   {
     id: '2',
-    name: 'Privacy Setting 2',
-    description: 'Description for Privacy Setting 2',
+    name: 'Accept Messages',
+    description: 'Any recruiter can text',
   },
   {
     id: '3',
-    name: 'Privacy Setting 3',
-    description: 'Description for Privacy Setting 3',
+    name: 'Notify about Account Viewers',
+    description: 'Notify me each time, when someone views my profile',
   },
-  {
-    id: '4',
-    name: 'Privacy Setting 4',
-    description: 'Description for Privacy Setting 4',
-  },
-  {
-    id: '5',
-    name: 'Privacy Setting 5',
-    description: 'Description for Privacy Setting 5',
-  },
+  
 ];
 
 export class PrivSettings extends Component {
@@ -39,12 +31,17 @@ export class PrivSettings extends Component {
     });
   }
 
+  handleSave = () => {
+    // Implement your save logic here
+    console.log('Settings saved:', this.state);
+  };
+
   renderSettingItem(setting) {
     return (
-      <View key={setting.id} style={styles.settingItem}>
-        <View style={styles.settingInfo}>
-          <Text style={styles.settingName}>{setting.name}</Text>
-          <Text style={styles.settingDescription}>{setting.description}</Text>
+      <View key={setting.id} style={styles.PrivacysettingItem}>
+        <View style={styles.PrivacysettingInfo}>
+          <Text style={styles.PrivacysettingName}>{setting.name}</Text>
+          <Text style={styles.PrivacysettingDescription}>{setting.description}</Text>
         </View>
         <Switch
           value={this.state[setting.id]}
@@ -56,36 +53,28 @@ export class PrivSettings extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.Privacycontainer}>
         {SamplePrivacySettingsData.map((setting) => this.renderSettingItem(setting))}
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.SaveButton} onPress={this.handleSave}>
+            <Text style={styles.SaveButtonText}>Save</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+const localStyles = StyleSheet.create({
+  SaveButton: {
+    position: 'absolute',
+    bottom: 20,
+    width: '100%',
     alignItems: 'center',
-    marginBottom: 16,
   },
-  settingInfo: {
-    flex: 1,
-    marginRight: 16,
-  },
-  settingName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
-    color:'#000'
-  },
-  settingDescription: {
-    fontSize: 14,
-    color: '#777',
+  SaveButtonText: {
+    fontSize: 18,
+    color: 'white',
   },
 });
 

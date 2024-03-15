@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AccSettings from "./AccSettings";
 import NotifSettings from "./NotifSettings";
@@ -9,7 +9,19 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import SoftwareVersion from "./SoftwareVersion";
 import DeveloperInfo from "./DeveloperInfo";
 import FrequentlyAskedquestions from "./FrequentlyAskedQuestions";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import SettingsIcon from '../../../assets/icons/setting.png';
+
+
+//Icons
+
+import AccSettingsIcon from '../../../assets/icons/SettingsIcons/AccSettings_UG.png'
+import NotificationSettingsIcon from '../../../assets/icons/SettingsIcons/NotificationSettingsIcon.png'
+import PrivacySettingsIcon from '../../../assets/icons/SettingsIcons/Privacy_Settings.png'
+import FAQIcon from '../../../assets/icons/SettingsIcons/FAQIcon_UG.png'
+import TermsAndConditionsIcon from '../../../assets/icons/SettingsIcons/TermsAndConditions_UgIcon.png'
+import PrivacyPolicyIcon from '../../../assets/icons/SettingsIcons/privacy_policy_Icon.png'
+import SoftwareVersionIcon from '../../../assets/icons/SettingsIcons/swVersionIcon.png'
+import DevInfoIcon from '../../../assets/icons/SettingsIcons/DeveloperInfoIcon.png'
 
 class AllSettings extends Component {
   constructor(props) {
@@ -57,56 +69,56 @@ class AllSettings extends Component {
       id: "1",
       title: "Account Settings",
       function: this.handleAccountSettings,
-      icon: "blind",
+      icon: AccSettingsIcon,
       description: "Manage your account details",
     },
     {
       id: "2",
       title: "Notifications",
       function: this.handleNotificationSettings,
-      icon: "gitlab",
+      icon: NotificationSettingsIcon,
       description: "Configure your notification preferences",
     },
     {
       id: "3",
       title: "Privacy",
       function: this.handlePrivacySettings,
-      icon: "lock",
+      icon: PrivacySettingsIcon,
       description: "Adjust your privacy settings",
     },
     {
       id: "4",
       title: "FAQ",
       function: this.handleFrequentlyAskedQuestions,
-      icon: 'deafness',
+      icon: FAQIcon,
       description: "View the most frequently asked questions",
     },
     {
       id: "5",
       title: "Terms and Conditions",
       function: this.handleTermsConditions,
-      icon: "file-text",
+      icon: TermsAndConditionsIcon,
       description: "Read our terms and conditions",
     },
     {
       id: "6",
       title: "Privacy Policy",
       function: this.handlePrivacyPolicy,
-      icon: "info-circle",
+      icon: PrivacyPolicyIcon,
       description: "Review our privacy policy",
     },
     {
       id: "7",
       title: "Software Version",
       function: this.handleSoftwareVersion,
-      icon: "code",
+      icon: SoftwareVersionIcon,
       description: "Check the current software version",
     },
     {
       id: "8",
       title: "Developer Info",
       function: this.handleDeveloperInfo,
-      icon: "user",
+      icon: DevInfoIcon,
       description: "Learn more about the developer",
     },
   ];
@@ -114,7 +126,17 @@ class AllSettings extends Component {
   renderItem = ({ item }) => (
     <TouchableOpacity onPress={item.function}>
       <View style={styles.settingItem}>
-        <Icon name={item.icon} size={24} color="#019f99" style={styles.settingIcon} />
+      <Image 
+                            source={item.icon}
+                            resizeMode="contain"
+                            style={{
+                                width: 25,
+                                height: 25,
+                                marginHorizontal:10,
+                                marginRight:15,
+                                tintColor: '#019F99'
+                            }}
+                        />
         <View>
           <Text style={styles.settingTitle}>{item.title}</Text>
           <Text style={styles.settingDescription}>{item.description}</Text>
