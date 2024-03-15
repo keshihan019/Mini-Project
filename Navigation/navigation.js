@@ -21,7 +21,10 @@ import decode from 'jwt-decode';
 
 
 import { AccSettings, AllSettings, DeveloperInfo, FrequentlyAskedQuestions, 
-NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,UploadResume,Experience,SuccessfullyApplied} from '../src/screens/UndergraduateView/index.js'
+NotifSettings, PrivSettings, PrivacyPolicy, SoftwareVersion, 
+Status, TermsConditions, Profile,EditUGProfile,SeeAllRecJobs,
+JobOpportunity,EmptyNotifications,SeeAllRecentJobs, ContactInfo,
+UploadResume,Experience,SuccessfullyApplied,EditWorkExp,EditAcademicQualifications} from '../src/screens/UndergraduateView/index.js'
 import CompanyProfileView_UG from '../src/screens/UndergraduateView/CompanyView/CompanyProfileView_UG.js';
 
 
@@ -30,6 +33,7 @@ import CompanyProfileView_UG from '../src/screens/UndergraduateView/CompanyView/
 
 import CreateJob from '../src/components/EmployerView/CreateJob/CreateJob.js';
 import JobPreview from '../src/components/EmployerView/CreateJob/JobPreview.js';
+import EmployerViewSettings from '../src/screens/EmployerView/Settings/EmployerViewSettings.js';
 
 const Stack = createStackNavigator();
 
@@ -108,9 +112,13 @@ const MainStack = () => {
       <Stack.Screen name="EditUGProfile" component={EditUGProfile} options={{ title: 'Edit Profile' }} />
 
 
-      {/* JobsApplied Screens */}
+      {/* Profile Screens */}
       <Stack.Screen name="JobSelection" component={JobSelection} />
       <Stack.Screen name="Status" component={Status} />
+
+      {/* JobsApplied Screens */}
+      <Stack.Screen name="EditAcademicQualifications" component={EditAcademicQualifications} />
+      <Stack.Screen name="EditWorkExp" component={EditWorkExp} />
 
       {/* Home Screens */}
       <Stack.Screen name="UG_Home" component={Home} options={{headerShown: false}}/>
@@ -130,7 +138,7 @@ const MainStack = () => {
       {/* EmployerView Screens */}
       <Stack.Screen name="CreateJob" component={CreateJob} options={{headerShown: false}}/>
       <Stack.Screen name="JobPreview" component={JobPreview} options={{headerShown: false}}/>
-
+      <Stack.Screen name="EmployerViewSettings" component={EmployerViewSettings} options={{headerShown: false}}/>
 
     </Stack.Navigator>
   );

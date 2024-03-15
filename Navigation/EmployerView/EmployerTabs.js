@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import EmployerHome from '../../src/screens/EmployerView/Home/EmployerHome';
 import JobSelection from '../../src/screens/Authentication/Job selection/JobSelection';
 import { JobsApplied } from '../../src/screens/UndergraduateView/index';
-import AllSettings from '../../src/screens/UndergraduateView/Settings Screen/AllSettings';
+import EmployerViewSettings from '../../src/screens/EmployerView/Settings/EmployerViewSettings.js';
 import Notifications from '../../src/screens/UndergraduateView/Notifications Screens/Notifications'
 import CompanyProfile from '../../src/screens/EmployerView/Profile/CompanyProfile';
 import Dashboard from '../../src/screens/EmployerView/ApplicationsReceived/ApplicationsReceived';
@@ -39,8 +39,8 @@ const EmployerTabs = () => {
       }}
     >
       <Tab.Screen
-        name="AllSettings"
-        component={AllSettings}
+        name="EmployerViewSettings"
+        component={EmployerViewSettings}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center', top: 10 }}>

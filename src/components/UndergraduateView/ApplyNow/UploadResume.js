@@ -37,7 +37,7 @@ const UploadResume = () => {
         style={styles.Resume_image}
         resizeMode="contain"
       />
-      <Text style={styles.pageIndicator}>Step 1 out of 4</Text>
+      <Text style={styles.pageIndicator}>Step 3 out of 3</Text>
 
       {/* Button to pick document */}
       <Button title="Select my resume" onPress={handlePickDocument} />

@@ -80,10 +80,7 @@ const styles = StyleSheet.create({
     color: '#019f99',
     textDecorationLine: 'underline',
   },
-  overlay:{
-    
-    
-  }
+  
 });
 
 export default JobsApplied;
