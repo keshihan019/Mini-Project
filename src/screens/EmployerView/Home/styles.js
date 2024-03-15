@@ -3,14 +3,28 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
       position: 'relative',
       padding: 10,
+    },
+    heading:{
+      color:'#000',
+      fontSize:40,
+      textAlign:'center',
+      margin:20
     },
     gridContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
+      marginHorizontal:10
+    },
+    background: {
+      flex: 1,
+      resizeMode: 'cover',
+    },
+    overlay: {
+      flex: 1,
+      backgroundColor: 'rgba(255,255,255,0.9)',
     },
     card: {
       width: '48%', // Adjust according to your preference
@@ -52,19 +66,30 @@ export default StyleSheet.create({
     },
     // Custom styles for each card
     totalCard: {
-      borderColor: '#000', 
-      borderWidth:2// Border color becomes background color
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84, 
     },
     acceptedCard: {
-      borderColor: 'green',
-      borderWidth:2 // Border color becomes background color
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84, 
+      
     },
     rejectedCard: {
-      borderColor: 'red',
-      borderWidth:2 // Border color becomes background color
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84, 
     },
     createdCard: {
-      borderColor: 'blue',
-      borderWidth:2 // Border color becomes background color
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84, 
+       
     },
+
   });
